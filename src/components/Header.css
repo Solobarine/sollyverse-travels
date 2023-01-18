@@ -1,0 +1,50 @@
+header {
+  display: grid;
+  grid-template-columns: 0.03fr 0.4fr 0.3fr 1fr 0.3fr 0.2fr 0.2fr 0.3fr;
+  grid-template-areas: 
+  "image name space navs spac login register";
+  padding: 20px;
+  color: grey;
+  background-color: #c8e6c9;
+}
+
+header > * {
+  text-align: center;
+}
+
+header img {
+  grid-area: image;
+  width: 40px;
+}
+
+.brand {
+  grid-area: name;
+  padding-top: 6px;
+}
+
+.nav {
+  list-style: none;
+  grid-area: navs;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  font-size: 16px;
+}
+
+.login {
+  grid-area: login;
+  background-color: #c8e6c9;
+}
+
+.register {
+  grid-area: register;
+  background-color: #20b970;
+  color: #fff;
+}
+
+.button {
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+  color: gray;
+}
