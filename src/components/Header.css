@@ -31,6 +31,15 @@ header img {
   font-size: 16px;
 }
 
+.nav li {
+  cursor: pointer;
+}
+
+.nav li a {
+  text-decoration: none;
+  color: gray;
+}
+
 .login {
   grid-area: login;
   background-color: #c8e6c9;
@@ -43,8 +52,13 @@ header img {
 }
 
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 10px;
   border: none;
   font-size: 14px;
   color: gray;
+  cursor: pointer;
+  text-decoration: none;
 }

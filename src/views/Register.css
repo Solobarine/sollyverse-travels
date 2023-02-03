@@ -1,0 +1,73 @@
+#register {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+}
+
+#registerImage {
+  background-image: url('../../public/landing/summerTravel.jpg');
+  background-size: cover;
+  background-position: 55%;
+}
+
+#registerForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.formDiv {
+  width: 70%;
+}
+
+.formDiv p {
+  margin: 10px 0;
+}
+
+.basicKyc {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.formDiv input,
+.addressAndMore input{
+  height: 40px;
+  padding-left: 15px;
+  font-size: 16px;
+}
+
+.addressAndMore {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.addressAndMore h2 {
+  grid-area: 1/1/span 1/span 2;
+}
+
+#address1 {
+  grid-area: 2/1/span 1/span 2;
+}
+
+#address2 {
+  grid-area: 3/1/span 1/span 2;
+}
+
+#registerSubmit {
+  width: 100%;
+  margin: 15px 0;
+  border: none;
+  background-color: #20b970;
+  color: #fff;
+  cursor: pointer;
+}
+#rSignIn {
+  cursor: pointer;
+  color: #20b970;
+  text-decoration: none;
+}

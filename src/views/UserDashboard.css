@@ -1,0 +1,5 @@
+.userDashboard {
+  display: grid;
+  grid-template-columns: .4fr 1.6fr;
+  transition: .6s ease-in;
+}

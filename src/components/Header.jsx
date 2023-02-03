@@ -1,4 +1,5 @@
-import './Header.css'
+import { Link } from 'react-router-dom';
+import './Header.css';
 
 const Header = () => {
   return (
@@ -6,14 +7,14 @@ const Header = () => {
       <img src="/airplane.png" alt="logo" id='image'/>
       <h2 className="brand">Sollyverse</h2>
       <ul className="nav">
-        <li>Home</li>
+        <li><Link to="/">Home</Link></li>
         <li>About</li>
-        <li>Discover</li>
+        <li><Link to="/countries">Discover</Link></li>
         <li>Service</li>
-        <li>Contact</li>
+        <li><Link to="/contact">Contact</Link></li>
       </ul>
-      <input type="submit" value="Login" className="button login"/>
-      <input type="submit" value="Register" className="button register"/>
+      <Link to="/login" className="button login">Login</Link>
+      <Link to="/register" className="button register">Register</Link>
     </header>
   )
 }

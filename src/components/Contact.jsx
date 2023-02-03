@@ -1,6 +1,10 @@
 import './Contact.css';
+import { MapContainer, TileLayer, Marker} from 'react-leaflet';
+import MapArea from './Map';
+import {useRef} from 'react';
 
 const Contact = () => {
+  const data = {lat: 4.8833,lon: 6.9845,zoom: 12}
   return (
     <section id="contactSection">
       <section className="contactOptions">
@@ -22,7 +26,8 @@ const Contact = () => {
             <p>+234 903 208 3144</p>
           </div>
         </div>
-       <div id="map"></div>
+          <MapArea props={data}>
+          </MapArea>
       </section>
       <section className="contactForm">
         <h5>Send Us A Message</h5>

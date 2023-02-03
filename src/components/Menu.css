@@ -1,21 +1,20 @@
 .menu {
   position: relative;
-  width: 16%;
-  padding: 10px;
+  padding: 20px;
   background-color: #c8e6c8;
-  transition: .4s ease-in;
+  transition: 1s ease-in;
 }
 
 .menu.dark {}
 
 .closeMenu {
-  width: 4%;
+  padding: 10px;
 }
 
 .menuToggle {
   position: absolute;
   top: 20px;
-  right: -20px;
+  right: 0;
   font-size: 25px;
   rotate: 180deg;
   transition: .4s ease;
@@ -37,7 +36,7 @@
 
 .nav-links {
   display: flex;
-  width: 80%;
+  width: 90%;
   align-items: center;
   text-align: start;
   padding: 10px;
@@ -93,7 +92,7 @@
   align-items: center;
   justify-content: space-between;
   margin-left: 0;
-  width: 90%;
+  width: 100%;
   margin: 30px 0;
 }
 

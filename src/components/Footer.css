@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-footer {
+.footer {
   display: grid;
   position: relative;
   grid-template-rows: 1fr 0.2fr;
@@ -82,4 +82,6 @@ a img {
 
 .copy p {
   margin-top: 20px;
+  text-align: center;
+  
 }

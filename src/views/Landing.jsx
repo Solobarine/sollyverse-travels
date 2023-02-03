@@ -1,13 +1,37 @@
+import {useEffect, useRef} from 'react';
 import './Landing.css';
 
 const Landing = () => {
+  let i = 0
+  const image = useRef()
+  const landingImages  = ['abu-dhabi.jpg', 'abu-dhabi-2.jpg', 'ankor-wat.png', 'c8.jpg', 'cartagena-1.jpg', 'thai.png', 'tokyo.jpeg', 'beach-0.jpg', 'beach-3.jpg']
+
+  const displayImages = () => {
+    // image.current.src = `/landing/${landingImages[i]}`
+    if (i < landingImages.length - 1) {
+      image.current.src = `/landing/${landingImages[i]}`
+      i++
+    } else {
+      i = 0
+    }
+
+    setTimeout(displayImages, 12000)
+  }
+  
+  useEffect(() => {
+    displayImages()
+  }, [])
+
   return (
     <section className="landing">
       <section id="main">
-        <h1>Travel</h1>
-        <p>Explore the huge world out there and enjoy it's beauty.</p>
-        <p>discover new things in exploring the world and make your vacation memorable to remember forever.</p>
-        <input type="submit" value="learn more" className="more"/>
+        <img ref={image} src="/landing/abu-dhabi.jpg" alt="Destinations to Explore"/>
+        <div>
+          <h1>Travel</h1>
+          <p>Explore the huge world out there and enjoy it's beauty.</p>
+          <p>discover new things in exploring the world and make your vacation memorable to remember forever.</p>
+          <input type="submit" value="learn more" className="more"/>
+        </div>
       </section>
       <section id="sub-bar">
         <div id="facilities">
@@ -34,15 +58,15 @@ const Landing = () => {
         </div>
         <div id="journey">
           <h2>Find your journey</h2>
-          <img src="" alt="desert"/>
-          <img src="" alt="mountains"/>
-          <img src="" alt="cities"/>
-          <img src="" alt="beaches"/>
+          <img src="/landing/desert1.jpeg" alt="desert"/>
+          <img src="/landing/mountain1.jpeg" alt="mountains"/>
+          <img src="/landing/city1.jpeg" alt="cities"/>
+          <img src="/landing/beach-front.jpg" alt="beaches"/>
         </div>
       </section>
       <section id="popular">
         <h2>The most popular</h2>
-        <p>We have developed into a service that provides a better and more travel on any platform to help you enjoy your vacation.</p>
+        <p>We have developed into a service that provides a better and more travel on any platform to help you enjoy your vacation. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore voluptatem omnis fugiat ex sit soluta natus ducimus eos laboriosam itaque corporis perspiciatis sunt nulla repellendus facere labore, quidem, eaque ab?</p>
         <div className="popularStat">
         <div>
           <div class="popularImage"><i class="fa-solid fa-user-group"></i></div>
@@ -62,12 +86,11 @@ const Landing = () => {
       </div>
       </section>
       <section id="hotDestinations">
-        <h3>Popular Places</h3>
-        <div className="carousel"></div>
       </section>
       <section id="aboutUs">
         <h2>About Us</h2>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur quos at modi nam similique, nesciunt harum, neque esse voluptatibus natus deleniti saepe voluptas quasi quo suscipit reiciendis nisi distinctio! Similique!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur quos at modi nam similique, nesciunt harum, neque esse voluptatibus natus deleniti saepe voluptas quasi quo suscipit reiciendis nisi distinctio! Similique!.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat minima quidem dolore aliquam corporis numquam rem molestiae voluptates totam mollitia.</p>
       </section>
       <section className="partners">
         <img src="/sponsors/ferrari.png" alt=""/>

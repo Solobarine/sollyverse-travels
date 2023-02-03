@@ -5,13 +5,6 @@ const Menu = () => {
   const menu = useRef()
   const sun = useRef()
   const moon = useRef()
-  
-
-  const toggleMenu = (e) => {
-    console.log('clicking')
-    e.target.classList.toggle('close')
-    menu.current.classList.toggle('closeMenu')
-  }
 
   const toggleTheme = () => {
     console.log(menu)
@@ -27,11 +20,15 @@ const Menu = () => {
 
   return (
     <section ref={menu} className='menu'>
-      <i onClick={toggleMenu} className="fa-solid fa-circle-chevron-right menuToggle"></i>
+      <i className="fa-solid fa-circle-chevron-right menuToggle"></i>
       <ul className="menuNav">
         <li className="nav-links">
           <i className="fa-solid fa-house"></i>
           <p>Dashboard</p>
+        </li>
+        <li className="nav-links">
+          <i className="fa-solid fa-user"></i>
+          <p>Profile</p>
         </li>
         <li className="nav-links">
           <i className="fa-solid fa-plane-departure"></i>

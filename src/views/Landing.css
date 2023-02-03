@@ -1,32 +1,49 @@
 .landing {
-  position: relative;
+/*  position: relative;*/
 }
 
 #main {
-  height: 100vh;
-  background-image: url('../../public/landing/beach-0.jpg');
-  background-position: center;
-  background-size: 100%;
+  position: relative;
+  height: 660px;
+  background-color: red;
 }
 
-#main * {
-  text-align: start;
-  transform: translateY(40vh);
-  margin-left: 10%;
+#main img {
+  width: 100%;
+  height: 100%;
+  background-size: 50%;
+  transition: .4s ease-in;
 }
 
-#main p {
+#main div {
+  position: absolute;
+  left: 10%;
+  top: 40%;
   width: 40%;
+  border-radius: 25px;
+  padding: 10px;
+  background-color: rgba(200, 230, 200, .2);
+}
+
+#main div * {
+  margin: 15px 0;
+  color: #fff;
 }
 
 #main h1 {
   font-size: 40px;
 }
-
+ 
 #main p {
   font-size: 18px;
-  margin: 10px 0 0 10%;
-  width: 40%;
+  width: 100%;
+}
+
+#main div input {
+  padding: 12px;
+  border: none;
+  color: #000;
+  background-color: #c8e6c8;
 }
 
 .more {
@@ -39,17 +56,19 @@
 #sub-bar {
   position: absolute;
   display: flex;
-  background-color: #fff;
+  background-color: rgba(200, 230, 200, .8);
   z-index: 1;
   width: 80%;
   margin-left: 10%;
-  margin-top: -50px;
+  margin-top: -80px;
   padding: 10px;
   border-radius: 10px;
   justify-content: space-between;
+  box-shadow: 5px 10px 10px gray;
 }
 
 #facilities {
+  width: 45%;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: 0.6fr 0.8fr;
@@ -75,6 +94,19 @@
   display: flex;
   flex-direction: column;
   padding: 6px;
+  align-items: center;
+}
+
+#journey {
+  max-width: 40%;
+}
+
+#journey img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-size: cover;
+  padding: 10px;
 }
 
 #journey h2 {
@@ -84,16 +116,35 @@
 }
 
 #popular {
-  padding-top: 60px;
+  padding-top: 80px;
 }
 
 #popular * {
   margin-bottom: 7px;
 }
 
+#popular h2,
+#popular p {
+  width: 70%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+#popular p {
+  margin-bottom: 20px;
+}
+
 .popularStat {
   display: flex;
   justify-content: space-evenly;
+}
+
+.popularStat div {
+  display: flex;
+  width: 30%;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .popularStat * {
@@ -102,9 +153,13 @@
 
 .popularStat div h3 {
   font-size: 20px;
+  justify-content: center;
 }
 
 .popularStat div div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px;
   width: 40px;
   height: 40px;
@@ -114,7 +169,9 @@
 }
 
 .popularImage i {
-  padding-top: 12px;
+  padding-top: 8px;
+  color: #20b970;
+  font-size: 20px;
 }
 
 #aboutUs h2 {
@@ -122,10 +179,22 @@
   margin-bottom: 20px;
 }
 
+
+.swiper {
+  width: 800px;
+  height: 300px;
+}
+
 #aboutUs p {
   width: 70%;
   font-size: 18px;
   margin: auto;
+}
+
+
+#hotDestinations h3,
+#aboutUs h2 {
+  text-align: center;
 }
 
 .partners {

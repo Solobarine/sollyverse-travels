@@ -1,0 +1,41 @@
+.destination {
+  position: relative;
+}
+
+#images img {
+  width: 100%;
+}
+
+.destinationBio {
+  position: absolute;
+  background-color: rgba(255, 255, 255, .6);
+  bottom: 15px;
+  width: 85%;
+  margin-left: 5%;
+  padding: 5px;
+  display: grid;
+  border-radius: 10px;
+  grid-template-columns: 1fr 0.1fr;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+#destinationlocation {
+  grid-area: 2/1/span 1/span 1;
+  font-size: 13px;
+}
+
+.destinationCost {
+  grid-area: 3/1/span 1/span 1;
+  font-size: 13px;
+}
+
+.destinationBio button {
+  grid-area: 1/2/span 3/span 1;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: auto;
+  background-color: #c8e6c8;
+  color: #20b970;
+}
