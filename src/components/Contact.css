@@ -1,6 +1,6 @@
 #contactSection {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: .7fr 1fr;
   padding: 15px;
 }
 
@@ -11,7 +11,7 @@
 }
 
 .reach {
-  width: 80%;
+  width: 100%;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -57,7 +57,7 @@
 
 .call p,
 .sendMail p {
-  font-size: 14px;
+  font-size: 10px;
 }
 
 .reach div {
@@ -88,6 +88,7 @@
   padding-left: 15px;
   font-size: 15px;
   height: 40px;
+  min-width: 0;
 }
 
 .contactForm form textarea {

@@ -1,4 +1,5 @@
-import {useRef} from 'react'
+import {useRef} from 'react';
+import { Link } from 'react-router-dom';
 import './Menu.css'
 
 const Menu = () => {
@@ -23,16 +24,20 @@ const Menu = () => {
       <i className="fa-solid fa-circle-chevron-right menuToggle"></i>
       <ul className="menuNav">
         <li className="nav-links">
+          <Link to="/account/dashboard">
           <i className="fa-solid fa-house"></i>
           <p>Dashboard</p>
+          </Link>
         </li>
         <li className="nav-links">
           <i className="fa-solid fa-user"></i>
           <p>Profile</p>
         </li>
         <li className="nav-links">
+          <Link to="/countries">
           <i className="fa-solid fa-plane-departure"></i>
           <p>Discover</p>
+          </Link>
         </li>
         <li className="nav-links">
           <i className="fa-regular fa-thumbs-up"></i>
@@ -47,12 +52,16 @@ const Menu = () => {
           <p>Reservations</p>
         </li>
         <li className="nav-links">
+          <Link to="/account/settings">
           <i className="fa-solid fa-gear"></i>
           <p>Settings</p>
+          </Link>
         </li>
         <li className="nav-links">
+          <Link to="/">
           <i className="fa-solid fa-door-open"></i>
           <p>Logout</p>
+          </Link>
         </li>
       </ul>
       <div className="theme">
