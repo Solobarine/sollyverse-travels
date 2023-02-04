@@ -1,0 +1,70 @@
+.notFoundImage {
+  width: 80%;
+  margin: 2% 10%;
+}
+
+.notFound {
+  position: relative;
+  overflow: hidden;
+}
+
+.nfImage {
+  position: absolute;
+  width: 15%;
+}
+
+.notFound h1 {
+  text-align: center;
+}
+
+.nfi-1 {
+  top: -55px;
+  left: -55px;
+}
+
+.nfi-2 {
+  right: -60px;
+  top: -60px;
+}
+
+.nfi-3 {
+  left: -55px;
+  bottom: -55px;
+}
+
+.nfi-4 {
+  right: -55px;
+  bottom: -55px;
+}
+
+.nfButtons {
+  width: 20%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.nfButtons a {
+  width: 40%;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  text-align: center;
+  background-color: #20b970;
+  text-decoration: none;
+  transition: .4s ease-in;
+}
+
+.nfButtons a:hover {
+  background-color: #c8e6c8;
+  color: #000;
+}
+
+.nfButtons a:active {
+  background-color: #20b970;
+  border: 1px solid #000;
+}

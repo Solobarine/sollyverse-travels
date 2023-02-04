@@ -1,0 +1,20 @@
+.swiper {
+  width: 100%;
+  min-width: 0;
+  height: 355px;
+}
+
+.swiper-wrapper {
+  width: 100%;
+}
+
+.swiper-slide {
+  width: 100%;
+  background-color: green;
+  display: flex;
+}
+
+.swiper-slide img {
+  object-fit: cover;
+  width: 100%;
+}

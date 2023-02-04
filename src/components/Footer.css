@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.footer {
+  display: grid;
+  position: relative;
+  grid-template-rows: 1fr 0.2fr;
+  grid-template-columns: 0.9fr 0.3fr 0.3fr 0.3fr;
+  grid-template-areas: 
+  "pitch about company links"
+  "copy copy copy copy";
+  padding: 10px 40px;
+  align-items: start;
+  background-image: linear-gradient(#c8e6c9, #fff);
+}
+
+.pitch {
+  grid-area: pitch;
+}
+
+.pitch p {
+  max-width: 70%;
+  text-align: start;
+  margin-top: 20px;
+}
+
+.firm {
+  display: flex;
+}
+
+.title {
+  margin-left: 10px;
+  padding-top: 3px;
+}
+
+.socials {
+  width: 40%;
+  margin: 25px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.about {
+  grid-area: about;
+}
+
+.company {
+  grid-area: company;
+}
+
+.links {
+  grid-area: links;
+}
+
+.copy {
+  grid-area: copy;
+}
+
+.about,
+.company,
+.links,
+.ul > li {
+  list-style: none;
+  text-align: start;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.about,
+.company,
+.links {
+  font-weight: 600;
+  padding: 10px 0;
+}
+
+.pitch img,
+a img {
+  width: 25px;
+}
+
+.copy p {
+  margin-top: 20px;
+  text-align: center;
+  
+}
