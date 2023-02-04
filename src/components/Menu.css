@@ -53,12 +53,18 @@
 
 .nav-links p {
   margin-left: 20px;
-  align-items: start; 
+  align-items: start;
+  color: #444;
 }
 
 .nav-links i,
 .nav-links p {
   font-size: 20px;
+  font-weight: 600;
+}
+
+.nav-links a {
+  text-decoration: none;
 }
 
 .closeMenu .nav-links p {
@@ -90,9 +96,9 @@
 .theme {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-left: 0;
-  width: 100%;
+  width: 80%;
   margin: 30px 0;
 }
 
@@ -101,8 +107,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 
 .theme span i {
@@ -116,8 +122,9 @@
 }
 
 .mode {
-  font-size: 16px;
-  color: gray;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
 }
 
 #switch {

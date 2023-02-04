@@ -8,9 +8,9 @@ const Header = () => {
       <h2 className="brand">Sollyverse</h2>
       <ul className="nav">
         <li><Link to="/">Home</Link></li>
-        <li>About</li>
+        <li><Link to="/">About</Link></li>
         <li><Link to="/countries">Discover</Link></li>
-        <li>Service</li>
+        <li><Link to="/">Service</Link></li>
         <li><Link to="/contact">Contact</Link></li>
       </ul>
       <Link to="/login" className="button login">Login</Link>

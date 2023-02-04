@@ -4,7 +4,7 @@ header {
   grid-template-areas: 
   "image name space navs spac login register";
   padding: 20px;
-  color: grey;
+  color: #444;
   background-color: #c8e6c9;
 }
 
@@ -20,6 +20,7 @@ header img {
 .brand {
   grid-area: name;
   padding-top: 6px;
+  font-weight: 800;
 }
 
 .nav {
@@ -37,7 +38,8 @@ header img {
 
 .nav li a {
   text-decoration: none;
-  color: gray;
+  color: #444;
+  font-weight: 500;
 }
 
 .login {
@@ -58,7 +60,8 @@ header img {
   border-radius: 10px;
   border: none;
   font-size: 14px;
-  color: gray;
+  color: #444;
+  font-weight: 600;
   cursor: pointer;
   text-decoration: none;
 }

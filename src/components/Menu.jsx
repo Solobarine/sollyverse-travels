@@ -58,7 +58,7 @@ const Menu = () => {
           </Link>
         </li>
         <li className="nav-links">
-          <Link to="/">
+          <Link to="/login">
           <i className="fa-solid fa-door-open"></i>
           <p>Logout</p>
           </Link>
