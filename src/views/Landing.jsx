@@ -7,7 +7,6 @@ const Landing = () => {
   const landingImages  = ['abu-dhabi.jpg', 'abu-dhabi-2.jpg', 'ankor-wat.png', 'c8.jpg', 'cartagena-1.jpg', 'thai.png', 'tokyo.jpeg', 'beach-0.jpg', 'beach-3.jpg']
 
   const displayImages = () => {
-    // image.current.src = `/landing/${landingImages[i]}`
     if (i < landingImages.length - 1) {
       image.current.src = `/landing/${landingImages[i]}`
       i++
@@ -20,7 +19,7 @@ const Landing = () => {
   
   useEffect(() => {
     displayImages()
-  }, [])
+  })
 
   return (
     <section className="landing">

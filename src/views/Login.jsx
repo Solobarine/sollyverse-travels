@@ -5,7 +5,7 @@ const Login = () => {
   return (
     <section className="loginPage">
 <div id="loginImage">
-        <img src="/landing/login.png" alt="Login Image"/>
+        <img src="/landing/login.png" alt="Login"/>
       </div>
       <div id="loginForm">
         <form>
