@@ -14,20 +14,16 @@ const Country = () => {
     cityImage.push(item.image)
   })
 
-  console.log(cityImage)
   const HandleClick = (e) => {
     if (e.target.classList.contains('fa-regular')) {
       e.target.classList.remove('fa-regular')
       e.target.classList.add('fa-solid')
-      console.log(e)
     } else if (e.target.classList.contains('fa-solid')) {
       e.target.classList.remove('fa-solid')
       e.target.classList.add('fa-regular')
-      console.log(e)
     }
-    console.log(e.target)
   }
-  const array = ['/jakarta0.png','/jarkata1.jpg','/jarkata2.jpg']; 
+
   return (
     <section id="country">
       <div className="countryImages">

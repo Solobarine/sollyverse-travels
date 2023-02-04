@@ -1,7 +1,5 @@
 import './Contact.css';
-import { MapContainer, TileLayer, Marker} from 'react-leaflet';
 import MapArea from './Map';
-import {useRef} from 'react';
 
 const Contact = () => {
   const data = {lat: 4.8833,lon: 6.9845,zoom: 12}

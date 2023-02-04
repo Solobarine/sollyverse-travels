@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import MapArea from './Map.jsx';
-import SwiperImages from './Swiper';
 import './City.css';
 import { useRef, useEffect } from 'react';
 
@@ -42,7 +41,7 @@ const City = () => {
 
   useEffect(() => {
     showImage()
-  }, [])
+  })
 
   return (
     <section className="city">
