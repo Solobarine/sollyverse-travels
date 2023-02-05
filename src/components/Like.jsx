@@ -11,7 +11,7 @@ const Like = () => {
   }
 
   return (
-    <button onclick={HandleClick} ref={likeButton} className="like">
+    <button onClick={HandleClick} ref={likeButton} className="like">
       <i ref={like} className='fa-regular fa-heart'></i>
     </button>
   )

@@ -42,13 +42,20 @@
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 15px;
-  color: gray;
+  color: #444;
   cursor: pointer;
+}
+
+.nav-links a {
+  text-decoration: none;
+  width: 100%;
+  display: grid;
+  color: #444;
+  grid-template-columns: .2fr 1.4fr;
 }
 
 .nav-links:hover {
   background-color: #20b970;
-  color: #fff;
 }
 
 .nav-links p {
@@ -61,10 +68,6 @@
 .nav-links p {
   font-size: 20px;
   font-weight: 600;
-}
-
-.nav-links a {
-  text-decoration: none;
 }
 
 .closeMenu .nav-links p {
