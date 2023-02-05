@@ -2,7 +2,6 @@ import './Destination.css';
 import Like from './Like';
 
 const Destination = (destination) => {
-  console.log(destination)
   return (
     <section className="destination">
       <figure id="images">
