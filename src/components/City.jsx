@@ -91,6 +91,14 @@ const City = () => {
           <h2>Reviews</h2>
         </div>
         <div className="cityReview">
+          <h2>Rate Your Vacation</h2>
+          <div className="stars">
+            <i className="fa-solid fa-star"/>
+            <i className="fa-solid fa-star"/>
+            <i className="fa-solid fa-star"/>
+            <i className="fa-solid fa-star"/>
+            <i className="fa-solid fa-star"/>
+          </div>
           <h2>Give a Review</h2>
           <form action="">
             <input type="text" placeholder='First Name'/>

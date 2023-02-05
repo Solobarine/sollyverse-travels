@@ -51,7 +51,7 @@
 }
 
 .countryCity {
-  background-color: red;
+  background-color: gray;
   position: relative;
   height: 300px;
   border-radius: 20%;
@@ -92,6 +92,7 @@
   cursor: pointer;
   border-radius: 12px;
   border: none;
+  background-color: #20b555;
 }
 
 .countryCity div a input:hover {

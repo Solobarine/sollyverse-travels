@@ -24,6 +24,11 @@
   margin: 10px 0;
 }
 
+.formDiv form {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 .basicKyc {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -60,11 +65,13 @@
 }
 
 #registerSubmit {
-  width: 100%;
-  margin: 15px 0;
   border: none;
+  margin: 20px 0;
   background-color: #20b970;
   color: #fff;
+  text-decoration: none;
+  padding: 12px;
+  text-align: center;
   cursor: pointer;
 }
 #rSignIn {
