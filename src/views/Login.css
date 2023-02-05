@@ -50,6 +50,9 @@
   background-color: #20b970;
   color: #fff;
   cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  padding: 12px;
 }
 
 .remember {

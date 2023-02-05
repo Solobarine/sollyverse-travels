@@ -13,7 +13,7 @@ const Login = () => {
           <p>Welcome back. Login to your Account</p>
           <input type="email" name="" id="loginMail" placeholder='Enter your Email'/>
           <input type="password" name="" id="loginPassword" placeholder='Enter your Password'/>
-          <input type="submit" value="Submit" id="loginSubmit"/>
+          <Link to="/account/dashboard" id="loginSubmit">Login</Link>
 <span className="remember"><input type="checkbox" name="remember" id=""/><p id="remain">Remember Me</p>
   <Link to="/forgot_password" id="forgot">Forgot Password?</Link></span>
 <p>Don't have an Account? <Link to="/register" id="loginCreate">Create One</Link></p>

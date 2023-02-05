@@ -11,7 +11,7 @@
 .cityImages {
   height: 350px;
   max-width: 100%;
-  background-color: blue;
+  background-color: gray;
 }
 
 .cityImages img {
@@ -140,6 +140,11 @@
 
 .cityDetails a:active {
   border: 1px solid #000;
+}
+
+.aboutCity {
+  background-color: #eee;
+  border-radius: 20px;
 }
 
 .cityMap {

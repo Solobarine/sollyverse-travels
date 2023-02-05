@@ -30,11 +30,18 @@
 
 .country button:hover {
   background-color: #20b970;
+}
+
+.moreCountry a:hover {
   color: #fff;
 }
 
 .country button:active {
   border: 1px solid #000;
+}
+
+.moreCountry a {
+  text-decoration: none;
 }
 
 .country-2 {

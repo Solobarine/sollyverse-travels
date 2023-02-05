@@ -19,17 +19,18 @@ const Register = () => {
               <input type="text" placeholder="Confirm Password"/>
               <input type="text" placeholder="Date of Birth"/>
               <input type="text" placeholder="Nationality"/>
+              <input type="text" placeholder="Gender"/>
             </div>
             <div className="addressAndMore">
               <h2>Address</h2>
               <input type="text" placeholder="Address 1" id="address1"/>
-              <input type="text" placeholder="Address 2" id="address2"/>
+<input type="text" placeholder="Address 2" id="address2"/>
               <input type="text" placeholder="City"/>
               <input type="text" placeholder="State"/>
               <input type="text" placeholder="ZIP Code"/>
               <input type="text" placeholder="Country"/>
             </div>
-            <input type="submit" value="Register" id="registerSubmit"/>
+            <Link to="/account/dashboard" id="registerSubmit">Register</Link>
             <p>Have an Account? <Link to="/login" id="rSignIn">Sign In</Link></p>
           </form>
         </div>
