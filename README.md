@@ -60,9 +60,9 @@ After you're finished please remove all the comments and instructions!
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Sollyverse] <a name="about-project"></a>
+# 📖 Sollyverse <a name="about-project"></a>
 
-**[Sollyverse] is a travel website where users can make reservations and leave reviews.
+** Sollyverse is a travel website where users can make reservations and leave reviews.
 
 ## 🛠 Built With <a name="built-with"></a>
 - React
@@ -80,13 +80,16 @@ After you're finished please remove all the comments and instructions!
 
 ### Key Features <a name="key-features"></a>
 
-- **[Create an Account]**
-- **[Login]**
-- **[Like Country or City]
-- [Rate City]
-- [Make Reservations]**
+- **Create an Account**
+- **Login**
+- **Like Country or City**
+- **Rate City**
+- **Make Reservations**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Live Demo
+- Click [here](https://sollyverse.netlify.com) to view the project demo
 
 <!-- GETTING STARTED -->
 
