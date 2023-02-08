@@ -4,17 +4,38 @@ import './City.css';
 import { useRef, useEffect } from 'react';
 
 const City = () => {
+  const stars = useRef()
+
   const HandleClick = (e) => {
     if (e.target.classList.contains('fa-regular')) {
       e.target.classList.remove('fa-regular')
       e.target.classList.add('fa-solid')
-      console.log(e)
     } else if (e.target.classList.contains('fa-solid')) {
       e.target.classList.remove('fa-solid')
       e.target.classList.add('fa-regular')
-      console.log(e)
     }
-    console.log(e.target)
+  }
+
+  const clickStar = (e) => {
+    const starArray = Array.from(stars.current.children)
+    const i = starArray.indexOf(e.target)
+    starArray.forEach((star,index) => {
+      if (index <= i) {
+        if (star.classList.contains('fa-solid')) {
+          return
+        } else {
+          star.classList.toggle('fa-regular')
+          star.classList.toggle('fa-solid')
+        }
+      } else {
+        if (star.classList.contains('fa-regular')) {
+          return
+        } else {
+          star.classList.toggle('fa-regular')
+          star.classList.toggle('fa-solid')
+        }
+      }
+    })
   }
 
   let i = 0
@@ -92,12 +113,12 @@ const City = () => {
         </div>
         <div className="cityReview">
           <h2>Rate Your Vacation</h2>
-          <div className="stars">
-            <i className="fa-solid fa-star"/>
-            <i className="fa-solid fa-star"/>
-            <i className="fa-solid fa-star"/>
-            <i className="fa-solid fa-star"/>
-            <i className="fa-solid fa-star"/>
+          <div ref={stars} className="stars">
+            <i onClick={clickStar} className="fa-regular fa-star"/>
+            <i onClick={clickStar} className="fa-regular fa-star"/>
+            <i onClick={clickStar} className="fa-regular fa-star"/>
+            <i onClick={clickStar} className="fa-regular fa-star"/>
+            <i onClick={clickStar} className="fa-regular fa-star"/>
           </div>
           <h2>Give a Review</h2>
           <form action="">
@@ -106,7 +127,7 @@ const City = () => {
             <input type="text" placeholder='Review Title'/>
             <textarea name="review" placeholder='Give a Review'></textarea>
             <input type="submit" value="Submit Review"/>
-</form>
+          </form>
         </div>
       </div>
     </section>
