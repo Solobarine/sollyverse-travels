@@ -22,8 +22,10 @@ const Countries = () => {
     button.style.transition = '.6s ease-in'
   }
 
-  const country = ['Egypt', 'Morroco', 'Mexico', 'Switzerland', 'Norway', 'Italy', 'Spain', 'United States', 'Turkey', 'Japan', 'UAE',
-    'Thailand', 'Germany', 'England', 'France', 'Greece', 'South Korea', 'China', 'India', 'Saudi Arabia']
+  const country = [{name:'Egypt', image: ''}, {name: 'Morroco', image: ''}, {name: 'Mexico', image: ''}, {name: 'Switzerland', image: ''}, {name: 'Norway', image: ''},
+    {name: 'Italy', image: ''}, {name: 'Spain', image: ''}, {name: 'United States', image: ''}, {name: 'Turkey', image: ''}, {name: 'Japan', image: ''}, {name: 'UAE', image: ''},
+    {name: 'Thailand', image: ''}, {name: 'Germany', image: ''}, {name: 'England', image: ''}, {name: 'France', image: ''}, {name: 'Greece', image: ''}, {name: 'South Korea', image: ''},
+    {name: 'China', image: ''}, {name: 'India', image: ''}, {name: 'Saudi Arabia', image: ''}]
   return (
     <section className="countries">
     {country.map((item, index) => (
