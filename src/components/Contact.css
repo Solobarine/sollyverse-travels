@@ -71,6 +71,8 @@
 }
 
 .contactForm form {
+  width: 70%;
+  margin: auto;
   display: grid;
   padding: 40px;
   padding-top: 60px;
