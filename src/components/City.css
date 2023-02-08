@@ -32,6 +32,7 @@
 
 .cityReservation form {
   display: grid;
+  width: 80%;
   grid-template-columns: 1fr 1fr;
   margin: auto;
   gap: 15px;
@@ -169,6 +170,19 @@
 
 .cityReviews h2 {
   text-align: center;
+}
+
+.stars {
+  width: 115px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  margin: auto;
+}
+
+.stars i {
+  font-size: 18px;
+  color: #20b970;
 }
 
 .cityReview form {
