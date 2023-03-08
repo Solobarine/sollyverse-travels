@@ -1,0 +1,50 @@
+#staff {
+  display: grid;
+  grid-template-columns: .4fr 1fr;
+  padding: 10px;
+}
+
+#staff > div:nth-child(1) button {
+  display: block;
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #c8e6c9;
+  border: 1px solid grey;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+#staff > div:nth-child(1) button:hover {
+  background-color: #20b970;
+  color: #fff;
+  box-shadow: 4px 4px 4px 4px #ddd;
+}
+
+#adminRegister form {
+  display: grid;
+  width: 90%;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+#adminRegister form h1 {
+  grid-column: 1/span 2;
+  text-align: center;
+}
+
+#adminRegister form input {
+  padding: 15px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
+#adminRegister form input[type='submit'] {
+  background-color: #20b970;
+  transition: .3s ease;
+}
+
+#adminRegister form input[type='submit']:hover {
+  color: #fff;
+  font-size: 17px;
+}

@@ -1,0 +1,30 @@
+#messages {
+  width: 70%;
+  margin: auto;
+  padding: 20px;
+}
+
+.message {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  background-color: #c8e6c8;
+  border: 1px solid gray;
+  border-radius: 25px;
+  margin-bottom: 30px;
+  padding: 15px;
+  box-shadow: 15px 15px 10px gray;
+}
+
+.details {
+  font-size: 17px;
+}
+
+.sender {
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.message .date {
+  font-weight: 1000;
+}

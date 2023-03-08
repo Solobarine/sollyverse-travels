@@ -10,6 +10,8 @@
 
 #loginImage img {
   width: 70%;
+  margin-left: 15%;
+  min-width: 85px;
 }
 
 #loginForm {

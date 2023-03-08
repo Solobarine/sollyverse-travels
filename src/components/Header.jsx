@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
   return (
+    <>
     <header>
       <img src="/airplane.png" alt="logo" id='image'/>
       <h2 className="brand">Sollyverse</h2>
@@ -16,6 +17,8 @@ const Header = () => {
       <Link to="/login" className="button login">Login</Link>
       <Link to="/register" className="button register">Register</Link>
     </header>
+    <Outlet />
+    </>
   )
 }
 

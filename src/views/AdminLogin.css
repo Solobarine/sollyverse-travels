@@ -1,0 +1,39 @@
+#adminLogin {
+  padding: 10px;
+}
+
+.adminLogin h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.adminLogin form {
+  display: grid;
+  grid-template-columns: .6fr 1fr;
+  width: 50%;
+  margin: auto;
+}
+
+.adminLogin form input {
+  padding: 15px;
+  margin-bottom: 20px;
+  grid-column: 1/span 2;
+  border-radius: 10px;
+  border: 1px solid grey;
+}
+
+.adminLogin form input[type='submit'] {
+  grid-column: 1/span 1;
+  background-color: #20b970;
+  transition: .2s ease-in-out;
+}
+
+.adminLogin form input[type='submit']:hover {
+  font-size: 17px;
+  color: #fff;
+}
+
+.adminLogin form p {
+  padding: 10px;
+  justify-self: right;
+}

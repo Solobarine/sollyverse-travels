@@ -44,7 +44,7 @@ const Menu = () => {
           </Link>
         </li>
         <li onMouseEnter={hover} onMouseLeave={exitHover} className="nav-links">
-          <Link to="/">
+          <Link to="/account/profile">
           <i className="fa-solid fa-user"></i>
           <p>Profile</p>
           </Link>
@@ -56,7 +56,7 @@ const Menu = () => {
           </Link>
         </li>
         <li onMouseEnter={hover} onMouseLeave={exitHover} className="nav-links">
-          <Link to="/account/favourite">
+          <Link to="/account/favourites">
           <i className="fa-regular fa-thumbs-up"></i>
           <p>Favourites</p>
         </Link>
