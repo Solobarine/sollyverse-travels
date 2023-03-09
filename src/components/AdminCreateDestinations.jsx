@@ -130,17 +130,17 @@ case 'NA':
             <label htmlFor="">Upload City Images</label>
             <input type="file" name="" id="" multiple/>
           </div>
-          <div>
+          <div className="cityName">
             <label htmlFor="">Name of City</label>
             <input onChange={(e) => setCity(e.target.value)} type="text" placeholder="City Name"/>
           </div>
-          <div>
+          <div className="cityCountry">
             <label htmlFor="">Enter Country</label>
             <input onChange={(e) => setCityCountry(e.target.value)} type="text" placeholder="Country"/>
           </div>
-          <div>
+          <div className="destDescription">
             <label htmlFor="">Enter City Description</label>
-            <input onChange={(e) => setCityDescription(e.target.value)} type="text" placeholder="City Description"/>
+            <textarea onChange={(e) => setCityDescription(e.target.value)} type="text" placeholder="City Description"></textarea>
           </div>
           <div>
             <label htmlFor="">Enter Ratings</label>
@@ -154,7 +154,7 @@ case 'NA':
             <label htmlFor="">Enter Latitude</label>
             <input onChange={(e) => setCityLatitude(e.target.value)} type="text" placeholder="City Latitude"/>
           </div>
-          <div>
+          <div className="cityVisitors">
             <label htmlFor="">Enter Visitors</label>
             <input onChange={(e) => setVisitors(e.target.value)} type="text" placeholder="Visitors"/>
           </div>
@@ -179,9 +179,9 @@ case 'NA':
               ))}
             </select>
           </div>
-          <div>
+          <div className="destDescription">
             <label htmlFor="">Enter Description</label>
-            <input onChange={(e) => setCountryDescription(e.target.value)} type="text" placeholder="Enter Description"/>
+            <textarea onChange={(e) => setCountryDescription(e.target.value)} type="text" placeholder="Enter Description"></textarea>
           </div>
           <div>
             <label htmlFor="">Enter Capital</label>
@@ -216,17 +216,17 @@ case 'NA':
             <label htmlFor="">Upload City Images</label>
             <input type="file" name="" id="" multiple/>
           </div>
-          <div>
+          <div className="cityName">
             <label htmlFor="">Update City Name</label>
             <input onChange={(e) => setCity2(e.target.value)} type="text" placeholder="City Name"/>
           </div>
-          <div>
+          <div className="cityCountry">
             <label htmlFor="">Update Country</label>
             <input onChange={(e) => setCityCouontry2(e.target.value)} type="text" placeholder="Update Country"/>
           </div>
-          <div>
+          <div className="destDescription">
             <label htmlFor="">Update Description</label>
-            <input onChange={(e) => setCityDescription2(e.target.value)} type="text" placeholder="Update Description"/>
+            <textarea onChange={(e) => setCityDescription2(e.target.value)} type="text" placeholder="Update Description"></textarea>
           </div>
           <div>
             <label htmlFor="">Update Ratings</label>
@@ -240,7 +240,7 @@ case 'NA':
             <label htmlFor="">Update Latitude</label>
             <input onChange={(e) => setCityLatitude2(e.target.value)} type="text" placeholder="Update Latitude"/>
           </div>
-          <div>
+          <div className="cityVisitors">
             <label htmlFor="">Update Visitors</label>
             <input onChange={(e) => setCityVisitors2(e.target.value)} type="text" placeholder="Update Visitors"/>
           </div>
@@ -253,9 +253,9 @@ case 'NA':
             <label htmlFor="">Update Country</label>
             <input onChange={(e) => setCountry1(e.target.value)} type="text" placeholder="Name of Country"/>
           </div>
-          <div>
+          <div className="destDescription">
             <label htmlFor="">Update Description</label>
-            <input onChange={(e) => setDescription1(e.target.value)} type="text" placeholder="Update Description"/>
+            <textarea onChange={(e) => setDescription1(e.target.value)} type="text" placeholder="Update Description"></textarea>
           </div>
           <div>
             <label htmlFor="">Update Capital </label>

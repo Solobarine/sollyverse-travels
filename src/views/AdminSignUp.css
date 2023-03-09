@@ -10,7 +10,7 @@
 }
 
 #adminSignUp form {
-  width: 60%;
+  width: 40%;
   display: grid;
   grid-template-columns: .6fr 1fr;
   margin: auto;
@@ -38,4 +38,13 @@
   color: #fff;
   font-size: 17px;
   border: 1px solid grey;
+}
+
+#adminSignUp p {
+  margin-left: 30%;
+}
+
+#adminSignUp p a {
+  text-decoration: none;
+  color: #070;
 }

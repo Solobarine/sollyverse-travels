@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import './AdminLogin.css'
 
 const AdminLogin = () => {
@@ -16,7 +17,8 @@ const AdminLogin = () => {
           <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter Email"/>
           <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter Password"/>
           <input type="submit" value="Login"/>
-          <p>Forgot Password?</p>
+          <Link>Forgot Password?</Link>
+          <Link id="adminSign" to="/admin/register">Become an Admin</Link>
         </form>
       </div>
     </section>

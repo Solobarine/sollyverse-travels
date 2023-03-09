@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import './AdminSignUp.css'
 
 const AdminSignUp = () => {
@@ -19,6 +20,7 @@ const AdminSignUp = () => {
           <input onChange={(e) => setConfirmPassword(e.target.value)} type="email" placeholder="Confirm Password"/>
           <input type="submit" value="Submit"/>
         </form>
+        <p>Already an Admin ,<Link to="/admin/login">Sign in</Link></p> 
       </div>
     </section>
   )

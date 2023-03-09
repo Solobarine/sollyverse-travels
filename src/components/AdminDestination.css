@@ -24,11 +24,15 @@
 
 #adminDestinations {
   position: relative;
-  height: 900px;
+  height: 1000px;
 }
 
 #adminDestinations form {
   width: 70%;
+  display: grid;
+  margin-top: 30px;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
   padding: 35px;
   border-radius: 30px;
   background-color: #ccc;
@@ -39,6 +43,7 @@
 
 #adminDestinations form h2 {
   text-align: center;
+  grid-column: 1/span 2;
   margin-bottom: 20px;
 }
 
@@ -50,10 +55,28 @@
 }
 
 #adminDestinations div input,
-#adminDestinations div select {
+#adminDestinations div select,
+.destDescription textarea {
   padding: 15px;
   border: 1px solid grey;
   border-radius: 10px;
+  min-width: 0;
+}
+
+.destDescription {
+  grid-column: 1/span 2;
+}
+
+.destDescription textarea {
+  height: 200px;
+}
+
+.cityName {
+  grid-column: 1/span 1;
+}
+
+.cityVisitors {
+  grid-area: 5/2/span 1/span 1;
 }
 
 #adminDestinations form > input {

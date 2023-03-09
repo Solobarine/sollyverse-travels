@@ -10,7 +10,7 @@
 .adminLogin form {
   display: grid;
   grid-template-columns: .6fr 1fr;
-  width: 50%;
+  width: 40%;
   margin: auto;
 }
 
@@ -33,7 +33,15 @@
   color: #fff;
 }
 
-.adminLogin form p {
+.adminLogin form a {
+  text-decoration: none;
+  color: #333;
   padding: 10px;
   justify-self: right;
+}
+
+#adminSign {
+  justify-self: start;
+  padding: 0;
+  color: #070
 }
