@@ -30,7 +30,7 @@ const Countries = () => {
     <section className="countries">
     {country.map((item, index) => (
       <div key={index} onMouseEnter={showButton} onMouseLeave={hideButton} className={`country country-${index}`}>
-        <h2>{item}</h2>
+        <h2>{item.name}</h2>
         <button className="moreCountry"><Link to="/country">See More</Link></button>
       </div>
       ))}

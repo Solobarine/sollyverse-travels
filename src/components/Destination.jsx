@@ -8,7 +8,7 @@ const Destination = (destination) => {
         <img src={destination.country.image} alt="Country"/>
       </figure>
         <div className="destinationBio">
-          <h4 id="destinationname">{destination.country.country}</h4>
+          <h5 id="destinationname">{destination.country.country}</h5>
           <p id="destinationlocation">{destination.country.city}</p>
           <p className="destinationCost">${destination.country.cost}/wk</p>
           <Like />

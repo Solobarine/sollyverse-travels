@@ -1,11 +1,11 @@
 .countries {
   width: 60%;
-  margin: auto;
+  margin: 20px auto;
   background-color: green;
   padding: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(13, 250px);
+  grid-template-rows: repeat(13, 200px);
 }
 
 .countries div {

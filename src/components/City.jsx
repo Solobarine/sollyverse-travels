@@ -1,9 +1,23 @@
 import { Link } from 'react-router-dom';
 import MapArea from './Map.jsx';
 import './City.css';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 const City = () => {
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [startDate, setStartDate] = useState('')
+  const [endDate, setEndDate] = useState('')
+
+  const [nameOne, setNameOne] = useState('')
+  const [nameTwo, setNAmeTwo] = useState('')
+  const [title, setTitle] = useState('')
+  const [review, setReview] = useState('')
+
+  const reservation = {firstName, lastName, startDate, endDate} //eslint-disable-line
+
+  const reviewData = {firstName: nameOne, lastName: nameTwo, title, review} //eslint-disable-line
+
   const stars = useRef()
 
   const HandleClick = (e) => {
@@ -72,17 +86,18 @@ const City = () => {
         </div>
         <div className="cityBio">
           <h1>Lucerne</h1>
+          <i className="fa-solid fa-heart"/>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique accusamus, placeat facilis ab repellendus incidunt libero ad sequi expedita ratione nesciunt eum inventore harum nisi illum quod reprehenderit voluptatem ipsam, fuga ut itaque. Quo impedit officia fuga, ipsum, minima autem nam provident ipsa eligendi accusantium a doloribus natus porro deleniti.</p>
 
         </div>
         <div className="cityReservation">
           <h2>Make a Reservation</h2>
           <form action="">
-            <label>First Name<input type="text" placeholder='First Name'/></label>
-            <label>Last Name<input type="text" placeholder='Last Name'/></label>
-            <label>Start Date<input type="date"/></label>
-            <label>End Date<input type="date"/></label>
-            <input type="submit"/>
+            <label>First Name<input onChange={(e) => setFirstName(e.target.value)} type="text" placeholder='First Name'/></label>
+            <label>Last Name<input onChange={(e) => setLastName(e.target.value)} type="text" placeholder='Last Name'/></label>
+            <label>Start Date<input onChange={(e) => setStartDate(e.target.value)} type="date"/></label>
+            <label>End Date<input onChange={(e) => setEndDate(e.target.value)} type="date"/></label>
+            <input type="submit" value="Make Reservation"/>
           </form>
         </div>
         <div className="otherCities">
@@ -122,10 +137,10 @@ const City = () => {
           </div>
           <h2>Give a Review</h2>
           <form action="">
-            <input type="text" placeholder='First Name'/>
-            <input type="text" placeholder='Last Name'/>
-            <input type="text" placeholder='Review Title'/>
-            <textarea name="review" placeholder='Give a Review'></textarea>
+            <input onChange={(e) => setNameOne(e.target.value)} type="text" placeholder='First Name'/>
+            <input onChange={(e) => setNAmeTwo(e.target.value)} type="text" placeholder='Last Name'/>
+            <input onChange={(e) => setTitle(e.target.value)} type="text" placeholder='Review Title'/>
+            <textarea onChange={(e) => setReview(e.target.value)} name="review" placeholder='Give a Review'></textarea>
             <input type="submit" value="Submit Review"/>
           </form>
         </div>

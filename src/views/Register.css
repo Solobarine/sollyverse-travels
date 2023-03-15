@@ -1,6 +1,6 @@
 #register {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: 0.6fr 1.2fr;
 }
 
 #registerImage {
@@ -38,11 +38,24 @@
 }
 
 .formDiv input,
-.addressAndMore input{
+.addressAndMore input {
   height: 40px;
   padding-left: 15px;
   font-size: 16px;
   min-width: 0;
+}
+
+.basicKyc div,
+.addressAndMore div {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%
+}
+
+.basicKyc div select,
+.addressAndMore div select {
+  padding: 11px;
+  font-size: 18px;
 }
 
 .addressAndMore {

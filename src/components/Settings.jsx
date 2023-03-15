@@ -54,7 +54,7 @@ const Settings = () => {
             <input type="text" placeholder="City"/>
             <input type="text" placeholder="State"/>
             <input type="text" placeholder="ZIP Code"/>
-            <input type="text" placeholder="Country"/>
+            <input type="text" placeholder="Country of Residence"/>
             <input type="submit" value="Change Details"/>
           </form>
         </div>

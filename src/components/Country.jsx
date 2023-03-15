@@ -54,7 +54,7 @@ const Country = () => {
             <div>
               <h4>{item.name}</h4>
               <i onClick={HandleClick} className="fa-regular fa-heart" />
-              <Link to="/city"><input type="submit" value="Book City Tour"/></Link>
+              <Link to="/city"><input type="submit" value="Book Tour"/></Link>
             </div>
             </div>
           ))

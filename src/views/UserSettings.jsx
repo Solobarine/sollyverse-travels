@@ -4,7 +4,7 @@ import './UserSettings.css';
 
 const UserSettings = () => {
   return (
-    <section className="userSetting">
+    <section className="userSetting page">
       <Menu />
       <Settings />
     </section>

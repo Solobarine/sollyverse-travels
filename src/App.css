@@ -8,3 +8,8 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
+
+.page {
+  display: grid;
+  grid-template-columns: .3fr 1fr;
+}
