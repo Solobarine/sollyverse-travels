@@ -8,14 +8,13 @@ const userSlice = createSlice({
   initialState: initialState,
   reducers: {
     logout: (state) => {
-      const result = state
+      let result = state
       result = initialState
       return result
     }
   },
   extraReducers: {
     [register.pending]: (state) => {
-      state = state;
       state.status = 'loading'
     },
     [register.fulfilled]: (state, actions) => {
@@ -25,16 +24,14 @@ const userSlice = createSlice({
       state.user = actions.payload
     },
     [register.failed]: (state) => {
-      state = state;
       state.status = 'failed'
       state.error = 'Unable to sign up. Try again later'
     },
     [login.pending]: (state) => {
-      state = state
       state.status = 'loading'
     },
     [login.fulfilled]: (state, actions) => {
-      if (error) {
+      if (actions.payload.error) {
         state.status = 'failed'
         state.error = actions.peyload
         state.login = false
@@ -47,7 +44,6 @@ const userSlice = createSlice({
       }
     },
     [login.failed]: (state) => {
-      state = state
       state.status = 'failed'
     }
   }

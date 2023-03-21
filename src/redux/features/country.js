@@ -1,21 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { create, update } from "./apiCalls/country";
+import countryAsyncThunk from "./apiCalls/country";
+
+const { showOne, showAll } = countryAsyncThunk
 
 const initialState = {
-  countries: [],
-  country: [],
+  countries: {
+    item: [],
+    error: []
+  },
+  country: {
+    item: [],
+    error: []
+  },
   status: 'idle',
   error: []
 }
 
 const countrySlice = createSlice({
   name: 'country',
-  initialState: initialState,
+  initialState,
+  reducers: {
+    show_one: () => showOne,
+    show_all: () => showAll
+  },
   extraReducers: {
     [showAll.pending]: (state) => state.status = 'Pending',
     [showAll.fulfilled]: (state, actions) => {
       state.countries = actions.payload.countries
-      state.country = state.country
       state.status = 'Successful'
       state.error = []
     },
@@ -23,7 +34,6 @@ const countrySlice = createSlice({
 
     [showOne.pending]: (state) => state.status = 'Pending',
     [showOne.fulfilled]: (state, actions) => {
-      state.countries = state.countries
       state.country = actions.payload.country
       state.status = 'Success'
       state.error = []
@@ -31,5 +41,7 @@ const countrySlice = createSlice({
     [showOne.failed]: (state) => state.status = 'Failed'
   }
 })
+
+export const { show_one, show_all } = countrySlice.actions
 
 export default countrySlice.reducer

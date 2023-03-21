@@ -4,50 +4,97 @@ import { domain, apiCall } from "./country";
 const cityApiCall = {
   create: (auth, payload) => {
     const url = `${domain}/admin/city`
-    const response = apiCall(auth, url, payload)
-    return response
+    const method = 'POST'
+    return apiCall(method, auth, url, payload)
   },
   update: (auth, payload) => {
     const url = `${domain}/admin/city/${payload._id}`
     const method = 'PUT'
-    const response = apiCall(method, auth, url, payload)
-    return response
+    return apiCall(method, auth, url, payload)
   },
-  delete: (auth, payload) => {
+  deleteCity: (auth, payload) => {
     const url = `${domain}/admin/city/${payload._id}`
     const method = 'DELETE'
-    const response = apiCall(method, auth, url, payload)
-    return response
+    return apiCall(method, auth, url, payload)
+  },
+  adminShowOne: (auth, payload) => {
+    const url = `${domain}/admin/city/${payload._id}`
+    const method = 'GET'
+    return apiCall(method, auth, url, payload)
+  },
+  adminShowAll: (auth, payload) => {
+    const url = `${domain}/admin/city`
+    const method = 'GET'
+    return apiCall(method, auth, url, payload)
   },
   showOne: (auth, payload) => {
     const url = `${domain}/city/${payload._id}`
     const method = 'POST'
-    const response = apiCall(method, auth, url, payload)
-    return response
+    return apiCall(method, auth, url, payload)
   },
   showAll: (auth, payload) => {
     const url = `${domain}/city`
     const method = 'POST'
-    const response = apiCall(method, auth, url, payload)
-    return response
+    return apiCall(method, auth, url, payload)
   },
   showFavourite: (auth, payload) => {
     const url = `${domain}/city/${payload._id}`
     const method = 'POST'
-    const response = apiCall(method, auth, url, payload)
-    return response
+    return apiCall(method, auth, url, payload)
   },
   showTopFour: (auth, payload) => {
     const url = `${domain}/city/top`
     const method = 'GET'
-    const response = apiCall(method, auth, url, payload)
-    return response
+    return apiCall(method, auth, url, payload)
+  },
+  showTopCities: (auth, payload) => {
+    const url = `${domain}/admin/citirs/top`
+    const method = 'GeT'
+    return apiCall(method, auth, url, payload)
   }
 }
 
 const cityAsyncThunk = {
-  showOne,
-  showAll,
-  showFavourite,
-  showTopFour
+  create: createAsyncThunk(
+    'CREATE_CITY',
+    cityApiCall.create
+  ),
+  update: createAsyncThunk(
+    'UPDATE_CITY',
+    cityApiCall.update
+  ),
+  deleteCity: createAsyncThunk(
+    'DELETE_CITY',
+    cityApiCall.delete
+  ),
+  adminShowOne: createAsyncThunk(
+    'ADMIN_SHOW_ONE',
+    cityApiCall.adminShowOne
+  ),
+  adminShowAll: createAsyncThunk(
+    'ADMIN_SHOW_ALL',
+    cityApiCall.adminShowAll
+  ),
+  showOne: createAsyncThunk(
+    'SHOW_ONE_CITY',
+    cityApiCall.showOne
+  ),
+  showAll: createAsyncThunk(
+    'SHOW_ALL',
+    cityApiCall.showAll
+  ),
+  showFavourite: createAsyncThunk(
+    'SHOW_FAVOURITE',
+    cityApiCall.showFavourite
+  ),
+  showTopFour: createAsyncThunk(
+    'SHOW_TOP_FOUR',
+    cityApiCall.showTopFour
+  ),
+  showTopCities: createAsyncThunk(
+    'SHOW_TOP_CITIES',
+    cityApiCall.showTopCities
+  )
 }
+
+export default cityAsyncThunk

@@ -40,11 +40,11 @@ const userApiCalls = {
 const userAsyncThunk = {
   register: createAsyncThunk(
     'REGISTER',
-    userApiCalls.register(payload)
+    userApiCalls.register
   ),
   login: createAsyncThunk(
     'LOGIN',
-    userApiCalls.login(payload)
+    userApiCalls.login
   )
 }
 export default userAsyncThunk
