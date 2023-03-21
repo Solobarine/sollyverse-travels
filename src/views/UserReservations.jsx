@@ -3,7 +3,7 @@ import Reservations from "../components/Reservations";
 
 const UserReservations = () => {
   return (
-    <section className="page">
+    <section className="userReservation page shrinkMenu">
       <Menu />
       <Reservations />
     </section>

@@ -4,7 +4,7 @@ import './UserMessages.css'
 
 const UserMessages = () => {
   return (
-    <section className="userMessages page">
+    <section className="userMessages page shrinkMenu">
       <Menu />
       <Messages />
     </section>

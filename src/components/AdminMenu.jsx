@@ -4,6 +4,7 @@ import "./AdminMenu.css"
 const AdminMenu = () => {
   return (
     <section className="adminMenu">
+      <ion-icon className="admin_menu" name="chevron-forward-circle" />
       <h3>Admin Portal</h3>
       <Link to="/admin">
         <i className="fa-solid fa-house-user"/>
