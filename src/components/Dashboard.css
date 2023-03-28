@@ -114,13 +114,14 @@
   display: grid;
   gap: 10px;
   padding: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 160px));
+  justify-content: center;
 }
 
 #countryCaurosel .destination,
 .destination img {
-  height: 200px;
   border-radius: 20px;
+  object-fit: cover;
 }
 
 #countryCaurosel .destination {

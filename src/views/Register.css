@@ -16,70 +16,49 @@
   padding: 20px;
 }
 
-.formDiv {
-  width: 80%;
-}
-
 .formDiv p {
   margin: 10px 0;
 }
 
-.formDiv form {
-  display: grid;
-  grid-template-columns: 1fr;
+.formDiv h3 {
+  margin: 15px 0;
 }
 
-.basicKyc {
+.basicKyc,
+.addressAndMore {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(3, 1fr);
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.formDiv input,
-.addressAndMore input {
-  height: 40px;
-  padding-left: 15px;
-  font-size: 16px;
-  min-width: 0;
+  gap: 20px;
+  padding: 0 20px;
 }
 
 .basicKyc div,
 .addressAndMore div {
   display: grid;
-  grid-template-columns: 1fr;
-  width: 100%
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
 .basicKyc div select,
 .addressAndMore div select {
-  padding: 11px;
-  font-size: 18px;
+  min-width: 0;
+  padding: 10px;
 }
 
-.addressAndMore {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  gap: 10px;
+.basicKyc div input,
+.addressAndMore div input {
+  padding: 10px;
+  border: 1px solid #888;
+  border-radius: 5px;
 }
 
-.addressAndMore h2 {
-  grid-area: 1/1/span 1/span 2;
-}
-
-#address1 {
-  grid-area: 2/1/span 1/span 2;
-}
-
-#address2 {
-  grid-area: 3/1/span 1/span 2;
+#user_signin {
+  grid-column: 1/span 1;
 }
 
 #registerSubmit {
+  width: 150px;
   border: none;
-  margin: 20px 0;
   background-color: #20b970;
   color: #fff;
   text-decoration: none;

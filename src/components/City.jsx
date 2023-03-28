@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import MapArea from './Map.jsx';
 import './City.css';
 import { useRef, useEffect, useState } from 'react';
+import { toggleLike, clickStar } from '../effects/index.js';
 
 const City = () => {
   const [firstName, setFirstName] = useState('')
@@ -19,38 +20,6 @@ const City = () => {
   const reviewData = {firstName: nameOne, lastName: nameTwo, title, review} //eslint-disable-line
 
   const stars = useRef()
-
-  const HandleClick = (e) => {
-    if (e.target.classList.contains('fa-regular')) {
-      e.target.classList.remove('fa-regular')
-      e.target.classList.add('fa-solid')
-    } else if (e.target.classList.contains('fa-solid')) {
-      e.target.classList.remove('fa-solid')
-      e.target.classList.add('fa-regular')
-    }
-  }
-
-  const clickStar = (e) => {
-    const starArray = Array.from(stars.current.children)
-    const i = starArray.indexOf(e.target)
-    starArray.forEach((star,index) => {
-      if (index <= i) {
-        if (star.classList.contains('fa-solid')) {
-          return
-        } else {
-          star.classList.toggle('fa-regular')
-          star.classList.toggle('fa-solid')
-        }
-      } else {
-        if (star.classList.contains('fa-regular')) {
-          return
-        } else {
-          star.classList.toggle('fa-regular')
-          star.classList.toggle('fa-solid')
-        }
-      }
-    })
-  }
 
   let i = 0
   const cityImageDiv = useRef()
@@ -77,6 +46,9 @@ const City = () => {
   useEffect(() => {
     showImage()
   })
+
+  const city = useSelector(state => state.city.city)
+  const top_cities = useSelector(state => state.city.top)
 
   return (
     <section className="city">
@@ -109,7 +81,7 @@ const City = () => {
                   <img src={item.image} alt='City' />
                 </div>
                   <h4>{item.name}</h4>
-                  <i onClick={HandleClick} className="fa-regular fa-heart" />
+                  <i onClick={toggleLike} className="fa-regular fa-heart" />
                   <p>$350/wk</p>
                   <Link to="/city">See More</Link>
               </div>

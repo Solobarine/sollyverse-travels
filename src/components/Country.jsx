@@ -2,18 +2,19 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SwipeImages from './Swiper';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
-import './Country.css';
+import {useSelector} from 'react-redux';
+import './Country.css'
 
 const Country = () => {
   const likeCountry = useRef()
-  const cities = [{name: 'Geneva', image: '/geneva0.jpg'}, {name: 'Bern', image: '/bern1.jpg'},
+  /*const cities = [{name: 'Geneva', image: '/geneva0.jpg'}, {name: 'Bern', image: '/bern1.jpg'},
     {name: 'Zurich', image: '/zurich0.jpg'}, {name: 'Basel', image: '/basel0.jpg'},
     {name: 'Lucerne', image: '/lucerne1.jpg'}]
   const cityImage = []
   cities.forEach((item) => {
     cityImage.push(item.image)
   })
-
+    */
   const HandleClick = (e) => {
     if (e.target.classList.contains('fa-regular')) {
       e.target.classList.remove('fa-regular')
@@ -23,6 +24,9 @@ const Country = () => {
       e.target.classList.add('fa-regular')
     }
   }
+
+  const country = useSelector(state => state.country.country)
+  const cities = useSelector(state => state.country.cities)
 
   return (
     <section id="country">

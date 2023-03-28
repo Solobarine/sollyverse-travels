@@ -38,8 +38,7 @@ const Register = () => {
         <div className="formDiv">
           <h2>Register New Account</h2>
           <p>Welcome!! Create a New Account</p>
-          <form action="">
-            <div className="basicKyc">
+          <form action="" className='basicKyc'>
               <div>
                 <label>Enter First Name</label>
                 <input onChange={(e) => change(setFirstName, e)} type="text" placeholder="Enter First Name"/>
@@ -81,9 +80,9 @@ const Register = () => {
                 <label>Gender</label>
                 <input onChange={(e) => change(setGender, e)} type="text" placeholder="Gender"/>
               </div>
-            </div>
-            <div className="addressAndMore">
-              <h2>Address</h2>
+            </form>
+            <h3>Residential Details</h3>
+            <form className="addressAndMore">
               <div>
                 <label>Main Address</label>
                 <input onChange={(e) => change(setAddressOne, e)} type="text" placeholder="Address 1" id="address1"/>
@@ -113,9 +112,8 @@ const Register = () => {
                   )}
                 </select>
               </div>
-            </div>
             <Link to="/account/dashboard" id="registerSubmit">Register</Link>
-            <p>Have an Account? <Link to="/login" id="rSignIn">Sign In</Link></p>
+            <p id='user_signin'>Have an Account? <Link to="/login" id="rSignIn">Sign In</Link></p>
             <p>Register as&nbsp;<Link to="/admin/register" id='rSignIn'>Admin</Link></p>
           </form>
         </div>

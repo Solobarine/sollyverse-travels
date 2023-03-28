@@ -1,6 +1,10 @@
+import { useSelector } from 'react-redux';
 import './Messages.css'
 
 const Messages = () => {
+
+  const messages = useSelector(state => state.messages)
+
   return (
     <section className="messages">
       <div id="messages">

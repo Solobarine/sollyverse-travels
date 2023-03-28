@@ -4,6 +4,15 @@
   font-family: Poppins, sans-serif;
 }
 
+:root {
+  --primary: #e8f6e8;
+  --secondary: #20b970;
+  --tertiary: #808080;
+  --white: #eee;
+  --text-gray: #444;
+  --darkgreen: #040;
+}
+
 .App {
   display: grid;
   grid-template-rows: auto 1fr auto;

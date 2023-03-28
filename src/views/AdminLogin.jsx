@@ -9,7 +9,7 @@ const AdminLogin = () => {
   const user = {email, password}
 
   return (
-    <section id="adminLogin" className="page">
+    <section id="adminLogin" className="page shrinkMenu">
       <div></div>
         <div className="adminLogin">
         <h1>Admin Login</h1>
