@@ -17,6 +17,7 @@ import UserMessages from './views/UserMessages';
 import UserProfile from './views/UserProfile';
 import UserFavourites from './views/UserFavourites';
 import UserReservations from './views/UserReservations';
+import AdminMenu from './views/AdminMenu';
 import AdminDashboard from './views/AdminDashBoard';
 import AdminSettings from './views/AdminSettings';
 import AdminLogin from './views/AdminLogin';
@@ -33,6 +34,7 @@ function App() {
           <Routes>
             <Route path='/admin' element={<AdminHeader/>}>
               <Route index element={<AdminDashboard />} />
+              <Route path='profile' element={<AdminMenu/>} />
               <Route path='settings' element={<AdminSettings/>} />
               <Route path='register' element={<AdminSignUp/>} />
               <Route path='login' element={<AdminLogin/>} />

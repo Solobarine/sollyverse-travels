@@ -3,7 +3,7 @@ import Menu from "../components/AdminMenu";
 
 const AdminStaff = () => {
   return (
-    <section className="page">
+    <section className="page shrinkMenu">
       <Menu />
       <Staff />
     </section>

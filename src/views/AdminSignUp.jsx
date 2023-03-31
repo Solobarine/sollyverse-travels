@@ -10,14 +10,14 @@ const AdminSignUp = () => {
   const newAdmin = {email, password, confirmPassword}
 
   return (
-    <section className="adminSignUp page">
+    <section className="adminSignUp page shrinkMenu">
       <div></div>
       <div id="adminSignUp">
         <h2>Sign Up as Admin</h2>
         <form>
           <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter Your Email"/>
-          <input onChange={(e) => setPassword(e.target.value)} type="email" placeholder="Enter Password"/>
-          <input onChange={(e) => setConfirmPassword(e.target.value)} type="email" placeholder="Confirm Password"/>
+          <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter Password"/>
+          <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="Confirm Password"/>
           <input type="submit" value="Submit"/>
         </form>
         <p>Already an Admin ,<Link to="/admin/login">Sign in</Link></p> 

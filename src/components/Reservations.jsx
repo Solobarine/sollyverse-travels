@@ -1,8 +1,12 @@
+import { useSelector } from 'react-redux';
 import Reservation from './Reservation'
 import './Reservations.css';
 
 const Reservations = () => {
   const reserves = [1,2,3,4]
+
+  const reservations = useSelector(state => state.reservations)
+
   return (
     <section className="reservations">
       <h1>Reservations</h1>

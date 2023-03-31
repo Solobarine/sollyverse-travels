@@ -34,10 +34,25 @@ ion-icon {
   text-align: center;
 }
 
+.admin_image {
+  width: 60px;
+  height: 60px;
+  margin: auto;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.admin_image img {
+  width: 100%;
+  background-size: cover;
+}
+
 .adminMenu > a p {
   font-size: 17px;
   margin-left: 15px;
   font-weight: 600;
+  scale: 0;
+  transition: .6s ease;
 }
 
 .adminMenu > a i {

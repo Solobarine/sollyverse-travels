@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import './Dashboard.css';
 import Destination from './Destination';
 
@@ -8,6 +9,10 @@ const Dashboard = () => {
     {country: 'USA', city: 'Columbia', image: '/landing/british-columbia.jpg', cost: 1100},
     {country: 'Maldives', city: 'Flec-en-Flac', image: '/landing/beach-front.jpg', cost: 700}
   ]
+  
+  const user = useSelector(state => state.user)
+  const top_countries = useSelector(state => state.vountry.top_countries)
+
   return (
     <section className="dashboard">
       <div id="dashboardDiv">

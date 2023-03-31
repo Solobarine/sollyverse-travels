@@ -17,4 +17,3 @@ const adminStore =configureStore({
   }
 })
 
-export default adminStore

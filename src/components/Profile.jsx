@@ -1,6 +1,9 @@
+import { useSelector } from 'react-redux';
 import './Profile.css';
 
 const Profile = () => {
+  const user = useSelector(state => state.user)
+
   return (
     <section id="profile">
       <div className="profile decor">

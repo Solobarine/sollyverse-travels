@@ -3,7 +3,7 @@ import Mail from "../components/AdminMail";
 
 const AdminMail = () => {
   return (
-    <section className="page">
+    <section className="page shrinkMenu">
       <Menu />
       <Mail />
     </section>
