@@ -27,6 +27,7 @@ const Login = () => {
 <span className="remember"><input type="checkbox" name="remember" id=""/><p id="remain">Remember Me</p>
   <Link to="/forgot_password" id="forgot">Forgot Password?</Link></span>
 <p>Don't have an Account? <Link to="/register" id="loginCreate">Create One</Link></p>
+<p>Login as&nbsp;<Link to="/admin/login" id='loginCreate'>Admin</Link></p>
     </form>
       </div>
     </section>

@@ -1,4 +1,5 @@
 .adminMenu {
+  position: relative;
   padding: 20px;
   background-color: #c8e6c8;
 }
@@ -19,8 +20,17 @@
   cursor: pointer;
 }
 
+ion-icon {
+  position: absolute;
+  right: -15px;
+  color: #20b970;
+  font-size: 30px;
+  cursor: pointer;
+}
+
 .adminMenu h3 {
   margin-bottom: 10px;
+  font-size: 30px;
   text-align: center;
 }
 

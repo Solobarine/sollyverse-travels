@@ -3,7 +3,7 @@ import Profile from '../components/Profile'
 
 const UserProfile = () => {
   return (
-    <div className="userProfile page">
+    <div className="userProfile page shrinkMenu">
       <Menu />
       <Profile />
     </div>

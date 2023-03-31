@@ -116,6 +116,7 @@ const Register = () => {
             </div>
             <Link to="/account/dashboard" id="registerSubmit">Register</Link>
             <p>Have an Account? <Link to="/login" id="rSignIn">Sign In</Link></p>
+            <p>Register as&nbsp;<Link to="/admin/register" id='rSignIn'>Admin</Link></p>
           </form>
         </div>
       </div>
