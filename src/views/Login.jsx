@@ -1,5 +1,7 @@
 import {useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, register } from '../redux/features/apiCalls/user'
 import './Login.css';
 
 const Login = () => {
@@ -10,7 +12,9 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const data = {email, password} //eslint-disable-line
+  const dispatch = useDispatch()
+
+  const payload = {email, password}
 
   return (
     <section className="loginPage">
@@ -23,7 +27,7 @@ const Login = () => {
           <p>Welcome back. Login to your Account</p>
           <input onChange={(e) => change(setEmail, e)} type="email" name="" id="loginMail" placeholder='Enter your Email'/>
           <input onChange={(e) => change(setPassword, e)} type="password" name="" id="loginPassword" placeholder='Enter your Password'/>
-          <Link to="/account/dashboard" id="loginSubmit">Login</Link>
+          <Link onClick={() => dispatch(login(auth, payload))} id="loginSubmit">Login</Link>
 <span className="remember"><input type="checkbox" name="remember" id=""/><p id="remain">Remember Me</p>
   <Link to="/forgot_password" id="forgot">Forgot Password?</Link></span>
 <p>Don't have an Account? <Link to="/register" id="loginCreate">Create One</Link></p>

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import MapArea from './Map.jsx';
 import './City.css';
 import { useRef, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { toggleLike, clickStar } from '../effects/index.js';
 
 const City = () => {
@@ -101,11 +102,11 @@ const City = () => {
         <div className="cityReview">
           <h2>Rate Your Vacation</h2>
           <div ref={stars} className="stars">
-            <i onClick={clickStar} className="fa-regular fa-star"/>
-            <i onClick={clickStar} className="fa-regular fa-star"/>
-            <i onClick={clickStar} className="fa-regular fa-star"/>
-            <i onClick={clickStar} className="fa-regular fa-star"/>
-            <i onClick={clickStar} className="fa-regular fa-star"/>
+            <i onClick={(e) => clickStar(e, stars)} className="fa-regular fa-star"/>
+            <i onClick={(e) => clickStar(e, stars)} className="fa-regular fa-star"/>
+            <i onClick={(e) => clickStar(e, stars)} className="fa-regular fa-star"/>
+            <i onClick={(e) => clickStar(e, stars)} className="fa-regular fa-star"/>
+            <i onClick={(e) => clickStar(e, stars)} className="fa-regular fa-star"/>
           </div>
           <h2>Give a Review</h2>
           <form action="">

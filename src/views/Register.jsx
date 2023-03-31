@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import './Register.css';
 import country from 'countries-list';
+import { register } from '../redux/features/apiCalls/user';
 import {useState} from 'react';
 
 const Register = () => {
@@ -29,7 +31,9 @@ const Register = () => {
   const [zipCode, setZipCode] = useState('')
   const [countryOfResidence, setCountryOfResidence] = useState('')
 
-  const data = {firstName, lastName, phoneNumber, email, password, confirmPassword, dateOfBirth, countryOfOrigin, gender, addressOne, addressTwo, city, state, zipCode, countryOfResidence} // eslint-disable-line
+  const data = { firstName, lastName, phoneNumber, email, password,
+    confirmPassword, dateOfBirth, countryOfOrigin, gender,
+    addressOne, addressTwo, city, state, zipCode, countryOfResidence }
 
   return (
     <div id="register">
@@ -108,11 +112,11 @@ const Register = () => {
                 <select onChange={(e) => change(setCountryOfResidence, e)}>
                   <option disabled value="Select Country">Select Country of Residence</option>
                   {Object.values(countriesList).map((country, index) =>
-                    <option key={index}>{country.name}   {country.emoji}</option>
+                    <option key={index}>{country.name} {country.emoji}</option>
                   )}
                 </select>
               </div>
-            <Link to="/account/dashboard" id="registerSubmit">Register</Link>
+              <Link onClick={() => dispatch(register(auth, data))} id="registerSubmit">Register</Link>
             <p id='user_signin'>Have an Account? <Link to="/login" id="rSignIn">Sign In</Link></p>
             <p>Register as&nbsp;<Link to="/admin/register" id='rSignIn'>Admin</Link></p>
           </form>

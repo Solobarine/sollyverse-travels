@@ -75,8 +75,8 @@
   grid-column: 1/span 1;
 }
 
-.cityVisitors {
-  grid-area: 5/2/span 1/span 1;
+.capital {
+  grid-area: 2/2/span 1/span 1;
 }
 
 #adminDestinations form > input {

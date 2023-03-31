@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import adminAsyncThunk from "../apiCalls/admin"
-
-const { signUp, login } = adminAsyncThunk
+import { signUp, login } from "../apiCalls/admin"
 
 const initialState = {
   user: {

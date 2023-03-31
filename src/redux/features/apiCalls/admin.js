@@ -25,4 +25,4 @@ const adminAsyncThunk = {
   )
 }
 
-export default adminAsyncThunk
+export const { login, signUp } = adminAsyncThunk

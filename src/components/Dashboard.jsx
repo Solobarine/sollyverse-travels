@@ -11,19 +11,19 @@ const Dashboard = () => {
   ]
   
   const user = useSelector(state => state.user)
-  const top_countries = useSelector(state => state.vountry.top_countries)
+  const top_countries = useSelector(state => state.country.top_countries)
 
   return (
     <section className="dashboard">
       <div id="dashboardDiv">
         <div id="dashboardIntro">
-          <h2>Hello, Solly</h2>
+          <h2>Hello, {user.firstName}</h2>
           <p>Welcome back and explore the world</p>
-          <i className="fa-regular fa-bell"></i>
+          <i className="fa-regular fa-bell"/>
         </div>
         <div id="dashboardSearch">
           <input type="search" name="search"/>
-          <div><i className="fa-solid fa-grip"></i></div>
+          <div><i className="fa-solid fa-grip"/></div>
           <input type="submit" value="Search"/>
         </div>
         <div id="dashboardDiscover">
@@ -34,7 +34,7 @@ const Dashboard = () => {
               <p className="placeLink">Recommended</p>
               <p className="placeLink">Near Me</p>
             </div>
-            <p className="viewall">View All  <i className="fa-solid fa-arrow-right"></i></p>
+            <p className="viewall">View All  <i className="fa-solid fa-arrow-right"/></p>
           </div>
           <div id="dashboardCaurosel">
             <div id="countryCaurosel">

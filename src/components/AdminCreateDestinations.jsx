@@ -27,7 +27,6 @@ const AdminCreateDestinations = () => {
 
 
   const {countries} = countryInfo
-  let countryBio = []
 
   const [city, setCity] = useState({
     name: '',
@@ -108,16 +107,12 @@ const AdminCreateDestinations = () => {
           <h2>Add New Country</h2>
           <div>
             <label htmlFor="">Select Country</label>
-            <select name="name" onChange={() => handleChange(e, setCountry)}>
+            <select name="name" onChange={(e) => handleChange(e, setCountry)}>
               <option value="">Choose Country</option>(
               {Object.keys(countries).map((country, index) => (
                 <option
-                  onClick={
-                    () => {
-                      countryBio = country
-                      console.log(countryBio)
-                    }} key={index}>
-                    {country.name}
+                     key={index}>
+                {countries[country].emoji} {countries[country].name}
                   </option>
               ))}
             </select>
@@ -126,7 +121,7 @@ const AdminCreateDestinations = () => {
             <label htmlFor="">Enter Description</label>
             <textarea name="description" onChange={(e) => handleChange(e, setCountry)} type="text" placeholder="Enter Description"></textarea>
           </div>
-          <div>
+          <div className="capital">
             <label htmlFor="">Enter Capital</label>
             <input name="capital" onChange={(e) => handleChange(e, setCountry)} type="text" placeholder="Capital City"/>
           </div>
@@ -188,7 +183,7 @@ const AdminCreateDestinations = () => {
             <label htmlFor="">Update Description</label>
             <textarea name="description" onChange={(e) => handleChange(e, setCountry)} type="text" placeholder="Update Description"></textarea>
           </div>
-          <div>
+          <div className="capital">
             <label htmlFor="">Update Capital </label>
             <input name="capital" onChange={(e) => handleChange(e, setCountry)} type="text" placeholder="Capital City"/>
           </div>

@@ -1,8 +1,9 @@
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import './AdminMail.css'
 
 const AdminMail = () => {
-  const mail = useSelector(state.adminMessage)
+  const mail = useSelector((state) => state.adminMessage)
 
   const [receiver, setReceiver] = useState()
   const [message, setMessage] = useState()

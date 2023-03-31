@@ -47,4 +47,4 @@ const userAsyncThunk = {
     userApiCalls.login
   )
 }
-export default userAsyncThunk
+export const { register, login } = userAsyncThunk
