@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import staffAsyncThunk from "../apiCalls/staff"
-
-const { create } = staffAsyncThunk
+import { create } from "../apiCalls/staff"
 
 const initialState = {
   singleStaff: {

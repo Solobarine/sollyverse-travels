@@ -69,9 +69,9 @@ export const chooseContinent = (shortName) => {
 }
 
 
-export const handleChange = (e, useStateFunction) => {
+export const handleChange = (e, stateFunction) => {
   const { name, value } = e.target
-  useStateFunction(prev => {
+  stateFunction(prev => {
     return {...prev, [name]: value }
   }) 
 }
@@ -88,7 +88,7 @@ export const toggleLike = (e) => {
 }
 
 
-export const clickStar = (e) => {
+export const clickStar = (e, stars) => {
   const starArray = Array.from(stars.current.children)
   const i = starArray.indexOf(e.target)
   starArray.forEach((star, index) => {

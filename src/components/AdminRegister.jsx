@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { create } from "../redux/features/apiCalls/staff"
 
 const AdminRegister = () => {
   const [firstName, setFirstName] = useState("")
@@ -15,7 +17,11 @@ const AdminRegister = () => {
   const [countryOfResidence, setCountryOfResidence] = useState("")
   const [zipCode, setZipCode] = useState("")
 
-  const employee = {firstName, lastName, email, phoneNumber, dateOfBirth, countryOfOrigin, gender, addressOne, addressTwo, state, city, countryOfResidence, zipCode}
+  const dispatch = useDispatch()
+  const auth = localStorage.getItem("admin_auth_token")
+
+  const employee = {firstName, lastName, email, phoneNumber, dateOfBirth,
+    countryOfOrigin, gender, addressOne, addressTwo, state, city, countryOfResidence, zipCode}
 
   return (
     <section id="adminRegister">
@@ -34,7 +40,7 @@ const AdminRegister = () => {
         <input onChange={(e) => setCity(e.target.value)} type="text" placeholder="Enter City"/>
         <input onChange={(e) => setCountryOfResidence(e.target.value)} type="text" placeholder="Enter Country of Residence"/>
         <input onChange={(e) => setZipCode(e.target.value)} type="text" placeholder="Enter Zip Code"/>
-        <input type="submit" value="Add Employee"/>
+        <input onClick={() => dispatch(create(auth, employee))} type="submit" value="Add Employee"/>
       </form>
     </section>
   )

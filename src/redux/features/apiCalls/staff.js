@@ -16,4 +16,4 @@ const staffAsyncThunk = {
   )
 }
 
-export default staffAsyncThunk
+export const { create } = staffAsyncThunk
