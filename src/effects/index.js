@@ -1,6 +1,8 @@
+// import Joi from 'joi'
+// const Joi = {}
 export const toggleMenu = (button, container, links) => {
-  button.current.classList.toggle('closeMenu')
-  if (button.current.classList.contains('closeMenu')) {
+  button.current.classList.toggle('close')
+  if (button.current.classList.contains('close')) {
     container.forEach(element => element.classList.toggle('shrinkMenu'))
     links.forEach(link=> {
       if (link.classList.contains('nav-links')) {
@@ -17,11 +19,11 @@ export const toggleMenu = (button, container, links) => {
     links.forEach(link => {
       if (link.classList.contains('nav-links')) {
         link.children[0].children[1].style.scale = 0
-        link.style.width = '40px'
+        link.style.width = '30px'
       }
       if (link.classList.contains('menu_link')) {
         link.children[1].style.scale = 0
-        link.style.width = '40px'
+        link.style.width = '30px'
       }
     })
   }
@@ -109,3 +111,33 @@ export const clickStar = (e, stars) => {
     }
   })
 }
+
+export const postForm = (form, images) => {
+  form.images = images
+  console.log(form)
+}
+
+// Form Validations
+// export const validateCreateCity = Joi.Object({
+
+// })
+
+// export const validateUpdateCity = Joi.Object({
+
+// })
+
+// export const validateCreateCountry = Joi.Object({
+
+// })
+
+// export const validateUpdateCountry = Joi.Object({
+  
+// })
+
+export const toBase64 = file => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  console.log(file)
+  reader.readAsDataURL(file);
+  reader.onload = () => resolve(reader.result);
+  reader.onerror = error => reject(error);
+});

@@ -5,12 +5,15 @@
 }
 
 :root {
-  --primary: #e8f6e8;
+  --primary: #c8e6c8;
   --secondary: #20b970;
   --tertiary: #808080;
   --white: #eee;
   --text-gray: #444;
+  --black: #222;
   --darkgreen: #040;
+  --green: #0a0;
+  --red: #c00;
 }
 
 .App {

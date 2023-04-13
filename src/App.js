@@ -26,41 +26,45 @@ import AdminStaff from './views/AdminStaff';
 import AdminMail from './views/AdminMail';
 import AdminDestination from './views/AdminDestination';
 import AdminHeader from './components/AdminHeader';
+import PersistLogin from './utils/PersistLogin';
+import PersistAdminLogin from './utils/PersistAdminLogin';
 
 function App() {
   return (
     <div className="App">
-        <div id="App-Content">
           <Routes>
             <Route path='/admin' element={<AdminHeader/>}>
-              <Route index element={<AdminDashboard />} />
-              <Route path='profile' element={<AdminMenu/>} />
-              <Route path='settings' element={<AdminSettings/>} />
-              <Route path='register' element={<AdminSignUp/>} />
+            <Route path='register' element={<AdminSignUp/>} />
               <Route path='login' element={<AdminLogin/>} />
-              <Route path='message' element={<AdminMail/>} />
-              <Route path='destination' element={<AdminDestination/>} />
-              <Route path='staff' element={<AdminStaff/>} />
+              <Route element={<PersistAdminLogin/>} >
+                <Route path='dashboard' element={<AdminDashboard />} />
+                <Route path='profile' element={<AdminMenu/>} />
+                <Route path='settings' element={<AdminSettings/>} />
+                <Route path='message' element={<AdminMail/>} />
+                <Route path='destination' element={<AdminDestination/>} />
+                <Route path='staff' element={<AdminStaff/>} />
+              </Route>
             </Route>
             <Route path='/' element={<Header/>} >
-            <Route index element={<Landing />} />
-            <Route path='/login' element={<Login/>} />
-            <Route path='register' element={<Register/>} />
-            <Route path="/account/profile" element={<UserProfile/>} />
-            <Route path='/account/messages' element={<UserMessages/>} />
-            <Route path="/forgot_password" element={<ForgotPassword/>} />
-            <Route path='/contact' element={<Contact/>} />
-            <Route path='/account/dashboard' element={<UserDashboard/>} />
-            <Route path='/account/favourites' element={<UserFavourites/>} />
-            <Route path='/account/reservations' element={<UserReservations/>} />
-            <Route path='/account/settings' element={<UserSettings/>} />
-            <Route path='/countries' element={<Countries/>} />
-            <Route path='/country' element={<Country/>} />
-            <Route path='/city' element={<City/>} />
-            <Route path='*' element={<NotFound/>} />
+              <Route index element={<Landing />} />
+              <Route path='/login' element={<Login/>} />
+              <Route path='register' element={<Register/>} />
+              <Route element={<PersistLogin/>} >
+                <Route path="/account/profile" element={<UserProfile/>} />
+                <Route path='/account/messages' element={<UserMessages/>} />
+                <Route path="/forgot_password" element={<ForgotPassword/>} />
+                <Route path='/contact' element={<Contact/>} />
+                <Route path='/account/dashboard' element={<UserDashboard/>} />
+                <Route path='/account/favourites' element={<UserFavourites/>} />
+                <Route path='/account/reservations' element={<UserReservations/>} />
+                <Route path='/account/settings' element={<UserSettings/>} />
+                <Route path='/countries' element={<Countries/>} />
+                <Route path='/country/:id' element={<Country/>} />
+                <Route path='/city/:id' element={<City/>} />
+              </Route>
+              <Route path='*' element={<NotFound/>} />
             </Route>
           </Routes>
-        </div>
       <Footer />
     </div>
   );
