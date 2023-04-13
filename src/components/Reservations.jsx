@@ -12,7 +12,7 @@ const Reservations = () => {
       <h1>Reservations</h1>
       <div className="reserves">
         {reserves.map((item) => (
-          <Reservation />
+          <Reservation key={item} />
         ))}
       </div>
       </section>

@@ -2,7 +2,7 @@
   display: flex;
   text-align: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 20px;
   background-color: #c8e6c8;
 }
 
@@ -15,61 +15,50 @@
   font-weight: 500;
 }
 
-#adminHeader img {
-  width: 60px;
-  object-fit: cover;
-}
-
-#adminHeader ul li {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: .3s ease;
-}
-
 #adminHeader ul li a {
   text-decoration: none;
-  color: #333;
-  padding: 0;
-  margin: 0;
 }
 
-#adminHeader ul li:hover {
+#adminHeader img {
+  scale: 2;
+}
+
+#links_1 {
+  gap: 20px;
+}
+
+#links_1 li a {
   font-size: 20px;
 }
 
-#adminHeader ul li a:hover {
-  color: #060;
+#links_1 li a,
+#links_2 li a,
+#admin_register {
+  color: var(--black);
 }
 
-#adminHeader ul:nth-child(2),
-#adminHeader ul:nth-child(3) {
-  margin-top: 20px;
+#links_2,
+#links_3 {
+  gap: 25px;
 }
 
-#adminHeader ul:nth-child(1) li:nth-child(2) {
-  font-size: 27px;
-  margin-top: 15px;
-  margin-left: 10px;
+#admin_login {
+  color: var(--white);
+  background-color: var(--green);
+  padding: 10px 20px;
+  opacity: .8;
+  border-radius: 10px;
 }
 
-#adminHeader ul:nth-child(1) {
-  justify-content: start;  
+#admin_logout {
+  color: var(--white);
+  background-color: var(--red);
+  padding: 10px;
+  opacity: .8;
+  border-radius: 10px;
 }
 
-#adminHeader ul:nth-child(2) {
-  width: 30%;
-  font-size: 18px;
+#admin_logout:hover,
+#admin_login:hover {
+  opacity: 1;
 }
-
-#adminHeader ul:last-child {
-  width: 15%;
-  margin-left: 50px;
-  margin-right: 7%;
-}
-
-#adminHeader ul:last-child li:last-child a {
-  color: #a00;
-}
-

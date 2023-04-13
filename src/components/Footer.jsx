@@ -1,6 +1,8 @@
 import './Footer.css'
 
 const Footer = () => {
+
+  const year = new Date().getFullYear()
   return (
     <footer>
       <section className="footer">
@@ -35,7 +37,7 @@ const Footer = () => {
         </ul>
         <div className="copy">
         <hr/>
-        <p>Copyright &copy; Sollyverse 2022. All Rights Reserved</p>
+        <p>Copyright &copy; Sollyverse {year}. All Rights Reserved</p>
       </div>
       </section>
     </footer>

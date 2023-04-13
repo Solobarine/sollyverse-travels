@@ -1,37 +1,27 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { save_id } from '../utils/helpers';
+import countryAsyncThunk from '../redux/features/apiCalls/country';
+
 import './Countries.css';
 
 const Countries = () => {
-  const showButton = (e) => {
-    const button = e.target.children[1]
-    console.log(button)
-    button.style.position = 'relative'
-    button.style.bottom = '-10px'
-    button.children[0].style.color = '#000'
-    button.style.opacity = 1
-    button.style.pointerEvents = 'auto'
-  }
+  const countries = useSelector(state => state.country.countries.item)
+  const dispatch = useDispatch()
+  useEffect(() => async () => (
+    dispatch(countryAsyncThunk.showAll())
+  ), [dispatch])
 
-  const hideButton = (e) => {
-    const button = e.target.children[1]
-    console.log('hi')
-    button.style.position = 'absolute'
-    button.style.bottom = '-50px'
-    button.style.opacity = 0
-    button.style.pointerEvents = 'none'
-    button.style.transition = '.6s ease-in'
-  }
+  console.log(countries)
 
-  const country = [{name:'Egypt', image: ''}, {name: 'Morroco', image: ''}, {name: 'Mexico', image: ''}, {name: 'Switzerland', image: ''}, {name: 'Norway', image: ''},
-    {name: 'Italy', image: ''}, {name: 'Spain', image: ''}, {name: 'United States', image: ''}, {name: 'Turkey', image: ''}, {name: 'Japan', image: ''}, {name: 'UAE', image: ''},
-    {name: 'Thailand', image: ''}, {name: 'Germany', image: ''}, {name: 'England', image: ''}, {name: 'France', image: ''}, {name: 'Greece', image: ''}, {name: 'South Korea', image: ''},
-    {name: 'China', image: ''}, {name: 'India', image: ''}, {name: 'Saudi Arabia', image: ''}]
   return (
     <section className="countries">
-    {country.map((item, index) => (
-      <div key={index} onMouseEnter={showButton} onMouseLeave={hideButton} className={`country country-${index}`}>
+    {countries.map((item, index) => (
+      <div key={index} className={`country country-${index}`} onMouseEnter={()=> save_id("country_id", item._id)}>
         <h2>{item.name}</h2>
-        <button className="moreCountry"><Link to="/country">See More</Link></button>
+        <Link  to={`/country/${item._id}`}
+           className='moreCountry'  >See More</Link>
       </div>
       ))}
     </section>

@@ -1,20 +1,26 @@
 header {
-  display: grid;
-  grid-template-columns: 0.03fr 0.4fr 0.3fr 1fr 0.3fr 0.2fr 0.2fr 0.3fr;
-  grid-template-areas: 
-  "image name space navs spac login register";
   padding: 20px;
-  color: #444;
-  background-color: #c8e6c9;
+  color: var(--text-gray);
+  background-color: var(--primary);
+  display: flex;
+  justify-content: space-between;
 }
 
 header > * {
   text-align: center;
 }
 
-header img {
-  grid-area: image;
+header div {
+  display: flex;
+  gap: 10px;
+}
+
+#logo_img {
   width: 40px;
+}
+
+#logo_img img {
+  width: 100%;
 }
 
 .brand {
@@ -25,9 +31,6 @@ header img {
 
 .nav {
   list-style: none;
-  grid-area: navs;
-  display: flex;
-  justify-content: space-between;
   padding-top: 10px;
   font-size: 16px;
 }
@@ -38,19 +41,18 @@ header img {
 
 .nav li a {
   text-decoration: none;
-  color: #444;
+  color: var(--text-gray);
   font-weight: 600;
 }
 
-.login {
-  grid-area: login;
-  background-color: #c8e6c9;
+.nav,
+.header_buttons {
+  display: flex;
+  gap: 30px;
 }
 
-.register {
-  grid-area: register;
-  background-color: #20b970;
-  color: #fff;
+.header_buttons > a{
+  padding: 10px;
 }
 
 .button {
@@ -59,9 +61,23 @@ header img {
   justify-content: center;
   border-radius: 10px;
   border: none;
+  color: var(--text-gray);
   font-size: 14px;
-  color: #444;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
+}
+
+.login {
+  background-color: var(--primary);
+}
+
+.register {
+  background-color: var(--secondary);
+  color: var(--white);
+}
+
+.logout {
+  background-color: var(--red);
+  color: var(--white)
 }

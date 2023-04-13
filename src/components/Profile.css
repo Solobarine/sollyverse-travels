@@ -7,7 +7,7 @@
 
 .decor {
   grid-column: 1/span 3;
-  background-image: linear-gradient(90deg, red, blue, green)
+  background-image: linear-gradient(90deg, var(--primary), var(--secondary))
 }
 
 #profile .image {
@@ -24,27 +24,25 @@
   box-shadow: 2px 2px 2px 2px gray;
 }
 
-.profile:nth-child(3) {
-  background-color: #c8e6c8;
+.profile:nth-child(3),
+.profile:nth-child(4) {
+  background-color: var(--primary);
   padding: 20px;
 }
 
-.profile:nth-child(3) p {
+.profile:nth-child(3) p,
+.profile:nth-child(4) p {
   font-size: 17px;
   font-weight: 700;
   margin-bottom: 10px;
 }
 
-.profile:nth-child(3) p span {
+.profile:nth-child(3) p span,
+.profile:nth-child(4) p span{
   font-weight: normal;
 }
 
-.profile:nth-child(4) {
-  background-color: green;
-}
-
 .profile:last-child {
-  background-color: #20b970;
   grid-column: 1/span 3;
   display: flex;
   padding: 10px;
@@ -53,9 +51,10 @@
 }
 
 .profile:last-child div {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+ display: grid;
+ grid-template-columns: 1fr;
+ gap: 20px;
+ margin: auto;
 }
 
 .profile:last-child div p:first-child {

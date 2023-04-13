@@ -1,10 +1,19 @@
-import {Link} from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom'
 import { useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { toggleMenu } from '../effects'
+import logout from '../redux/features/adminReducer/admin'
 import "./AdminMenu.css"
 
 const AdminMenu = () => {
   const button = useRef()
+  const is_logged_in = useSelector(state => state.admin.user.logged_in)
+  const dispatch = useDispatch()
+
+  const exit = () => {
+    dispatch(logout())
+    if (!is_logged_in) return <Navigate to="/login"/>
+  }
 
   return (
     <section className="adminMenu">
@@ -21,7 +30,7 @@ const AdminMenu = () => {
         <div className="admin_image">
           <img src="/logo/account.png" alt="Admin"/>
         </div>
-      <Link className='menu_link' to="/admin">
+      <Link className='menu_link' to="/admin/dashboard">
         <i className="fa-solid fa-house-user"/>
         <p>Dashboard</p>
       </Link>
@@ -57,7 +66,7 @@ const AdminMenu = () => {
         <i className="fa-solid fa-gears"/>
         <p>Settings</p>
       </Link>
-      <Link className='menu_link' to="/admin/login">
+      <Link onClick={() => exit()} className='menu_link' to="/admin/login">
         <i className="fa-solid fa-right-from-bracket"/>
         <p>Logout</p>
       </Link>

@@ -1,8 +1,16 @@
 import { useSelector } from 'react-redux';
+import country from 'countries-list';
 import './Profile.css';
 
 const Profile = () => {
   const user = useSelector(state => state.user)
+  const account = user.user
+  const firstName = account.firstName
+  const lastName = account.lastName
+
+  const date = new Date().getFullYear()
+  const birthYear = (account) && account.dateOfBirth.split('-')[0]
+  const age = (account) && date - birthYear
 
   return (
     <section id="profile">
@@ -12,32 +20,21 @@ const Profile = () => {
         <img src="/landing/businessWoman.jpg" alt="Profile"/>
       </div>
       <div className="profile">
-        <p>Name: <span>Titus Bernard</span></p>
-        <p>Email: <span>titus@gmail.com</span></p>
-        <p>Age: <span>26</span></p>
-        <p>Country: <span>Turkiye</span></p>
-        <p>Title: <span>Globe Trotter</span></p>
+        <p>Name: <span>{`${firstName[0].toUpperCase()}${firstName.substring(1)}`} {`${lastName[0].toUpperCase()}${lastName.substring(1)}`}</span></p>
+        <p>Age: <span>{age}</span></p>
+        <p>Country: <span>{account.countryOfOrigin}</span></p>
+        <p>Gender: <span>{account.gender}</span></p>
+        <p>Title: <span>{account.nickName}</span></p>
       </div>
-      <div className="profile"></div>
       <div className="profile">
-        <div>
-          <p>Cities visited</p>
-          <p>6</p>
-        </div>
-        <div>
-          <p>Countries visited</p>
-          <p>4</p>
-        </div>
-        <div>
-          <p>Most visited City</p>
-          <p>Hamburg</p>
-          <p>Germany emoji</p>
-        </div>
-        <div>
-          <p>Last visited</p>
-          <p>Toledo</p>
-          <p>Spain emoji</p>
-        </div>
+        <p>Phone Number: <span>{account.phoneNumber}</span></p>
+        <p>Email: <span>{account.email}</span></p>
+        <p>Country of Residence: <span>{account.countryOfResidence}</span></p>
+        <p>State: <span>{account.state}</span></p>
+        <p>Address: <span>{account.addressOne}</span></p>
+        <p>Zip Code: <span>{account.zipCode}</span></p>
+      </div>
+      <div className="profile">
       </div>
     </section>
   )

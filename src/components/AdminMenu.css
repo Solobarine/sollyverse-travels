@@ -5,7 +5,6 @@
 }
 
 .adminMenu > a {
-  width: 80%;
   background-color: inherit;
   display: grid;
   text-decoration: none;

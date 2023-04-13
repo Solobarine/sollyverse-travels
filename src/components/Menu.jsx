@@ -1,6 +1,8 @@
 import {useRef} from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Navigate } from 'react-router-dom';
 import { toggleMenu } from '../effects';
+import { logout } from '../redux/features/user';
 import './Menu.css'
 
 const Menu = () => {
@@ -20,6 +22,15 @@ const Menu = () => {
       moon.current.classList.toggle('lumen')
       sun.current.classList.toggle('lumen')
     }
+  }
+
+  const is_logged_in = useSelector(state => state.user.login)
+
+  const dispatch = useDispatch()
+
+  const exit = () => {
+    dispatch(logout())
+    if (!is_logged_in) return <Navigate to="/login"/>
   }
 
   return (
@@ -77,7 +88,7 @@ const Menu = () => {
           </Link>
         </li>
         <li className="nav-links">
-          <Link to="/login">
+          <Link onClick={() => exit()}>
           <i className="fa-solid fa-door-open"></i>
           <p>Logout</p>
           </Link>

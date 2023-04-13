@@ -10,7 +10,8 @@
 
 .cityImages {
   height: 350px;
-  max-width: 100%;
+  width: 60%;
+  margin: auto;
   background-color: gray;
 }
 

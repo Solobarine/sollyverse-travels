@@ -93,6 +93,11 @@
   transition: .4s ease;
 }
 
+.security form,
+.s-theme form {
+  width: 50%;
+}
+
 .settingShow {
   opacity: 1;
   pointer-events: auto;

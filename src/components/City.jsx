@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MapArea from './Map.jsx';
 import './City.css';
 import { useRef, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import Loading from './Loading.jsx';
 import { toggleLike, clickStar } from '../effects/index.js';
+import cityAsyncThunk from '../redux/features/apiCalls/city.js';
 
 const City = () => {
   const [firstName, setFirstName] = useState('')
@@ -22,46 +24,52 @@ const City = () => {
 
   const stars = useRef()
 
-  let i = 0
-  const cityImageDiv = useRef()
+  // let i = 0
+  // const cityImageDiv = useRef()
 
   const topCities = [{name: 'New York', image: '/landing/beach-3.jpg'}, {name: 'Sao Paolo', image: '/beach-view.jpg'},
     {name: 'Bangkok', image: '/landing/thai.png'}, {name: 'Jarkata', image: '/jarkata2.jpg'},
     {name: 'Tokyo', image: '/landing/tokyo1.jpeg'}]
 
-  const images = ['/landing/c8.jpg', '/landing/beach-4.jpeg', '/lucerne1.jpg']
+  // const images = ['/landing/c8.jpg', '/landing/beach-4.jpeg', '/lucerne1.jpg']
 
 
   const data = {lat: 47.0502,lon: 8.3093,zoom: 6}
+  const city_id = localStorage.getItem("city_id")
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
-  const showImage = () => {
-    cityImageDiv.current.src = images[i]
-    if (i < images.length - 1) {
-      i++
-    } else {
-      i = 0
-    }
-    setTimeout(showImage, 6000)
-  }
+  // const showImage = () => {
+  //   cityImageDiv.current.src = images[i]
+  //   if (i < images.length - 1) {
+  //     i++
+  //   } else {
+  //     i = 0
+  //   }
+  //   setTimeout(showImage, 6000)
+  // }
 
   useEffect(() => {
-    showImage()
-  })
+    dispatch(cityAsyncThunk.showOne({_id: city_id}))
+  }, [dispatch, city_id])
 
-  const city = useSelector(state => state.city.city)
-  const top_cities = useSelector(state => state.city.top)
+   const city = useSelector(state => state.city.city.item)
+   const status = useSelector(state => state.city.city.status)
+  // const top_cities = useSelector(state => state.city.top)
+  console.log(city)
 
-  return (
+  if (status === 'Pending') return <Loading />
+
+  if (status === 'Success') return (
     <section className="city">
       <div className="cityDetails">
         <div className="cityImages">
-          <img ref={cityImageDiv} src="" alt="city"/>
+          {/* <img ref={cityImageDiv} src="" alt="city"/> */}
         </div>
         <div className="cityBio">
-          <h1>Lucerne</h1>
+          <h1>{city.name}</h1>
           <i className="fa-solid fa-heart"/>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique accusamus, placeat facilis ab repellendus incidunt libero ad sequi expedita ratione nesciunt eum inventore harum nisi illum quod reprehenderit voluptatem ipsam, fuga ut itaque. Quo impedit officia fuga, ipsum, minima autem nam provident ipsa eligendi accusantium a doloribus natus porro deleniti.</p>
-
+          <p>{city.description}</p>
         </div>
         <div className="cityReservation">
           <h2>Make a Reservation</h2>
@@ -84,7 +92,7 @@ const City = () => {
                   <h4>{item.name}</h4>
                   <i onClick={toggleLike} className="fa-regular fa-heart" />
                   <p>$350/wk</p>
-                  <Link to="/city">See More</Link>
+                  <Link to={`/city/${item._id}`}>See More</Link>
               </div>
               ))
             }
@@ -120,6 +128,18 @@ const City = () => {
       </div>
     </section>
   )
+
+  if (status === 'Failed') {
+    return (
+      <>
+        <h1>Unable To Load City.</h1>
+        <p>Redirecting to Countries</p>
+        {setTimeout(() => {
+          navigate('/countries')
+        })}
+      </>
+    )
+  }
 }
 
 export default City;

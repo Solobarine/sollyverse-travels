@@ -1,4 +1,6 @@
-import {useRef} from 'react';
+import {useRef, useState, useEffect} from 'react';
+import { useSelector } from 'react-redux';
+import { handleChange } from '../effects';
 import './Settings.css';
 
 const Settings = () => {
@@ -25,6 +27,30 @@ const Settings = () => {
     security.current.classList.remove('settingShow')
   }
 
+  let [userBio, setUserBio] = useState({
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    email: '',
+    addressOne: '',
+    addressTwo: '',
+    city: '',
+    state: '',
+    zipCode: '',
+    countryOfResidence: ''
+  })
+
+  const [password, setPassword] = useState({
+    oldPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  })
+  const user = useSelector(state => state.user.user)
+
+  useEffect( () => {
+    if (user) return setUserBio(user)
+  }, [user])
+
   return (
     <section id="settings">
       <div className="settings">
@@ -45,25 +71,25 @@ const Settings = () => {
         <div ref={bio} className="s-options bioDiv settingShow">
           <form>
             <h1>Update Your Profile</h1>
-            <input type="text" placeholder="Enter FirstName"/>
-            <input type="text" placeholder="Enter LastName"/>
-            <input type="number" name="phoneNo" placeholder='Enter Mobile Number'/>
-            <input type="text" placeholder="Enter Email"/>
-            <input type="text" placeholder="Address 1"/>
-            <input type="text" placeholder="Address 2"/>
-            <input type="text" placeholder="City"/>
-            <input type="text" placeholder="State"/>
-            <input type="text" placeholder="ZIP Code"/>
-            <input type="text" placeholder="Country of Residence"/>
+            <input onChange={(e) => handleChange(e, setUserBio)} type="text" name="firstName" value={userBio.firstName} placeholder="Enter FirstName"/>
+            <input onChange={(e) => handleChange(e, setUserBio)} type="text" name="lastName" value={userBio.lastName} placeholder="Enter LastName"/>
+            <input onChange={(e) => handleChange(e, setUserBio)} type="text" name="phoneNumber" value={userBio.phoneNumber} placeholder='Enter Mobile Number'/>
+            <input onChange={(e) => handleChange(e, setUserBio)} type="email" name="email" value={userBio.email} placeholder="Enter Email"/>
+            <input onChange={(e) => handleChange(e, setUserBio)} type="text" name="addressOne" value={userBio.addressOne} placeholder="Address 1"/>
+            <input onChange={(e) => handleChange(e, setUserBio)} type="text" name="addressTwo" value={userBio.addressTwo} placeholder="Address 2"/>
+            <input onChange={(e) => handleChange(e, setUserBio)} type="text" name="city" value={userBio.city} placeholder="City"/>
+            <input onChange={(e) => handleChange(e, setUserBio)} type="text" name="state" value={userBio.state} placeholder="State"/>
+            <input onChange={(e) => handleChange(e, setUserBio)} type="text" name="zipCode" value={userBio.zipCode} placeholder="ZIP Code"/>
+            <input onChange={(e) => handleChange(e, setUserBio)} type="text" name="countryOfResidence" value={userBio.countryOfResidence} placeholder="Country of Residence"/>
             <input type="submit" value="Change Details"/>
           </form>
         </div>
         <div ref={security} className="s-options security">
           <form>
             <h1>Change Password</h1>
-            <input type="password" placeholder='Old Password'/>
-            <input type="password" placeholder='New Password'/>
-            <input type="password" placeholder='Confirm New Password'/>
+            <input onChange={(e) => handleChange(e, setUserBio)} type="password" name="oldPassowrd" value={password.oldPassword} placeholder='Old Password'/>
+            <input onChange={(e) => handleChange(e, setUserBio)} type="password" name="newPassword" value={password.newPassword} placeholder='New Password'/>
+            <input onChange={(e) => handleChange(e, setUserBio)} type="password" name="confirmPassword" value={password.confirmPassword} placeholder='Confirm New Password'/>
             <input type="submit" value="Submit"/>
           </form>
         </div>
