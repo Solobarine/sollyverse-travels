@@ -1,19 +1,47 @@
-#adminSignUp {
+.adminSignUp {
   display: grid;
-  grid-template-columns: 1fr;
-  padding: 10px;
+  grid-template-columns: 1fr 1fr;
 }
 
-#adminSignUp h2 {
+.adminSignUp div:nth-child(1) {
+  background-color: var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#admin_register_image {
+  max-width: 400px;
+  margin: auto;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+#admin_register_image img {
+  max-width: 100%;
+}
+
+#adminSignUp {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+#adminSignUp form h2 {
   text-align: center;
+  grid-column: 1/-1;
   margin-bottom: 15px;
+  border: none;
 }
 
 #adminSignUp form {
-  width: 40%;
+  width: 45%;
   display: grid;
-  grid-template-columns: .6fr 1fr;
-  margin: auto;
+  grid-template-columns: .4fr 1fr;
+  padding: 20px;
+  background-color: var(--primary);
+  margin: 70px auto;
+  border-radius: 30px;
 }
 
 #adminSignUp form * {
@@ -29,22 +57,24 @@
 
 #adminSignUp form input[type='submit'] {
   grid-column: 1/span 1;
-  background-color: #20b970;
+  background-color: var(--secondary);
   border: none;
+  font-size: 16px;
   transition: .2s ease-out;
 }
 
 #adminSignUp form input[type='submit']:hover {
   color: #fff;
-  font-size: 17px;
   border: 1px solid grey;
 }
 
 #adminSignUp p {
-  margin-left: 30%;
+  grid-column: 1/-1;
+  border: none;
 }
 
 #adminSignUp p a {
   text-decoration: none;
+  border: none;
   color: #070;
 }

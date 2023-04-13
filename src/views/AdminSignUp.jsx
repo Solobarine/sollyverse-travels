@@ -14,17 +14,21 @@ const AdminSignUp = () => {
   const newAdmin = {email, password, confirmPassword}
 
   return (
-    <section className="adminSignUp page shrinkMenu">
-      <div></div>
+    <section className="adminSignUp">
+      <div>
+        <div id="admin_register_image">
+          <img src="/admin_register.jpg" alt="admin signup"/>
+        </div>
+      </div>
       <div id="adminSignUp">
-        <h2>Sign Up as Admin</h2>
         <form>
+          <h2>Admin Sign Up</h2>
           <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter Your Email"/>
           <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter Password"/>
           <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="Confirm Password"/>
-          <input onClick={() => dispatch(signUp(auth, newAdmin))} type="submit" value="Submit"/>
+          <input onClick={() => dispatch(signUp(newAdmin))} type="submit" value="Submit"/>
+          <p>Already an Admin ,<Link to="/admin/login">Sign in</Link></p>
         </form>
-        <p>Already an Admin ,<Link to="/admin/login">Sign in</Link></p> 
       </div>
     </section>
   )

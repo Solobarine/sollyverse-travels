@@ -86,3 +86,8 @@
   color: #20b970;
   text-decoration: none;
 }
+
+#error {
+  color: var(--red);
+  text-align: center;
+}

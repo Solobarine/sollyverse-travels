@@ -1,35 +1,68 @@
 #adminLogin {
-  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-.adminLogin h1 {
+#adminLogin div:nth-child(1) {
+  background-color: var(--primary);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.adminLogin form h1 {
   text-align: center;
   margin-bottom: 20px;
+  grid-column: 1/-1;
+}
+
+#admin_login_image {
+  max-width: 400px;
+  border-color: rebeccapurple;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 40px;
+}
+
+#admin_login_image img {
+  width: 100%;
 }
 
 .adminLogin form {
   display: grid;
-  grid-template-columns: .6fr 1fr;
-  width: 40%;
-  margin: auto;
+  grid-template-columns: 0.6fr 1fr;
+  width: 50%;
+  padding: 20px;
+  border-radius: 30px;
+  margin: 70px auto;
+  background-color: var(--primary);
+}
+
+#admin_login_error{
+  color: red;
+  border: 1px solid red;
+  text-align: center;
+  border-radius: 8px;
+  padding: 15px 3px;
+  margin: 15px 0;
 }
 
 .adminLogin form input {
   padding: 15px;
   margin-bottom: 20px;
-  grid-column: 1/span 2;
+  grid-column: 1 / span 2;
   border-radius: 10px;
   border: 1px solid grey;
 }
 
-.adminLogin form input[type='submit'] {
-  grid-column: 1/span 1;
-  background-color: #20b970;
-  transition: .2s ease-in-out;
+.adminLogin form input[type="submit"] {
+  grid-column: 1 / span 1;
+  background-color: var(--secondary);
+  font-size: 16px;
+  transition: 0.2s ease-in-out;
 }
 
-.adminLogin form input[type='submit']:hover {
-  font-size: 17px;
+.adminLogin form input[type="submit"]:hover {
   color: #fff;
 }
 
@@ -40,8 +73,11 @@
   justify-self: right;
 }
 
+.adminLogin form p {
+  grid-column: 1/-1;
+}
+
 #adminSign {
-  justify-self: start;
   padding: 0;
-  color: #070
+  color: #070;
 }

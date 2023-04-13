@@ -3,7 +3,7 @@ import Menu from '../components/Menu';
 
 const City = () => {
   return (
-    <section className="cityView page">
+    <section className="cityView page shrinkMenu">
       <Menu />
       <Ciudad />
     </section>

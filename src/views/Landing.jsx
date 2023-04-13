@@ -2,22 +2,23 @@ import {useEffect, useRef} from 'react';
 import './Landing.css';
 
 const Landing = () => {
-  let i = 0
   const image = useRef()
-  const landingImages  = ['abu-dhabi.jpg', 'abu-dhabi-2.jpg', 'ankor-wat.png', 'c8.jpg', 'cartagena-1.jpg', 'thai.png', 'tokyo.jpeg', 'beach-0.jpg', 'beach-3.jpg']
-
-  const displayImages = () => {
-    if (i < landingImages.length - 1) {
-      image.current.src = `/landing/${landingImages[i]}`
-      i++
-    } else {
-      i = 0
-    }
-
-    setTimeout(displayImages, 12000)
-  }
   
   useEffect(() => {
+    let i = 0
+    const landingImages  = ['abu-dhabi.jpg', 'abu-dhabi-2.jpg', 'ankor-wat.png', 'c8.jpg', 'cartagena-1.jpg', 'thai.png', 'tokyo.jpeg', 'beach-0.jpg', 'beach-3.jpg']
+  
+    const displayImages = () => {
+      if (i < landingImages.length - 1) {
+        image.current.src = `/landing/${landingImages[i]}`
+        i++
+      } else {
+        i = 0
+      }
+  
+      setTimeout(displayImages, 12000)
+    }
+
     displayImages()
   })
 
@@ -92,14 +93,15 @@ const Landing = () => {
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat minima quidem dolore aliquam corporis numquam rem molestiae voluptates totam mollitia.</p>
       </section>
       <section className="partners">
-        <img src="/sponsors/ferrari.png" alt=""/>
-        <img src="/sponsors/hilton.png" alt=""/>
-        <img src="/sponsors/lamborghini.png" alt=""/>
-        <img src="/sponsors/mastercard.png" alt=""/>
-        <img src="/sponsors/mercedes_benz.png" alt=""/>
-        <img src="/sponsors/oracle.png" alt=""/>
-        <img src="/sponsors/qatar_airways.png" alt=""/>
-        <img src="/sponsors/turkish_airlines.png" alt=""/>
+        <h2>Sponsors</h2>
+        <div><img src="/sponsors/ferrari.png" alt=""/></div>
+        <div><img src="/sponsors/hilton.png" alt=""/></div>
+        <div><img src="/sponsors/lamborghini.png" alt=""/></div>
+        <div><img src="/sponsors/mastercard.png" alt=""/></div>
+        <div><img src="/sponsors/mercedes_benz.png" alt=""/></div>
+        <div><img src="/sponsors/oracle.png" alt=""/></div>
+        <div><img src="/sponsors/qatar_airways.png" alt=""/></div>
+        <div><img src="/sponsors/turkish_airlines.png" alt=""/></div> 
       </section>
     </section>
   )

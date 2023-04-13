@@ -3,7 +3,7 @@ import Menu from '../components/Menu';
 
 const Countries = () => {
   return (
-    <section className="countriesView page">
+    <section className="countriesView page shrinkMenu">
       <Menu />
       <CountriesList />
     </section>

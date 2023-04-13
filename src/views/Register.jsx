@@ -1,17 +1,23 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './Register.css';
 import country from 'countries-list';
 import { register } from '../redux/features/apiCalls/user';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 const Register = () => {
   const countriesList = country.countries
-  console.log(countriesList)
 
   const change = (arg, e) => {
     arg(e.target.value)
   }
+
+  const navigate = useNavigate()
+  const is_logged_in = useSelector(state => state.user.login)
+//  useEffect(() => {
+//   if (!is_logged_in) navigate('/login')
+//  })
+  const dispatch = useDispatch()
 
   // Input States
   const [firstName, setFirstName] = useState('')
@@ -53,7 +59,7 @@ const Register = () => {
               </div>
               <div>
                 <label>Enter Phone Number</label>
-                <input onChange={(e) => change(setPhoneNumber, e)} type="number" name="phoneNo" placeholder='Enter Phone Number'/>
+                <input onChange={(e) => change(setPhoneNumber, e)} type="text" name="phoneNo" placeholder='Enter Phone Number'/>
               </div>
               <div>
                 <label>Enter Email</label>
@@ -76,7 +82,7 @@ const Register = () => {
                 <select onChange={(e) => change(setCountryOfOrigin, e)}>
                   <option disabled value="">Select Country of Origin</option>
                   {Object.values(countriesList).map((country, index) =>
-                     <option key={index}>{country.name}   {country.emoji}</option>
+                     <option key={index}>{country.emoji} {country.name}</option>
                   )}
                 </select>
               </div>
@@ -112,11 +118,18 @@ const Register = () => {
                 <select onChange={(e) => change(setCountryOfResidence, e)}>
                   <option disabled value="Select Country">Select Country of Residence</option>
                   {Object.values(countriesList).map((country, index) =>
-                    <option key={index}>{country.name} {country.emoji}</option>
+                    <option key={index}>{country.emoji}  {country.name}</option>
                   )}
                 </select>
               </div>
-              <Link onClick={() => dispatch(register(auth, data))} id="registerSubmit">Register</Link>
+              <Link onClick={(e) => {
+                e.preventDefault()
+                dispatch(register(data)).then(() => {
+                if (is_logged_in) navigate("/account/dashboard")
+                })
+              }}
+                id="registerSubmit"
+                >Register</Link>
             <p id='user_signin'>Have an Account? <Link to="/login" id="rSignIn">Sign In</Link></p>
             <p>Register as&nbsp;<Link to="/admin/register" id='rSignIn'>Admin</Link></p>
           </form>
