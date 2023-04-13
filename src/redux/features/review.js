@@ -33,9 +33,17 @@ const reviewSlice = createSlice({
       state.top.status = 'Pending'
     },
     [showFive.fulfilled]: (state, actions) => {
-      state.top.item = actions.payload.reviews
-      state.top.status = 'Success'
-      state.top.error = []
+      if (actions.payload.error) {
+        state.top.item = []
+        state.top.status = 'Failed'
+        state.top.error = actions.payload.error
+        return
+      } else {
+        state.top.item = actions.payload.reviews
+        state.top.status = 'Success'
+        state.top.error = []
+        return
+      }
     },
     [showFive.rejected]: (state) => {
       state.top.status = 'Failed'
@@ -44,9 +52,17 @@ const reviewSlice = createSlice({
       state.reviews.status = 'Pending'
     },
     [showAll.fulfilled]: (state, actions) => {
-      state.reviews.item = actions.payload.reviews
-      state.reviews.status = 'Success'
-      state.reviews.error = []
+      if (actions.payload.error) {
+        state.reviews.item = []
+        state.reviews.status = 'Failed'
+        state.reviews.error = actions.payload.error
+        return
+      } else {
+        state.reviews.item = actions.payload.reviews
+        state.reviews.status = 'Success'
+        state.reviews.error = []
+        return
+      }
     },
     [showAll.rejected]: (state) => {
       state.reviews.status = 'Failed'

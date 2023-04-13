@@ -2,25 +2,25 @@ import {createAsyncThunk} from "@reduxjs/toolkit"
 import { domain, apiCall } from "./country"
 
 const reviewApiCall = {
-  create: (auth, payload) => {
+  create: (payload) => {
     const url = `${domain}/review`
     const method = 'POST'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, url, payload)
   },
-  showAll: (auth, payload) => {
+  showAll: (payload) => {
     const url = `${domain}/review/${payload._id}`
     const method = 'POST'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, url, payload)
   },
-  showFive: (auth, payload) => {
+  showFive: (payload) => {
     const url = `${domain}/review/${payload._id}`
     const method = 'POST'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, url, payload)
   },
-  update: (auth, payload) => {
+  update: (payload) => {
     const url = `${domain}/review/${payload._id}`
     const method = 'PUT'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, url, payload)
   }
 }
 

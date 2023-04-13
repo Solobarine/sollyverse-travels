@@ -10,7 +10,7 @@ const initialState = {
 }
 
 const messageSlice = createSlice({
-  name: 'massage',
+  name: 'message',
   initialState,
   reducers: {
     show: () => view,
@@ -21,9 +21,15 @@ const messageSlice = createSlice({
       state.status = 'Pending'
     },
     [view.fulfilled]: (state, actions) => {
-      state.messages = actions.payload.messages
-      state.status = 'Success'
-      state.error = []
+      if (!actions.payload || actions.payload.error) {
+        state.messages = []
+        state.status = 'Failed'
+        state.error = actions.payload.error
+      } else {
+        state.messages = actions.payload.messages
+        state.status = 'Success'
+        state.error = []
+      }
     },
     [view.rejected]: (state) => {
       state.status = 'Failed'
@@ -32,11 +38,15 @@ const messageSlice = createSlice({
       state.status = 'Pending'
     },
     [markAsRead.fulfilled]: (state, actions) => {
-      state = state.messages.map((message) => { // eslint-disable-line
-        if (message._id === actions.payload._id) {
-          message.status = 'read'
-        }
-      })
+      if (actions.payload || actions.payload.error) {
+        return state
+      } else {
+        state = state.messages.map((message) => { // eslint-disable-line
+          if (message._id === actions.payload._id) {
+            message.status = 'read'
+          }
+        })
+      }
     },
     [markAsRead.rejected]: (state) => {
       state.status = 'Failed'

@@ -18,10 +18,19 @@ const reservationSlice = createSlice({
   },
   extraReducers: {
     [reservationsData.fulfilled]: (state, actions) => {
-      state.totalNumber = actions.payload.number
-      state.recentReservations = actions.payload.recents
-      state.status = 'Success'
-      state.error = []
+      if (actions.payload.error) {
+        state.error = actions.payload.error
+        state.status = 'Failed'
+        state.totalNumber = []
+        state.recentReservations = []
+        return
+      } else {
+        state.totalNumber = actions.payload.number
+        state.recentReservations = actions.payload.recents
+        state.status = 'Success'
+        state.error = []
+        return
+      }
     },
     [reservationsData.rejected]: (state, actions) => {
       state.error = actions.payload.error

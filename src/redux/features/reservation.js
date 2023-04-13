@@ -26,9 +26,17 @@ const reservationSlice = createSlice({
       state.reservations.error = []
     },
     [create.fulfilled]: (state, actions) => {
-      state.reservations.value = actions.payload.reservations
-      state.reservations.status = 'Success'
-      state.reservations.error = []
+      if (actions.payload.error) {
+        state.reservations.value = []
+        state.reservations.status = 'Failed'
+        state.reservations.error = actions.payload.error
+        return
+      } else {
+        state.reservations.value = actions.payload.reservations
+        state.reservations.status = 'Success'
+        state.reservations.error = []
+        return
+      }
     },
     [show.rejected]: (state, actions) => {
       state.reservations.error = actions.payload.error
@@ -38,9 +46,17 @@ const reservationSlice = createSlice({
       state.reservations.status = 'Pending'
     },
     [show.fulfilled]: (state, actions) => {
-      state.reservations.item = actions.payload.reservations
-      state.reservations.status = 'Success'
-      state.reservations.error = []
+      if (actions.payload.error) {
+        state.reservations.item = []
+        state.reservations.status = 'Failed'
+        state.reservations.error = actions.payload.error
+        return
+      } else {
+        state.reservations.item = actions.payload.reservations
+        state.reservations.status = 'Success'
+        state.reservations.error = []
+        return
+      }
     },
     [show.rejected]: (state) => {
       state.reservations.status = 'Failed'

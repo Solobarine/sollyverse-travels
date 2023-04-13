@@ -24,9 +24,16 @@ const messageSlice = createSlice({
   },
   extraReducers: {
     [create.fulfilled]: (state, actions) => {
-      state.message.value = actions.payload.message
-      state.message.status = 'Success'
-      state.message.error = []
+      if (actions.payload.error) {
+        state.message.error = actions.payload.error
+        state.message.status = 'Failed'
+        return
+      } else {
+        state.message.value = actions.payload.message
+        state.message.status = 'Success'
+        state.message.error = []
+        return
+      }
     },
     [create.rejected]: (state, actions) => {
       state.message.error = actions.payload.error
@@ -37,9 +44,16 @@ const messageSlice = createSlice({
       state.message.error = []
     },
     [adminShowOne.fulfilled]: (state, actions) => {
-      state.message.value = actions.payload.message
-      state.message.value = 'Success'
-      state.message.error = []
+      if (actions.payload.error) {
+        state.message.error = actions.payload.error
+        state.message.status = 'Failed'
+        return
+      } else {
+        state.message.value = actions.payload.message
+        state.message.value = 'Success'
+        state.message.error = []
+        return
+      }
     },
     [adminShowOne.rejected]: (state, actions) => {
       state.message.error = actions.payload.error
@@ -50,9 +64,16 @@ const messageSlice = createSlice({
       state.messages.error = []
     },
     [adminShowMessages.fulfilled]: (state, actions) => {
-      state.messages.value = actions.payload.messages
-      state.messages.status = 'Success'
-      state.messages.error = []
+      if (actions.payload.error) {
+        state.messages.error = actions.payload.error
+        state.messages.status = 'Failed'
+        return
+      } else {
+        state.messages.value = actions.payload.messages
+        state.messages.status = 'Success'
+        state.messages.error = []
+        return
+      }
     },
     [adminShowMessages.rejected]: (state, actions) => {
       state.messages.error = actions.payload.error

@@ -1,63 +1,67 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { api } from "../../../utils/api";
 
-export const domain = process.env.DOMAIN_NAME
+export const domain = "http://localhost:3005"
+const auth = localStorage.getItem("authentication_token")
 
-export const apiCall = async (method, auth, url, payload) => {
-  let headers
-  (auth) ? headers = {
-    'Content-type': 'application/json',
-    'authentication_token': auth
-  } : headers = { 'Content-type': 'application/json' }
+console.log(auth)
+
+export const apiCall = async (method, url, payload) => {
+
   const options = {
     method,
-    headers,
-body: JSON.stringify(payload)
+    headers: {
+      'Content-type': 'application/json',
+      'authentication_token': auth
+     },
+    body: JSON.stringify(payload)
   }
 
-  const response = await fetch(url, options).then(data => JSON.parse(data)).catch(error => console.error(error))
+  const response = await fetch(url, options).then(data => data.json()).catch(error => console.error(error))
+  console.log(response)
   return response
 }
 
 const countryApiCall = {
-  create: async (auth, payload) => {
-    const url = `${domain}/admin/country`
-    const method = 'POST'
-    return apiCall(method, auth, url, payload)
-  },
-  update: async (auth, payload) => {
-    const url = `${domain}/admin/update/${payload._id}`
-    const method = 'PUT'
-    return apiCall(method, auth, url, payload)
-  },
-  delete: (auth, payload) => {
-    const url = `${domain}/admin/country/${payload._id}`
-    const method = 'DELETE'
-    return apiCall(method, auth, url, payload)
-  },
-  showAll: async (auth, payload) => {
+  create: async (payload) => {
     const url = `${domain}/country`
     const method = 'POST'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, url, payload)
   },
-  showOne: async (auth, payload) => {
+  update: async (payload) => {
+    const url = `${domain}/admin/update/${payload._id}`
+    const method = 'PUT'
+    return apiCall(method, url, payload)
+  },
+  delete: async (payload) => {
+    const url = `${domain}/admin/country/${payload._id}`
+    const method = 'DELETE'
+    return apiCall(method, url, payload)
+  },
+  showAll: async (payload) => {
+    const url = `${domain}/country`
+    const method = 'GET'
+    return apiCall(method, url, payload)
+  },
+  showOne: async (payload) => {
     const url = `${domain}/country/${payload._id}`
-    const method = 'POST'
-    return apiCall(method, auth, url, payload)
+    const method = 'GET'
+    return api(method, url, payload)
   },
-  adminShowOne: async (auth, payload) => {
+  adminShowOne: async (payload) => {
     const url = `${domain}/admin/country/${payload._id}`
     const method = 'POST'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, url, payload)
   },
-  adminShowAll: async (auth, payload) => {
+  adminShowAll: async (payload) => {
     const url = `${domain}/admin/country`
     const method = 'POST'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, url, payload)
   },
-  showTopCountries: (auth, payload) => {
+  showTopCountries: (payload) => {
     const url = `${domain}/admin/country/top`
     const method = 'POST'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, url, payload)
   }
 }
 

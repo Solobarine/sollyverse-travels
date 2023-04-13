@@ -2,10 +2,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit"
 import { domain, apiCall } from "./country"
 
 const staffApiCall = {
-  create: (auth, payload) => {
+  create: (payload) => {
     const url = `${domain}/admin/staff`
     const method = 'POST'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, url, payload)
   }
 }
 

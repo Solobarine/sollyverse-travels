@@ -2,30 +2,30 @@ import {createAsyncThunk} from "@reduxjs/toolkit"
 import { domain, apiCall } from "./country"
 
 const messageApiCall = {
-  create: (auth, payload) => {
+  create: (payload) => {
     const url = `${domain}/admin/messages`
     const method = 'POST'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, url, payload)
   },
-  adminShowMessages: (auth, payload) => {
+  adminShowMessages: (payload) => {
     const url = `${domain}/admin/messages/${payload._id}`
     const method = 'GET'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, url, payload)
   },
-  adminShowOne: (auth, payload) => {
+  adminShowOne: (payload) => {
     const url = `${domain}/admin/messages/${payload._id}`
     const method = 'POST'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, url, payload)
   },
-  view: (auth, payload) => {
+  view: (payload) => {
     const url = `${domain}/messages/${payload._id}`
     const method = 'POST'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, url, payload)
   },
-  markAsRead: (auth, payload) => {
+  markAsRead: (payload) => {
     const url = `${domain}/messages/${payload._id}`
     const method = 'POST'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, url, payload)
   }
 }
 

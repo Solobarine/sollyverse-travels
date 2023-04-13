@@ -2,24 +2,24 @@ import { createAsyncThunk } from "@reduxjs/toolkit"
 import { domain, apiCall } from "./country"
 
 const likeApiCall = {
-  create: (auth, payload) => {
+  create: (payload) => {
     const url = `${domain}/likes`
     const method = 'POST'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, url, payload)
   },
-  cancel: (auth, payload) => {
+  cancel: (payload) => {
     const url = `${domain}/delete/${payload._id}`
     const method = 'DELETE'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, url, payload)
   }
 }
 
 const likeAsyncThunk = {
-  create: createAsyncThunk(
+  createLike: createAsyncThunk(
     'LIKE',
     likeApiCall.create
   ),
-  cancel: createAsyncThunk(
+  cancelLike: createAsyncThunk(
     'CANCEL_LIKE',
     likeApiCall.delete
   )
