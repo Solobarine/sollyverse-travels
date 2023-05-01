@@ -83,3 +83,24 @@
   grid-row: 1/span 2;
   background-color: rosybrown;
 }
+
+@media screen and (max-width: 401px) {
+  .countries {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 85%;
+    
+  }
+
+  .country {
+    width: 150px;
+    height: 270px;
+  }
+
+  .country h2 {
+    font-size: 1em;
+  }
+
+  
+}

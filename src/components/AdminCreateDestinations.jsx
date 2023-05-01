@@ -13,7 +13,6 @@ const AdminCreateDestinations = () => {
   // const store_cities = useSelector(state => state.adminCity.cities)
   const store_country = useSelector(state => state.adminCountry.country)
   // const store_countries = useSelector(state => state.adminCountry.countries)
-  console.log(localStorage.getItem("authentication_token"))
 
   // Reference Destination Sections and Buttons
   const createCity = useRef('')
@@ -43,6 +42,7 @@ const AdminCreateDestinations = () => {
   const [city, setCity] = useState({
     name: '',
     country: '',
+    cost: 0,
     description: '',
     longitude: '',
     latitude: ''
@@ -118,11 +118,14 @@ const AdminCreateDestinations = () => {
             <label htmlFor="">Enter Latitude</label>
             <input onChange={(e) => handleChange(e, setCity)} name="latitude" type="text" placeholder="City Latitude"/>
           </div>
+          <div className="city_cost">
+            <label htmlFor="">Tour Cost</label>
+            <input onChange={(e) => handleChange(e, setCity)} name="cost" type="number" placeholder="Tour Cost"/>
+          </div>
           <input onClick={async (e) => {
             e.preventDefault()
             let i = 0
             const photos = []
-            console.log(Object.keys(city.images).length)
             while (i < Object.keys(city.images).length) {
              const photo = await toBase64(city.images[`${i}`])
              photos.push(photo)
@@ -185,7 +188,7 @@ const AdminCreateDestinations = () => {
           <h2>Update City</h2>
           <div>
             <label htmlFor="">Upload City Images</label>
-            <input type="file" name="" id="" multiple/>
+            <input hidden type="file" name="" id="" multiple/>
           </div>
           <div className="cityName">
             <label htmlFor="">Update City Name</label>
@@ -206,6 +209,10 @@ const AdminCreateDestinations = () => {
           <div>
             <label htmlFor="">Update Latitude</label>
             <input name="latitude" onChange={(e) => handleChange(e, setCity)} type="text" placeholder="Update Latitude"/>
+          </div>
+          <div className="city_cost">
+            <label htmlFor="">Tour Cost</label>
+            <input onChange={(e) => handleChange(e, setCity)} name="cost" type="number" placeholder="Tour Cost"/>
           </div>
           <input onClick={(e) => {
             e.preventDefault()

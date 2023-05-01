@@ -10,11 +10,11 @@ const Favourites = () => {
   return (
     <section className="favourites">
       <h1>Favourite Cities</h1>
-      <div>
+      {/* <div>
         {countries.map((country, index) => (
           <Destination key={index} country={country} />
         ))}
-      </div>
+      </div> */}
     </section>
   )
 }

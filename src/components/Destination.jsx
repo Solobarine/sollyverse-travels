@@ -1,17 +1,27 @@
-import './Destination.css';
-import Like from './Like';
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleLike } from '../effects'
+import postLike from '../utils/likeDestination'
+import './Destination.css'
 
-const Destination = (destination) => {
+const Destination = (city) => {
+  console.log(city)
+  const user = useSelector(state => state.user.user)
+  const dispatch = useDispatch()
+
   return (
     <section className="destination">
       <figure id="images">
-        <img src={destination.country.image} alt="Country"/>
+        <img src={`http://localhost:3005${city.city.images[2]}`} alt="City"/>
       </figure>
         <div className="destinationBio">
-          <h5 id="destinationname">{destination.country.country}</h5>
-          <p id="destinationlocation">{destination.country.city}</p>
-          <p className="destinationCost">${destination.country.cost}/wk</p>
-          <Like />
+          <p id="destinationname">{city.city.country}</p>
+          <p id="destinationlocation">{city.city.name}</p>
+          <p className="destinationCost">${city.city.cost}/wk</p>
+          <i onClick={(e) => {
+            e.preventDefault()
+            postLike(e, dispatch, {destinationId: city.city._id, destination: city.city.name, email: user.email})
+            toggleLike(e)
+          }} className='fa-regular fa-heart' />
         </div>
     </section>
   )

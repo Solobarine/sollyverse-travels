@@ -5,6 +5,8 @@ import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import {useDispatch, useSelector} from 'react-redux';
 import { countries } from 'countries-list';
 import Loading from './Loading';
+import { toggleLike } from '../effects';
+import postLike from '../utils/likeDestination';
 import { save_id } from '../utils/helpers';
 import countryAsyncThunk from '../redux/features/apiCalls/country';
 import './Country.css'
@@ -21,11 +23,12 @@ const Country = () => {
 
   const country_id = localStorage.getItem("country_id")
   const country = useSelector(state => state.country.country.item)
+  const likes = useSelector(state => state.country.country.likes)
   const ciudad = useSelector(state => state.country.country.cities)
   const status = useSelector(state => state.country.country.status)
+  const user = useSelector(state => state.user)
+  const email = user.user.email
   const dispatch = useDispatch()
-
-  console.log(ciudad)
 
   const checkCountry = (pais) => {
     return countries[pais].name === country.name
@@ -42,17 +45,6 @@ const Country = () => {
    
     latitude = country.latitude.split(' ')
     lat = latitude.shift().slice(0, -1)
-  }
-
-
-  const HandleClick = (e) => {
-    if (e.target.classList.contains('fa-regular')) {
-      e.target.classList.remove('fa-regular')
-      e.target.classList.add('fa-solid')
-    } else if (e.target.classList.contains('fa-solid')) {
-      e.target.classList.remove('fa-solid')
-      e.target.classList.add('fa-regular')
-    }
   }
 
   useEffect(() => {
@@ -80,22 +72,31 @@ const Country = () => {
             </Marker>
         </MapContainer>}
       </div>
-      {(ciudad.length !== 0) && <div id="countryCities">
-        <h2>Cities to Explore</h2>
-      <div className="countryCities">
-        { ciudad.map((item, index) =>(
-          <div key={index} className="countryCity" onMouseEnter={() => save_id("city_id", item._id)}>
-            <img src={item.images[0]} alt="City"/>
-            <div>
-              <h4>{item.name}</h4>
-              <i onClick={HandleClick} className="fa-regular fa-heart" />
-              <Link to={`/city/${item._id}`}><input type="submit" value="Book Tour"/></Link>
-            </div>
-            </div>
-          ))
-        }
+      {
+        (ciudad.length !== 0) &&
+        <div id="countryCities">
+          <h2>Cities to Explore</h2>
+          <div className="countryCities">
+            { ciudad.map((item, index) =>(
+              <div key={index} className="countryCity" onMouseEnter={() => save_id("city_id", item._id)}>
+                <img src={`http://localhost:3005${item.images[0]}`} alt="City"/>
+                <div>
+                  <h4>{item.name}</h4>
+                  <i onClick={(e) => {
+                    e.preventDefault()
+                    postLike(e, dispatch, {destinationId: item._id, destination: item.name, email})
+                    toggleLike(e)
+                  }} className="fa-regular fa-heart" />
+                  <Link to={`/city/${item._id}`}>
+                    <input type="submit" value="Book Tour"/>
+                  </Link>
+                </div>
+              </div>
+              ))
+            }
           </div>
-      </div>}
+        </div>
+      }
       <div id="countryInfo">
         <div className="info">
           <i className="fa-solid fa-location" />
@@ -119,8 +120,12 @@ const Country = () => {
           <h3>Language</h3>
         </div>
         <div className="info">
-          <i onClick={HandleClick} ref={likeCountry} className="fa-regular fa-heart likeCountry" />
-          <p>27</p>
+          <i onClick={(e) => {
+            e.preventDefault()
+            postLike(e, dispatch, {destinationId: country._id, destination: country.name, email})
+            toggleLike(e)
+          }} ref={likeCountry} className="fa-regular fa-heart likeCountry" />
+          <p>{(likes) ? likes : 0}</p>
           <h3>Like</h3>
         </div>
       </div>

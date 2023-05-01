@@ -7,9 +7,19 @@
   text-align: center;
 }
 
+#no_reserves {
+  margin-top: 150px;
+}
+
+#no_reserves > * {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--text-gray);
+}
+
 .reservations .reserves {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 250px));
   padding: 20px;
   gap: 20px;
 }

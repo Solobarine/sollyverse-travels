@@ -81,7 +81,8 @@
 }
 
 #adminDestinations form > input {
-  background-color: #20b970;
+  grid-column: 1/ 1;
+  background-color: var(--secondary);
   padding: 15px;
   border: none;
   color: #fff;
@@ -104,6 +105,10 @@
 .showDestination {
   opacity: 1;
   z-index: 5;
+}
+
+.city_cost {
+  grid-area: 2/2/ span 1/ span 1;
 }
 
 #country_error {

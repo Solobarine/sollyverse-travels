@@ -37,14 +37,25 @@
   font-size: 13px;
 }
 
-.destinationBio button {
+#destinationname {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.destinationBio i {
   grid-area: 1/2/span 3/span 1;
-  font-size: 15px;
+  position: absolute;
+  font-size: 18px;
+  top: 30%;
+  right: 5px;
   width: 30px;
   height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   margin: auto;
-  background-color: #c8e6c8;
+  background-color: var(--primary);
   border: 1px solid #888;
-  color: #20b970;
+  color: var(--secondary);
 }

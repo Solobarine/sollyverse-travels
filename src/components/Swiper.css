@@ -1,7 +1,7 @@
 .swiper {
   width: 100%;
-  min-width: 0;
-  height: 355px;
+  height: 100%;
+  /* height: 355px; */
 }
 
 .swiper-wrapper {
@@ -10,11 +10,10 @@
 
 .swiper-slide {
   width: 100%;
-  background-color: green;
-  display: flex;
+  /* display: flex; */
 }
 
-.swiper-slide img {
-  object-fit: cover;
+.country_images {
+  height: 100%;
   width: 100%;
 }

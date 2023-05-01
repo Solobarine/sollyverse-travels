@@ -5,6 +5,10 @@
   transition: 1s ease-in;
 }
 
+.fa-bars {
+  display: none;
+}
+
 .closeMenu {
   padding: 10px;
 }
@@ -179,3 +183,53 @@
 .menu.dark .toggle::before {
   left: 25px;
 }
+
+@media screen and (max-width: 900px) {
+  .fa-circle-chevron-right {
+    display: none;
+  }
+
+  .nav-links {
+    text-align: center;
+  }
+
+  .nav-links a i {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 401px) {
+  .menu {
+    position: fixed;
+    top: 82px;
+    z-index: 2;
+    transition: .6s ease;
+  }
+
+  .shrinkMenu {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .fa-bars {
+    position: fixed;
+    display: block;
+    top: 82px;
+    font-size: 20px;
+    z-index: 3;
+    margin-left: 1.5%;
+    margin-top: -10px;
+    background-color: var(--primary);
+    cursor: pointer;
+  }
+
+  .nav-links a p {
+    scale: 1;
+    font-size: 16px;
+  }
+  
+  .closeMenu .nav-links p {
+    opacity: 1;
+  }
+}
+

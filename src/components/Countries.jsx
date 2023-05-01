@@ -8,10 +8,14 @@ import './Countries.css';
 
 const Countries = () => {
   const countries = useSelector(state => state.country.countries.item)
+  const status = useSelector(state => state.country.countries.status)
   const dispatch = useDispatch()
-  useEffect(() => async () => (
+  
+  useEffect(() => async () => {
+    if (status === `idle`) {
     dispatch(countryAsyncThunk.showAll())
-  ), [dispatch])
+    }
+  }, [dispatch, status])
 
   console.log(countries)
 
@@ -21,7 +25,7 @@ const Countries = () => {
       <div key={index} className={`country country-${index}`} onMouseEnter={()=> save_id("country_id", item._id)}>
         <h2>{item.name}</h2>
         <Link  to={`/country/${item._id}`}
-           className='moreCountry'  >See More</Link>
+           className='moreCountry'>See More</Link>
       </div>
       ))}
     </section>

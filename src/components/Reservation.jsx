@@ -1,17 +1,19 @@
 import './Reservation.css'
 
-const Reservation = () => {
+const Reservation = (data) => {
+  const {reservation} = data
+  console.log(reservation)
   return (
     <section className="reservation">
       <div>
-        <img src="/landing/beach-3.jpg" alt=""/>
+        <img src={`http://localhost:3005${reservation.images[2]}`} alt=""/>
       </div>
-      <h3>Belo Horizonte</h3>
-      <h4>Brazil</h4>
-      <p className='dates'>15-02-2023</p>
-      <p className='dates'>07-03-2023</p>
-      <p>$470/wk</p>
-      <p>pending</p>
+      <h3>{reservation.city}</h3>
+      <h4>{reservation.country}</h4>
+      <p className='dates'>{reservation.startDate.substring(0, 10)}</p>
+      <p className='dates'>{reservation.endDate.substring(0, 10)}</p>
+      <p>${reservation.cost}/wk</p>
+      <p>{reservation.status}</p>
     </section>
   )
 }

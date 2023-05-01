@@ -1,33 +1,22 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './Dashboard.css';
 import Destination from './Destination';
+import cityAsyncThunk from '../redux/features/apiCalls/city';
 
 const Dashboard = () => {
-  const countries = [
-    {country: 'Egypt', city: 'Luxor', image: '/landing/desert.jpg', cost: 600},
-    {country: 'Japan', city: 'Tokyo', image: '/landing/tokyo.jpeg', cost: 850},
-    {country: 'USA', city: 'Columbia', image: '/landing/british-columbia.jpg', cost: 1100},
-    {country: 'Maldives', city: 'Flec-en-Flac', image: '/landing/beach-front.jpg', cost: 700}
-  ]
+  const dispatch = useDispatch()
 
   const user = useSelector(state => state.user)
-  const top_countries = useSelector(state => state.country.top_countries)
-
-  const firstName = user.user.firstName.split('').map((char, index) => {
-    if (index === 0) {
-       return char.toUpperCase()
-     } else {
-      return char
-     }
-  })
-
-  const lastName = user.user.lastName.split('').map((char, index) => {
-    if (index === 0) {
-       return char.toUpperCase()
-     } else {
-      return char
-     }
-  })
+  const firstName = user.user.firstName
+  const lastName = user.user.lastName
+  const top_cities = useSelector(state => state.city.top.item)
+  const error = useSelector(state => state.city.top.error)
+  console.log(error);
+  
+  useEffect(() => {
+    dispatch(cityAsyncThunk.showTopFour({email: user.user.email}))
+  }, [dispatch, user])
 
   return (
     <section className="dashboard">
@@ -53,11 +42,17 @@ const Dashboard = () => {
             <p className="viewall">View All  <i className="fa-solid fa-arrow-right"/></p>
           </div>
           <div id="dashboardCaurosel">
-            <div id="countryCaurosel">
-              {countries.map((country, index) => (
-                <Destination key={index} country={country} />
-              ))}
-            </div>
+
+              {
+                (error) ?  
+                  <h2 id='dashboard_error'>{error}</h2>
+                  :
+                  <div id="countryCaurosel">
+                    {top_cities.map((city, index) => (
+                      <Destination key={index} city={city} />
+                    ))}
+                  </div>
+              }
           </div>
         </div>
         <div className="featureDestination">
@@ -68,7 +63,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div id="hotDestination">
-            <h2>Hot Cities</h2>
+            <h2>Hot Countries</h2>
             <div></div>
           </div>
         </div>
@@ -79,8 +74,8 @@ const Dashboard = () => {
           <div className="dashboardProfile">
             <img src="/landing/businessWoman.jpg" alt="Profile"/>
           </div>
-          <h4>{firstName} {lastName}</h4>
-          <p>{user.user.nickName}</p>
+          <h4>{`${firstName[0].toUpperCase()}${firstName.substring(1)}`} {`${lastName[0].toUpperCase()}${lastName.substring(1)}`}</h4>
+          <p>{user.nickName}</p>
           <div className="wishList"></div>
         </div>
       </div>

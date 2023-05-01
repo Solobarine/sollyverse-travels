@@ -103,3 +103,30 @@
   pointer-events: auto;
   top: 0;
 }
+
+@media screen and (max-width: 401px) {
+  #settings {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .settings {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .settingsDiv {
+    position: relative;
+  }
+
+  .s-options {
+    position: absolute;
+    width: 100%;
+  }
+
+  .settingShow {
+    opacity: 1;
+    position: static;
+  }
+}

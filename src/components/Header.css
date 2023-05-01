@@ -81,3 +81,19 @@ header div {
   background-color: var(--red);
   color: var(--white)
 }
+
+@media screen and (max-width: 401px) {
+  header {
+    position: fixed;
+    width: 100vw;
+  }
+
+  .nav {
+    display: none;
+    gap: 15px;
+  }
+
+  .button {
+    display: none;
+  }
+}

@@ -1,10 +1,6 @@
 .dashboard {
   display: grid;
-  grid-template-columns: 1.5fr 0.5fr;
-}
-
-#dashboardDiv {
-  padding: 20px;
+  grid-template-columns: 1.5fr 0.4fr;
 }
 
 #dashboardIntro {
@@ -118,6 +114,12 @@
   justify-content: start;
 }
 
+#dashboard_error {
+  padding: 60px 0;
+  text-align: center;
+  color: var(--red);
+}
+
 #countryCaurosel .destination,
 .destination img {
   border-radius: 20px;
@@ -191,4 +193,66 @@
   height: 300px;
   border-radius: 10%;
   background-color: rgba(200, 230, 200, .7);
+}
+
+@media screen and (max-width: 900px) {
+  .dashboard {
+    width: 100%;
+  }
+
+  #dashboardSearch input[type=search] {
+    width: 50%;
+  }
+
+  #dashboardSearch > div {
+    width: 40px;
+  }
+
+  #dashboardSearch input[type=submit] {
+    width: 80px;
+  }
+
+  .placeLink {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 401px) {
+  #dashboardDiv {
+    width: 100vw;
+  }
+
+  #dashboardIntro h2 {
+    margin-top: 40px;
+  }
+
+  #dashboardSearch {
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  #dashboardSearch input[type=search] {
+    width: 50%;
+  }
+
+  #dashboardSchedule {
+    display: none;
+  }
+
+  .dashplaces {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .placesLink {
+    width: 100%;
+    min-width: auto;
+
+  }
+
+  .viewall {
+    display: none;
+  }
 }

@@ -5,12 +5,16 @@
   width: 80%;
   margin: auto;
   gap: 20px;
+  padding: 20px 0;
   position: relative;
 }
 
 .countryImages {
   grid-area: 1/1/span 1/span 2;
   width: 80%;
+  height: 380px;
+  border-radius: 30px;
+  overflow: hidden;
   margin: auto;
   margin-bottom: 40px;
 }
@@ -98,7 +102,7 @@
   cursor: pointer;
   border-radius: 12px;
   border: none;
-  background-color: #20b555;
+  background-color: var(--secondary);
 }
 
 .countryCity div a input:hover {
@@ -106,14 +110,14 @@
 }
 
 .countryCity div i {
-  color: #20b970;
+  color: var(--secondary);
   font-size: 25px;
   text-align: end;
   cursor: pointer;
 }
 
 #countryInfo {
-  background-color: #c8e6c8;
+  background-color: rgba(200, 230, 200, .7);
   width: 70%;
   left: 14%;
   margin: auto;
@@ -123,7 +127,7 @@
   position: absolute;
   padding: 15px;
   border-radius: 15px;
-  top: 300px;
+  top: 315px;
   box-shadow: 5px 10px 20px gray;
   z-index: 3;
 }
@@ -140,5 +144,45 @@
 
 .info i {
   font-size: 25px;
-  color: #20b870;
+  color: var(--secondary);
+}
+
+@media screen and (max-width: 401px) {
+  #country {
+    display: flex;
+    width: 370px;
+    flex-direction: column;
+    flex-basis: 100%;
+  }
+
+  .countryImages {
+    width: 90%;
+    height: 270px;
+    margin-bottom: auto;
+  }
+
+  .countryDescription h1 {
+    font-size: 25px;
+  }
+
+  .countryMap {
+    width: 80%;
+    margin: auto;
+  }
+
+  #countryInfo {
+    display: grid;grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    justify-content: center;
+    width: 80%;
+    top: auto;
+    left: auto;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: auto;
+  }
+
+  .info {
+    width: 48%;
+  }
 }

@@ -85,3 +85,15 @@ a img {
   text-align: center;
   
 }
+
+@media screen and (max-width: 401px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .socials {
+    width: 60%;
+    min-width: 180px;
+  }
+}
