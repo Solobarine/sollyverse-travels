@@ -60,7 +60,7 @@ function App() {
                 <Route path='/account/settings' element={<UserSettings/>} />
                 <Route path='/countries' element={<Countries/>} />
                 <Route path='/country/:id' element={<Country/>} />
-                <Route path='/city/:id' element={<City/>} />
+                <Route exact path='/city/:id' element={<City/>} />
               </Route>
               <Route path='*' element={<NotFound/>} />
             </Route>

@@ -17,7 +17,7 @@ const AdminSignUp = () => {
     <section className="adminSignUp">
       <div>
         <div id="admin_register_image">
-          <img src="/admin_register.jpg" alt="admin signup"/>
+          <img src="/admin_register.png" alt="admin signup"/>
         </div>
       </div>
       <div id="adminSignUp">

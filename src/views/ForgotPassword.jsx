@@ -8,7 +8,7 @@ const ForgotPassword = () => {
   return (
     <section id="forgotPassword">
       <div id="forgotPasswordImage">
-        <img src="/landing/password.jpg" alt="Key"/>
+        <img src="/landing/password.png" alt="Key"/>
       </div>
       <div className="forgotPasswordForm">
         <form>

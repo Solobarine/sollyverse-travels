@@ -23,6 +23,13 @@
 
 .page {
   display: grid;
+  margin-top: 83px;
   grid-template-columns: .3fr 1fr;
   transition: .4s ease;
+}
+
+@media screen and (max-width: 401px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
 }

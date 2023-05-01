@@ -91,3 +91,18 @@
   color: var(--red);
   text-align: center;
 }
+
+@media screen and (max-width: 401px) {
+  .loginPage {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #loginImage img {
+    width: 200px;
+  }
+
+  #loginForm form {
+    width: 80%;
+  }
+}

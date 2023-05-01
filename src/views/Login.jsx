@@ -20,8 +20,8 @@ const Login = () => {
 
   return (
     <section className="loginPage">
-<div id="loginImage">
-        <img src="/landing/login.png" alt="Login"/>
+      <div id="loginImage">
+        <img src="/user_login.png" alt="Login"/>
       </div>
       <div id="loginForm">
         <form>

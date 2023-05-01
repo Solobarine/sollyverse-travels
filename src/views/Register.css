@@ -71,3 +71,28 @@
   color: #20b970;
   text-decoration: none;
 }
+
+@media screen and (max-width: 401px) {
+  #registerImage {
+    display: none;
+  }
+
+  #registerForm {
+    width: 100%;
+  }
+
+  .formDiv p,
+  .formDiv h3 {
+    margin: 10px auto;
+  }
+
+  .basicKyc,
+  .addressAndMore {
+  grid-template-columns: 1fr;
+  }
+
+  .basicKyc div,
+.addressAndMore div {
+  margin: auto;
+}
+}

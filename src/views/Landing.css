@@ -218,11 +218,39 @@
   width: 100%;
 }
 
-/* .partners img:nth-child(3) {
-  width: 30%;
+@media screen and (max-width: 946px) {
+  #main img {
+    object-fit: cover;
+  }
+
+  #sub-bar {
+    display: none;
+  }
 }
 
-.partners img:nth-child(2),
-.partners img:nth-child(5) {
-  width: 55%;
-} */
+@media screen and (max-width: 401px) {
+  #main > div {
+    left: 5%;
+    width: 80%;
+  }
+
+  #main div p {
+    font-size: 16px;
+  }
+
+  #popular h2,
+  #popular p,
+  #aboutUs p {
+    width: 90%;
+  }
+
+  #popular p,
+  #aboutUs p {
+    font-size: 14px;
+  }
+
+  .partners {
+    width: 90%;
+  }
+}
+

@@ -20,7 +20,7 @@ const AdminLogin = () => {
     <section id="adminLogin">
       <div>
       <div id="admin_login_image">
-        <img src="/admin_login.jpg" alt="admin login" />
+        <img src="/admin_login.png" alt="admin login" />
       </div>
       </div>
         <div className="adminLogin">
