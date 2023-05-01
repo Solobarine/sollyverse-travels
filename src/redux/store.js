@@ -5,6 +5,7 @@ import userReducer from './features/user'
 import reservationReducer from './features/reservation'
 import reviewReducer from './features/review'
 import messageReducer from './features/message'
+import likeReducer from './features/like'
 
 // Import Admin Reducers
 import admin from "./features/adminReducer/admin"
@@ -22,6 +23,7 @@ const store = configureStore({
       message: messageReducer,
       reservation: reservationReducer,
       review: reviewReducer,
+      like: likeReducer,
       admin: admin,
       adminCity: adminCity,
       adminCountry: adminCountry,

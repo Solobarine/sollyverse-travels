@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { domain, apiCall } from "./country";
+import domain from "../../../config/config";
+import { apiCall } from "./country";
 import { api } from "../../../utils/api";
 
 const cityApiCall = {
@@ -10,7 +11,7 @@ const cityApiCall = {
     return apiCall(method, url, payload)
   },
   update: (payload) => {
-    const url = `${domain}/city/${payload._id}`
+    const url = `${domain}/city/${payload.name}`
     const method = 'PATCH'
     return apiCall(method, url, payload)
   },
@@ -45,9 +46,9 @@ const cityApiCall = {
     return apiCall(method, url, payload)
   },
   showTopFour: (payload) => {
-    const url = `${domain}/city/top`
+    const url = `${domain}/city/top/cities`
     const method = 'GET'
-    return apiCall(method, url, payload)
+    return api(method, url, payload)
   },
   showTopCities: (payload) => {
     const url = `${domain}/cities/top`

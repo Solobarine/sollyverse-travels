@@ -1,19 +1,21 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { domain, apiCall } from "./country"
+import domain from "../../../config/config"
+import { apiCall } from "./country"
+import { api } from "../../../utils/api"
 
 const reservationApiCall = {
   create: (payload) => {
-    const url = `${domain}/reservation`
+    const url = `${domain}/reservations`
     const method = 'POST'
     return apiCall(method, url, payload)
   },
   show: (payload) => {
-    const url = `${domain}/reservation/${payload._id}`
-    const method = 'POST'
-    return apiCall(method, url, payload)
+    const url = `${domain}/reservations`
+    const method = 'GET'
+    return api(method, url, payload)
   },
   cancel: (payload) => {
-    const url = `${domain}/reservation`
+    const url = `${domain}/reservations`
     const method = 'DELETE'
     return apiCall(method, url, payload)
   },

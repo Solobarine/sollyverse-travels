@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-
-const domain = 'http://localhost:3005'
+import domain from "../../../config/config"
 
 const userApiCalls = {
   register: async (payload) => {

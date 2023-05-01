@@ -6,6 +6,7 @@ const {create, show, cancel } = reservationAsyncThunk
 const initialState = {
   reservations: {
     item: [],
+    cities: [],
     error: [],
     status: 'idle',
     cancelStatus: 'idle'
@@ -48,11 +49,13 @@ const reservationSlice = createSlice({
     [show.fulfilled]: (state, actions) => {
       if (actions.payload.error) {
         state.reservations.item = []
+        state.reservations.cities = []
         state.reservations.status = 'Failed'
         state.reservations.error = actions.payload.error
         return
       } else {
         state.reservations.item = actions.payload.reservations
+        state.reservations.cities = actions.payload.cities
         state.reservations.status = 'Success'
         state.reservations.error = []
         return

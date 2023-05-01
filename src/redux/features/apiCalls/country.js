@@ -1,11 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import domain from "../../../config/config";
 import { api } from "../../../utils/api";
 
-export const domain = "http://localhost:3005"
 const auth = localStorage.getItem("authentication_token")
-
-console.log(auth)
-
 export const apiCall = async (method, url, payload) => {
 
   const options = {

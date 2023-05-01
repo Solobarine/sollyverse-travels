@@ -12,7 +12,7 @@ const initialState = {
   country: {
     item: [],
     cities: [],
-    likes: '',
+    likes: 0,
     status: 'idle',
     error: []
   }
@@ -22,7 +22,12 @@ const countrySlice = createSlice({
   name: 'userCountry',
   initialState,
   reducers: {
-
+    increment: (state) => {
+      state.country.likes += 1
+    },
+    decrement: (state) => {
+      state.country.likes -= 1
+    }
   },
   extraReducers: {
     [showAll.pending]: (state) => {
@@ -67,5 +72,7 @@ const countrySlice = createSlice({
     }
   }
 })
+
+export const {increment, decrement} = countrySlice.actions
 
 export default countrySlice.reducer
