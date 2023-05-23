@@ -5,6 +5,8 @@ import { handleClick, handleChange, toBase64 } from "../effects"
 import cityAsyncThunk from "../redux/features/apiCalls/city"
 import countryAsyncThunk from "../redux/features/apiCalls/country"
 import './AdminDestination.css'
+import { clear_error, clear_country_message } from "../redux/features/adminReducer/country"
+import { clear_city_error, clear_message } from "../redux/features/adminReducer/city"
 
 const {create, update} = cityAsyncThunk
 
@@ -59,6 +61,14 @@ const AdminCreateDestinations = () => {
   })
   city.images = images
   const dispatch = useDispatch()
+
+  const create_city_error = useSelector((state) => state.adminCity.city.create_error)
+  const update_city_error = useSelector((state) => state.adminCity.city.update_error)
+  const create_country_error = useSelector((state) => state.adminCountry.country.create_error)
+  const update_country_error = useSelector((state) => state.adminCountry.country.update_error)
+
+  const city_success = useSelector((state) => state.adminCity.city.message)
+  const country_success = useSelector((state) => state.adminCountry.country.message)
 
   
   return (
@@ -133,6 +143,19 @@ const AdminCreateDestinations = () => {
             }
             city.images = photos
             dispatch(create(city))}} type="submit" value="Add City"/>
+            {city_success && <section className="success_message">
+              <p>{city_success}</p>
+              <p onClick={() => {
+                dispatch(clear_message(1))
+              }}>&times;</p>
+            </section>}
+            {create_city_error && <section className={create_city_error && 'errors'}>
+              <p>{create_city_error}</p>
+              <p onClick={() => {
+                console.log('i')
+                dispatch(clear_city_error(1))
+              }} className='clear_button'>&times;</p>
+            </section>}
         </form>
 
         <form ref={createCountry} className="create hideDestination">
@@ -181,7 +204,18 @@ const AdminCreateDestinations = () => {
             country.name =  countryName.join(' ')
             dispatch(countryAsyncThunk.create(country))
             }} type="submit" value="Add Country"/>
-            <p id="country_message">{store_country.message}</p>
+            {country_success && <section className={country_success && 'country_success'}>
+              <p id="country_message">{store_country.message}</p>
+              <p onClick={() => {
+                dispatch(clear_country_message(2))
+              }} className="clear_button">&times;</p>
+            </section>}
+            {create_country_error && <section className={create_country_error && 'errors'}>
+              <p>{create_country_error}</p>
+              <p onClick={
+                dispatch(clear_error(2))
+              } className='clear_button'>&times;</p>
+            </section>}
         </form>
 
         <form ref={updateCity} className="create hideDestination">
@@ -218,6 +252,10 @@ const AdminCreateDestinations = () => {
             e.preventDefault()
             dispatch(update(city))
           }} type="submit" value="Update City"/>
+          {update_city_error && <section className={update_city_error && 'errors'}>
+            <p>{update_city_error}</p>
+            <p className='clear_button'>&times;</p>
+          </section>}
         </form>
 
         <form ref={updateCountry} className="create hideDestination">
@@ -254,6 +292,10 @@ const AdminCreateDestinations = () => {
             e.preventDefault()
             dispatch(countryAsyncThunk.update(country))
             }} type="submit" value="Update Country"/>
+            {update_country_error && <section className={update_country_error && 'errors'}>
+              <p>{update_country_error}</p>
+              <p className='clear_button'>&times;</p>
+            </section>}
         </form>
         <form ref={updateImage} className="create hideDestinations">
           <h2>Update Image</h2>
