@@ -79,6 +79,19 @@
   font-size: 22px;
 }
 
+#like_container {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+#city_likes {
+  font-weight: 800;
+  color: var(--darkgreen);
+}
+
 .cityReservation h2,
 .cityReview h2 {
   text-align: center;

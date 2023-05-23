@@ -1,9 +1,12 @@
 #adminHeader {
+  position: sticky;
+  top: 0;
   display: flex;
   text-align: center;
   justify-content: space-between;
   padding: 20px;
   background-color: #c8e6c8;
+  z-index: 10;
 }
 
 #adminHeader ul {
@@ -11,7 +14,7 @@
   display: flex;
   text-align: center;
   justify-content: space-between;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
 }
 
@@ -28,7 +31,7 @@
 }
 
 #links_1 li a {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 #links_1 li a,

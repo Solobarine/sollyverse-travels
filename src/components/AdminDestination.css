@@ -121,3 +121,32 @@
 #country_message {
   color: var(--secondary);
 }
+
+
+.errors,
+.success_message {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: auto;
+  font-weight: 800;
+  top: 80px;
+  padding: 10px;
+  color: var(--white);
+  background-color: var(--red);
+  min-width: 400px;
+  border-radius: 10px;
+  transition: .4s ease;
+}
+
+.clear_button {
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.success_message {
+  background-color: var(--green);
+}

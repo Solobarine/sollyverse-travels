@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { countries } from 'countries-list';
 import Loading from './Loading';
 import { toggleLike } from '../effects';
-import postLike from '../utils/likeDestination';
+import postLike, { postLikeCountry } from '../utils/likeDestination';
 import { save_id } from '../utils/helpers';
 import countryAsyncThunk from '../redux/features/apiCalls/country';
 import './Country.css'
@@ -122,7 +122,7 @@ const Country = () => {
         <div className="info">
           <i onClick={(e) => {
             e.preventDefault()
-            postLike(e, dispatch, {destinationId: country._id, destination: country.name, email})
+            postLikeCountry(e, dispatch, {destinationId: country._id, destination: country.name, email})
             toggleLike(e)
           }} ref={likeCountry} className="fa-regular fa-heart likeCountry" />
           <p>{(likes) ? likes : 0}</p>

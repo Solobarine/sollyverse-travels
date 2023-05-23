@@ -15,6 +15,7 @@ const Login = () => {
   const dispatch = useDispatch()
   let is_logged_in = useSelector(state => state.user.login)
   const error = useSelector(state => state.user.error)
+  console.log(error);
   const navigate = useNavigate()
   const payload = {email, password}
 
@@ -33,8 +34,7 @@ const Login = () => {
           <Link onClick={(e) => {
             e.preventDefault()
             dispatch(login(payload)).then((res) => {
-              if (res.payload.user) is_logged_in = true
-              if (is_logged_in) navigate("/account/dashboard")
+              if (res.payload.ok) navigate("/account/dashboard")
               })
             }} id="loginSubmit">Login</Link>
 <span className="remember"><input type="checkbox" name="remember" id=""/><p id="remain">Remember Me</p>

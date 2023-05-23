@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper';
 import 'swiper/css';
@@ -28,17 +28,26 @@ const City = () => {
 
   const stars = useRef()
 
-  const city_id = localStorage.getItem("city_id")
+  // const city_id = localStorage.getItem("city_id")
+  // console.log(city_id);
+  const city_id = useParams()
+  console.log(city_id)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
+  console.log(useSelector(state => state.city));
+
   const user = useSelector(state => state.user.user)
   const city = useSelector(state => state.city.city.item)
+  const city_likes = useSelector(state => state.city.city.likes)
   const status = useSelector(state => state.city.city.status)
   const top_reviews = useSelector(state => state.review.top.item)
   const has_reviewed = useSelector(state => state.review.has_reviewed.value)
   const user_review = useSelector(state => state.review.has_reviewed.review)
   const top_cities = useSelector(state => state.city.top.item)
+  console.log(has_reviewed);
+  console.log(city);
+  console.log(useSelector(state => state.city.city));
 
  let rating = 0
 
@@ -47,17 +56,18 @@ const City = () => {
  const reviewData = {destinationId: city._id, firstName: nameOne, lastName: nameTwo, email: user.email, rating, title, review} 
 
   useEffect(() => {
-    dispatch(cityAsyncThunk.showOne({_id: city_id}))
+    dispatch(cityAsyncThunk.showOne({_id: city_id.id}))
     dispatch(cityAsyncThunk.showTopFour({email: user.email}))
   }, [dispatch, city_id, user.email])
 
   useEffect(() => {
-    dispatch(reviewAsyncThunk.showFive({_id: city_id}))
-    dispatch(reviewAsyncThunk.showOneReview({_id: city_id, email: user.email}))
+    dispatch(reviewAsyncThunk.showFive({_id: city_id.id}))
+    dispatch(reviewAsyncThunk.showOneReview({_id: city_id.id, email: user.email}))
   },[dispatch, city_id, user.email])
 
+  // Set review to current user review
   useEffect(() => {
-    if (user_review !== null) {
+    if (user_review) {
       setNameOne(user_review.firstName)
       setNameTwo(user_review.lastName)
       setTitle(user_review.title)
@@ -70,9 +80,10 @@ const City = () => {
     }
   }, [user_review, city])
 
+// Update Stars if User already liked City
   window.requestAnimationFrame(() => {
     console.log(has_reviewed)
-    if (user_review !== null) {
+    if (user_review) {
       const star = Array.from(stars.current.querySelectorAll('.fa-regular.fa-star'))
       if (star.length === 5) {
         star.map((item, index) => {
@@ -88,8 +99,6 @@ const City = () => {
     return
   }
   })
-
-
 
   let longitude, lon, latitude, lat
 
@@ -116,12 +125,14 @@ const City = () => {
           </div>
         </div>
         <div className="cityBio">
-          <span>{(city.likes) ? city.likes : 0} likes</span>
-          <i onClick={(e) => {
-            e.preventDefault()
-            postLike(e, dispatch, {destinationId: city._id, destination: city.name, email: user.email})
-            toggleLike(e)
-            }} className="fa-regular fa-heart"/>
+          <div id="like_container">
+            <span id="city_likes">{(city_likes) ? city_likes : 0} likes</span>
+            <i onClick={(e) => {
+              e.preventDefault()
+              postLike(e, dispatch, {destinationId: city._id, destination: city.name, email: user.email})
+              toggleLike(e)
+              }} className="fa-regular fa-heart"/>
+          </div>
           <h1>{city.name}</h1>
           <p>{city.description}</p>
         </div>
@@ -150,12 +161,11 @@ const City = () => {
                   <i onClick={(e) => {
                     e.preventDefault()
                     postLike(e, dispatch, {destinationId: item._id, destination: item.name, email: user.email})
-                    toggleLike()
+                    toggleLike(e)
                     }} className="fa-regular fa-heart"/>
                   <p>${item.cost}/wk</p>
                   <Link onClick={(e) => {
                     e.preventDefault()
-                    localStorage.setItem('city_id', item._id)
                     navigate(`/city/${item._id}`)
                   }} to={`/city/${item._id}`}>See More</Link>
               </div>
@@ -181,7 +191,7 @@ const City = () => {
             slidesPerView={1}
             scrollbar={{ draggable: true }}
           >
-            {top_reviews.map((review, index) => {
+            {(top_reviews) && top_reviews.map((review, index) => {
               return <SwiperSlide key={index}>
                 <div key={index} className="rev">
                   <p>{review.firstName[0].toUpperCase() + review.firstName.substring(1)} {review.lastName[0].toUpperCase() + review.lastName.substring(1)}</p>
@@ -207,7 +217,7 @@ const City = () => {
             <input onChange={(e) => setNameTwo(e.target.value)} type="text" value={nameTwo} placeholder='Last Name'/>
             <input onChange={(e) => setTitle(e.target.value)} type="text" value={title} placeholder='Review Title'/>
             <textarea onChange={(e) => setReview(e.target.value)} name="review" value={review} placeholder='Give a Review'></textarea>
-            {(!has_reviewed) ? <input onClick={(e) => {
+            {(!user_review) ? <input onClick={(e) => {
               e.preventDefault()
               const star = Array.from(stars.current.querySelectorAll('.fa-solid.fa-star'))
               reviewData.rating = star.length
@@ -234,7 +244,7 @@ const City = () => {
         <p>Redirecting to Countries</p>
         {setTimeout(() => {
           navigate('/countries')
-        })}
+        }, 3000)}
       </>
     )
   }
