@@ -34,14 +34,14 @@ const countrySlice = createSlice({
       state.countries.status = 'Pending'
     },
     [showAll.fulfilled]: (state, actions) => {
-      if (actions.payload.error) {
+      if (!actions.payload.ok) {
         console.log(actions)
         state.countries.item = []
         state.countries.status = 'Failed'
-        state.countries.error = actions.payload.error
+        state.countries.error = actions.payload.data.error
       } else {
         console.log(actions)
-        state.countries.item = actions.payload.countries
+        state.countries.item = actions.payload.data.countries
         state.countries.status = 'Successful'
         state.countries.error = []
       }
@@ -53,17 +53,17 @@ const countrySlice = createSlice({
       state.country.status = 'Pending'
     },
     [showOne.fulfilled]: (state, actions) => {
-      if (!actions.payload || actions.payload.error) {
+      if (!actions.payload.ok) {
         state.country.item = []
         state.country.status = 'Failed'
-        state.country.error = actions.payload.error
+        state.country.error = actions.payload.data.error
       } else {
         state.country.item = initialState
-        state.country.item = actions.payload.country
-        state.country.cities = actions.payload.cities
-        state.country.likes = actions.payload.likes
+        state.country.item = actions.payload.data.country
+        state.country.cities = actions.payload.data.cities
+        state.country.likes = actions.payload.data.likes
         state.country.status = 'Success'
-        localStorage.setItem("country_id", actions.payload.country._id)
+        localStorage.setItem("country_id", actions.payload.data.country._id)
         state.country.error = []
       }
     },

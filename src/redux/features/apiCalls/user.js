@@ -13,10 +13,16 @@ const userApiCalls = {
       body: JSON.stringify(payload)
     }
 
-    const response = await fetch(url, options).then((user) => {
-        return user.json()
-    }).catch((err) => console.log(err))
-    return response
+    try {
+      const response = await fetch(url, options)
+      console.log(response)
+      const { status, ok } = response
+      const data = await response.json()
+      console.log(data)
+      return {status, ok, data}
+    } catch(error) {
+      return { ok: false, data: { error: `Server down. Try again later` } }
+    }
   },
   login: async (payload) => {
     const url = `${domain}/login`
@@ -29,10 +35,16 @@ const userApiCalls = {
       body: JSON.stringify(payload)
     }
 
-    const response = await fetch(url, options).then((user) => {
-      return user.json()
-    }).catch(err => console.log(err))
-    return response
+    try {
+      const response = await fetch(url, options)
+      console.log(response)
+      const { status, ok } = response
+      const data = await response.json()
+      console.log(data)
+      return {status, ok, data}
+    } catch(error) {
+      return { ok: false, data: { error: `Server down. Try again later` } }
+    }
   },
   autoLogin: async (payload) => {
     const url = `${domain}/token/login`
@@ -44,10 +56,16 @@ const userApiCalls = {
         'authentication_token': payload
       },
     }
-    const response = await fetch(url, options).then((user) => {
-      return user.json()
-    }).catch(err => console.log(err))
-    return response
+    try {
+      const response = await fetch(url, options)
+      console.log(response)
+      const { status, ok } = response
+      const data = await response.json()
+      console.log(data)
+      return {status, ok, data}
+    } catch(error) {
+      return { ok: false, data: { error: `Server down. Try again later` } }
+    }
   }
 }
 

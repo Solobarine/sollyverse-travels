@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import domain from "../../../config/config";
-import { api } from "../../../utils/api";
+import getData from "../../../hooks/getData";
+import sendData from "../../../hooks/sendData";
 
 const auth = localStorage.getItem("authentication_token")
 export const apiCall = async (method, url, payload) => {
@@ -23,42 +24,42 @@ const countryApiCall = {
   create: async (payload) => {
     const url = `${domain}/country`
     const method = 'POST'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   update: async (payload) => {
     const url = `${domain}/admin/update/${payload._id}`
     const method = 'PUT'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   delete: async (payload) => {
     const url = `${domain}/admin/country/${payload._id}`
     const method = 'DELETE'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   showAll: async (payload) => {
     const url = `${domain}/country`
     const method = 'GET'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   showOne: async (payload) => {
     const url = `${domain}/country/${payload._id}`
     const method = 'GET'
-    return api(method, url, payload)
+    return getData(method, url, payload)
   },
   adminShowOne: async (payload) => {
     const url = `${domain}/admin/country/${payload._id}`
     const method = 'POST'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   adminShowAll: async (payload) => {
     const url = `${domain}/admin/country`
     const method = 'POST'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   showTopCountries: (payload) => {
     const url = `${domain}/admin/country/top`
     const method = 'POST'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   }
 }
 

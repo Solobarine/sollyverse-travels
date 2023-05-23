@@ -24,8 +24,8 @@ const messageSlice = createSlice({
   },
   extraReducers: {
     [create.fulfilled]: (state, actions) => {
-      if (actions.payload.error) {
-        state.message.error = actions.payload.error
+      if (!actions.payload.ok) {
+        state.message.error = actions.payload.data.error
         state.message.status = 'Failed'
         return
       } else {
@@ -36,7 +36,7 @@ const messageSlice = createSlice({
       }
     },
     [create.rejected]: (state, actions) => {
-      state.message.error = actions.payload.error
+      state.message.error = actions.payload.data.error
       state.message.status = 'Failed'
     },
     [adminShowOne.pending]: (state) => {
@@ -44,8 +44,8 @@ const messageSlice = createSlice({
       state.message.error = []
     },
     [adminShowOne.fulfilled]: (state, actions) => {
-      if (actions.payload.error) {
-        state.message.error = actions.payload.error
+      if (!actions.payload.ok) {
+        state.message.error = actions.payload.data.error
         state.message.status = 'Failed'
         return
       } else {
@@ -56,7 +56,7 @@ const messageSlice = createSlice({
       }
     },
     [adminShowOne.rejected]: (state, actions) => {
-      state.message.error = actions.payload.error
+      state.message.error = actions.payload.data.error
       state.message.status = 'Failed'
     },
     [adminShowMessages.pending]: (state) => {
@@ -64,8 +64,8 @@ const messageSlice = createSlice({
       state.messages.error = []
     },
     [adminShowMessages.fulfilled]: (state, actions) => {
-      if (actions.payload.error) {
-        state.messages.error = actions.payload.error
+      if (!actions.payload.ok) {
+        state.messages.error = actions.payload.data.error
         state.messages.status = 'Failed'
         return
       } else {
@@ -76,7 +76,7 @@ const messageSlice = createSlice({
       }
     },
     [adminShowMessages.rejected]: (state, actions) => {
-      state.messages.error = actions.payload.error
+      state.messages.error = actions.payload.data.error
       state.messages.status = 'Failed'
     }
   }

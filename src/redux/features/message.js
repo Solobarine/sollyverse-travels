@@ -21,12 +21,12 @@ const messageSlice = createSlice({
       state.status = 'Pending'
     },
     [view.fulfilled]: (state, actions) => {
-      if (!actions.payload || actions.payload.error) {
+      if (!actions.payload.ok) {
         state.messages = []
         state.status = 'Failed'
-        state.error = actions.payload.error
+        state.error = actions.payload.data.error
       } else {
-        state.messages = actions.payload.messages
+        state.messages = actions.payload.data.messages
         state.status = 'Success'
         state.error = []
       }
@@ -38,7 +38,7 @@ const messageSlice = createSlice({
       state.status = 'Pending'
     },
     [markAsRead.fulfilled]: (state, actions) => {
-      if (actions.payload || actions.payload.error) {
+      if (!actions.payload.ok) {
         return state
       } else {
         state = state.messages.map((message) => { // eslint-disable-line

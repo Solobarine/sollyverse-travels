@@ -27,34 +27,34 @@ const reservationSlice = createSlice({
       state.reservations.error = []
     },
     [create.fulfilled]: (state, actions) => {
-      if (actions.payload.error) {
+      if (!actions.payload.ok) {
         state.reservations.value = []
         state.reservations.status = 'Failed'
-        state.reservations.error = actions.payload.error
+        state.reservations.error = actions.payload.data
         return
       } else {
-        state.reservations.value = actions.payload.reservations
+        state.reservations.value = actions.payload.data.reservations
         state.reservations.status = 'Success'
         state.reservations.error = []
         return
       }
     },
     [show.rejected]: (state, actions) => {
-      state.reservations.error = actions.payload.error
+      state.reservations.error = actions.payload.data.error
       state.reservations.status = 'Failed'
     },
     [show.pending]: (state) => {
       state.reservations.status = 'Pending'
     },
     [show.fulfilled]: (state, actions) => {
-      if (actions.payload.error) {
+      if (!actions.payload.ok) {
         state.reservations.item = []
         state.reservations.cities = []
         state.reservations.status = 'Failed'
-        state.reservations.error = actions.payload.error
+        state.reservations.error = actions.payload.data
         return
       } else {
-        state.reservations.item = actions.payload.reservations
+        state.reservations.item = actions.payload.data.reservations
         state.reservations.cities = actions.payload.cities
         state.reservations.status = 'Success'
         state.reservations.error = []
@@ -73,7 +73,7 @@ const reservationSlice = createSlice({
       state.reservations.error = []
     },
     [cancel.rejected]: (state, actions) => {
-      state.reservations.error = actions.payload.error
+      state.reservations.error = actions.payload.data
       state.reservations.cancelStatus = 'Failed'
     }
   }

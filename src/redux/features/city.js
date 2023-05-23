@@ -8,7 +8,7 @@ const { createLike, cancelLike } = likeAsyncThunk
 const initialState = {
   city: {
     item: [],
-    likes: '',
+    likes: 0,
     error: [],
     status: 'idle'
   },
@@ -37,21 +37,33 @@ const citySlice = createSlice({
     show_one: () => showOne,
     show_favourite: () => showFavourite,
     show_top_four: () => showTopFour,
+    incrementLike: (state) => {
+      state.city.likes += 1
+    },
+    decrementLike: (state) => {
+      // if (state.city.likes === 0) {
+      //   return state.city.likes
+      // } else {
+        state.city.likes -= 1
+      // }
+    }
   },
   extraReducers: {
     [showOne.pending]: (state) => {
       state.city.status = 'Pending'
     },
     [showOne.fulfilled]: (state, actions) => {
-      if (actions.payload === undefined || actions.payload.error) {
-        state.city.error = actions.payload.error || undefined
+      console.log(actions.payload);
+      if (!actions.payload.ok) {
+        state.city.error = actions.payload.data.error
         state.city.status = 'Failed'
         state.city.item = []
         return
       } else {
-        state.city.item = actions.payload
+        // console.log(actions.payload)
+        state.city.item = actions.payload.data
         localStorage.setItem("city_id", actions.payload._id)
-        state.city.likes = actions.payload.likes
+        state.city.likes = parseInt(actions.payload.data.likes) 
         state.city.status = 'Success'
         state.city.error = []
       }
@@ -63,12 +75,12 @@ const citySlice = createSlice({
       state.cities.status = 'Pending'
     },
     [showAll.fulfilled]: (state, actions) => {
-      if (actions.payload === undefined || actions.payload.error) {
+      if (!actions.payload.ok) {
         state.cities.items = []
         state.cities.status = 'Failed'
-        state.cities.error = actions.payload.error || undefined
+        state.cities.error = actions.payload.data.error
       } else {
-        state.cities.items = actions.payload.cities
+        state.cities.items = actions.payload.data.cities
         state.cities.status = 'Success'
         state.cities.error = []
       }
@@ -80,12 +92,12 @@ const citySlice = createSlice({
       state.favourites.status = 'Pending'
     },
     [showFavourite.fulfilled]: (state, actions) => {
-      if (actions.payload === undefined || actions.payload.error) {
+      if (!actions.payload.ok) {
         state.favourites.item = []
         state.favourites.status = 'Failed'
-        state.favourites.error = actions.payload.error || undefined
+        state.favourites.error = actions.payload.data.error
     } else {
-        state.favourites.item = actions.payload.cities
+        state.favourites.item = actions.payload.data.cities
         state.favourites.status = 'Success'
         state.favourites.error = []
       }
@@ -97,12 +109,12 @@ const citySlice = createSlice({
       state.top.status = 'Pending'
     },
     [showTopFour.fulfilled]: (state, actions) => {
-      if (actions.payload.error) {
+      if (!actions.payload.ok) {
         state.top.status = 'Failed'
-        state.top.error = actions.payload.error
+        state.top.error = actions.payload.data.error
         return
       } else {
-        state.top.item = actions.payload.cities
+        state.top.item = actions.payload.data.cities
         state.top.status = 'Success'
         state.top.error = []
         return
@@ -128,6 +140,6 @@ const citySlice = createSlice({
   }
 })
 
-export const { show_one, show_favourite, show_top_four, like, unlike } = citySlice.actions
+export const { show_one, show_favourite, show_top_four, incrementLike, decrementLike } = citySlice.actions
 
 export default citySlice.reducer

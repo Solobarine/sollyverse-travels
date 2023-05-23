@@ -36,13 +36,13 @@ const reviewSlice = createSlice({
       state.top.status = 'Pending'
     },
     [create.fulfilled]: (state, actions) => {
-      if (actions.payload.error) {
+      if (!actions.payload.ok) {
         state.review.item = []
         state.review.status = 'Failed'
-        state.review.error = actions.payload.error
+        state.review.error = actions.payload.data.error
         return
       } else {
-        state.review.item = actions.payload.reviews
+        state.review.item = actions.payload.data.reviews
         state.review.status = 'Success'
         state.review.error = []
         return
@@ -55,13 +55,13 @@ const reviewSlice = createSlice({
       state.review.status = 'Pending'
     },
     [update.fulfilled]: (state, actions) => {
-      if (actions.payload.error) {
+      if (!actions.payload.ok) {
         state.review.item = []
         state.review.status = 'Failed'
-        state.review.error = actions.payload.error
+        state.review.error = actions.payload.data.error
         return
       } else {
-        state.review.item = actions.payload.reviews
+        state.review.item = actions.payload.data.reviews
         state.review.status = 'Success'
         state.review.error = []
         return
@@ -74,14 +74,14 @@ const reviewSlice = createSlice({
       state.top.status = 'Pending'
     },
     [showFive.fulfilled]: (state, actions) => {
-      if (actions.payload.error) {
+      if (!actions.payload.ok) {
         console.log(actions.payload)
         state.top.item = []
         state.top.status = 'Failed'
-        state.top.error = actions.payload.error
+        state.top.error = actions.payload.data.error
         return
       } else {
-        state.top.item = actions.payload.reviews
+        state.top.item = actions.payload.data.eviews
         state.top.status = 'Success'
         state.top.error = []
         return
@@ -94,13 +94,13 @@ const reviewSlice = createSlice({
       state.reviews.status = 'Pending'
     },
     [showAll.fulfilled]: (state, actions) => {
-      if (actions.payload.error) {
+      if (!actions.payload.ok) {
         state.reviews.item = []
         state.reviews.status = 'Failed'
-        state.reviews.error = actions.payload.error
+        state.reviews.error = actions.payload.data.error
         return
       } else {
-        state.reviews.item = actions.payload.reviews
+        state.reviews.item = actions.payload.data.reviews
         state.reviews.status = 'Success'
         state.reviews.error = []
         return
@@ -111,13 +111,13 @@ const reviewSlice = createSlice({
     },
     [showOneReview.fulfilled]: (state, actions) => {
       console.log(actions.payload.error)
-      if (actions.payload.error === false) {
+      if (!actions.payload.ok) {
         state.has_reviewed.value = false
         state.has_reviewed.review = null
         return
       } else {
         state.has_reviewed.value = true
-        state.has_reviewed.review = actions.payload.review
+        state.has_reviewed.review = actions.payload.data.review
         return
       }
     },

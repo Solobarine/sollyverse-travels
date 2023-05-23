@@ -18,9 +18,9 @@ const userSlice = createSlice({
       state.status = 'loading'
     },
     [register.fulfilled]: (state, actions) => {
-      if (actions.payload === undefined || actions.payload.length === 0 || actions.payload.error) {
+      if (!actions.payload.ok) {
         state.status = 'failed'
-        state.error = actions.payload
+        state.error = actions.payload.data
         state.login = false
         state.user = []
         return
@@ -29,8 +29,8 @@ const userSlice = createSlice({
         console.log(actions)
         state.error = []
         state.login = true
-        state.user = actions.payload.user
-        localStorage.setItem("authentication_token", actions.payload.token)
+        state.user = actions.payload.data.user
+        localStorage.setItem("authentication_token", actions.payload.data.token)
         return
       }
     },
@@ -42,17 +42,18 @@ const userSlice = createSlice({
       state.status = 'loading'
     },
     [login.fulfilled]: (state, actions) => {
-      if (actions.payload === undefined || actions.payload.length === 0 || actions.payload.error) {
+      console.log(actions.payload);
+      if (!actions.payload.ok) {
         state.status = 'Failed'
-        state.error = actions.payload.error
+        state.error = actions.payload.data
         state.login = false
         state.user = []
       } else {
         state.status = 'Successful'
         state.error = []
         state.login = true
-        state.user = actions.payload.user
-        localStorage.setItem("authentication_token", actions.payload.token)
+        state.user = actions.payload.data.user
+        localStorage.setItem("authentication_token", actions.payload.data.token)
       }
     },
     [login.failed]: (state) => {
@@ -62,16 +63,17 @@ const userSlice = createSlice({
       state.status = 'loading'
     },
     [autoLogin.fulfilled]: (state, actions) => {
-      if (actions.payload === undefined || actions.payload.length === 0 || actions.payload.error) {
+      console.log(actions.payload)
+      if (!actions.payload.ok) {
         state.status = 'Failed'
-        state.error = actions.payload.error
+        state.error = actions.payload.data.error
         state.login = false
         state.user = []
       } else {
         state.status = 'Successful'
         state.error = []
         state.login = true
-        state.user = actions.payload.user
+        state.user = actions.payload.data.user
       }
     },
     [autoLogin.failed]: (state) => {

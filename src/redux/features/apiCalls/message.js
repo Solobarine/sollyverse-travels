@@ -1,32 +1,32 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
 import domain from "../../../config/config"
-import { apiCall } from "./country"
+import sendData from "../../../hooks/sendData"
 
 const messageApiCall = {
   create: (payload) => {
     const url = `${domain}/admin/messages`
     const method = 'POST'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   adminShowMessages: (payload) => {
     const url = `${domain}/admin/messages/${payload._id}`
     const method = 'GET'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   adminShowOne: (payload) => {
     const url = `${domain}/admin/messages/${payload._id}`
     const method = 'POST'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   view: (payload) => {
     const url = `${domain}/messages/${payload._id}`
     const method = 'POST'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   markAsRead: (payload) => {
     const url = `${domain}/messages/${payload._id}`
     const method = 'POST'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   }
 }
 

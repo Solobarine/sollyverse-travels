@@ -1,5 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import domain from "../../../config/config";
+import getData from "../../../hooks/getData";
+import sendData from "../../../hooks/sendData";
 import { apiCall } from "./country";
 import { api } from "../../../utils/api";
 
@@ -8,52 +10,52 @@ const cityApiCall = {
     const url = `${domain}/city`
     const method = 'POST'
     console.log(payload)
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   update: (payload) => {
     const url = `${domain}/city/${payload.name}`
     const method = 'PATCH'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   deleteCity: (payload) => {
     const url = `${domain}/admin/city/${payload._id}`
     const method = 'DELETE'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   adminShowOne: (payload) => {
     const url = `${domain}/city/${payload._id}`
     const method = 'GET'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   adminShowAll: (payload) => {
     const url = `${domain}/city`
     const method = 'GET'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   showOne: (payload) => {
     const url = `${domain}/city/${payload._id}`
     const method = 'GET'
-    return api(method, url, payload)
+    return getData(method, url, payload)
   },
   showAll: (payload) => {
     const url = `${domain}/city`
     const method = 'POST'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   showFavourite: (payload) => {
     const url = `${domain}/city/favourite`
     const method = 'POST'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   },
   showTopFour: (payload) => {
     const url = `${domain}/city/top/cities`
     const method = 'GET'
-    return api(method, url, payload)
+    return getData(method, url, payload)
   },
   showTopCities: (payload) => {
     const url = `${domain}/cities/top`
     const method = 'GET'
-    return apiCall(method, url, payload)
+    return sendData(method, url, payload)
   }
 }
 

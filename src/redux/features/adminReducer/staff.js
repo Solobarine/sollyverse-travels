@@ -26,8 +26,8 @@ const staffSlice = createSlice({
       state.singleStaff.error = []
     },
     [create.fulfilled]: (state, actions) => {
-      if (actions.payload.error) {
-        state.singleStaff.error = actions.payload.error
+      if (!actions.payload.ok) {
+        state.singleStaff.error = actions.payload.data.error
         state.singleStaff.status = 'Failed'
       } else {
         state.singleStaff.value = actions.payload.staff
@@ -36,7 +36,7 @@ const staffSlice = createSlice({
       }
     },
     [create.rejected]: (state, actions) => {
-      state.singleStaff.error = actions.payload.error
+      state.singleStaff.error = actions.payload.data.error
       state.singleStaff.status = 'Failed'
     }
   }

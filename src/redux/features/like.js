@@ -19,12 +19,12 @@ const likeSlice = createSlice({
             state.status = 'Pending'
         },
         [userLike.fulfilled]: (state, actions) => {
-            if (actions.payload.error) {
+            if (!actions.payload.ok) {
                 state.likes = []
-                state.error = actions.payload.error
+                state.error = actions.payload.data.error
                 state.status = 'Failed'
             } else {
-                state.likes = actions.payload.likes
+                state.likes = actions.payload.data.likes
                 state.error = ''
                 state.status = 'Success'
             }
@@ -32,7 +32,7 @@ const likeSlice = createSlice({
         [userLike.rejected]: (state, actions) => {
             state.status = 'Failed'
             state.likes = []
-            state.error = actions.payload.error
+            state.error = actions.payload.data.error
         }
     }
 })
