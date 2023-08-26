@@ -1,7 +1,3 @@
-.landing {
-/*  position: relative;*/
-}
-
 #main {
   position: relative;
   height: 660px;
@@ -198,9 +194,10 @@
 }
 
 .partners {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
   padding: 20px;
   height: 230px;
   margin-left: 90px;
@@ -208,14 +205,6 @@
 }
 
 .partners img {
-  width: 45%;
-}
-
-.partners img:nth-child(3) {
-  width: 30%;
-}
-
-.partners img:nth-child(2),
-.partners img:nth-child(5) {
-  width: 55%;
+  height: 60px;
+  width: 100px;
 }

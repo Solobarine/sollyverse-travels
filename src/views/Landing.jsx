@@ -92,14 +92,14 @@ const Landing = () => {
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat minima quidem dolore aliquam corporis numquam rem molestiae voluptates totam mollitia.</p>
       </section>
       <section className="partners">
-        <img src="/sponsors/ferrari.png" alt=""/>
-        <img src="/sponsors/hilton.png" alt=""/>
-        <img src="/sponsors/lamborghini.png" alt=""/>
-        <img src="/sponsors/mastercard.png" alt=""/>
-        <img src="/sponsors/mercedes_benz.png" alt=""/>
-        <img src="/sponsors/oracle.png" alt=""/>
-        <img src="/sponsors/qatar_airways.png" alt=""/>
-        <img src="/sponsors/turkish_airlines.png" alt=""/>
+        <img src="/sponsors/ferrari.svg" alt=""/>
+        <img src="/sponsors/hilton.svg" alt=""/>
+        <img src="/sponsors/lamborghini.svg" alt=""/>
+        <img src="/sponsors/mastercard.svg" alt=""/>
+        <img src="/sponsors/mercedes-benz.svg" alt=""/>
+        <img src="/sponsors/oracle.svg" alt=""/>
+        <img src="/sponsors/qatar-airways.svg" alt=""/>
+        <img src="/sponsors/amd.svg" alt=""/>
       </section>
     </section>
   )

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import apiCall from "./apiCalls/user";
+import { register, login } from "./apiCalls/user";
 
-const {register, login} = apiCall
+// const {register, login} = apiCall
 const initialState = {user: [], status: 'idle', login: false, error: []}
 const userSlice = createSlice({
   name: 'user',

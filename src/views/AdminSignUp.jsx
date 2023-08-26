@@ -22,7 +22,7 @@ const AdminSignUp = () => {
           <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter Your Email"/>
           <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter Password"/>
           <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="Confirm Password"/>
-          <input onClick={() => dispatch(signUp(auth, newAdmin))} type="submit" value="Submit"/>
+          <input onClick={() => dispatch(signUp(newAdmin))} type="submit" value="Submit"/>
         </form>
         <p>Already an Admin ,<Link to="/admin/login">Sign in</Link></p> 
       </div>
