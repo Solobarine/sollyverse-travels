@@ -1,0 +1,86 @@
+#adminDashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+  padding: 10px;
+  background-color: #eee;
+}
+
+#adminDashboard > div:nth-child(2) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 10px;
+}
+
+#adminView1 {
+  padding: 30px;
+}
+
+#adminView1 > div {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+#adminView1 > div:nth-child(1) {
+  display: grid;
+  padding: 10px;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+#adminView1 > div:nth-child(1) div i {
+  width: 30px;
+}
+
+#adminView1 > div:nth-child(1) div {
+  border: 1px solid #555;
+  border-radius: 20px;
+  padding: 15px;
+  background-color: #c8e6c8;
+}
+
+#adminView1 > div:nth-child(1) div p {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+#adminView1 > div:nth-child(1) div *:nth-child(even) {
+  margin: 10px auto;
+}
+
+#adminView1 > div:nth-child(2) {
+  background-color: #c8e6c8;
+  border-radius: 20px;
+  height: 250px;
+}
+
+#adminView2 > div:nth-child(1) {
+  background-color: #20b970;
+  grid-column: 1/span 2;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  padding: 10px;
+  height: 300px;
+}
+
+#topDestinations {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+}
+
+#topDestinations > div {
+  background-color: var(--primary);
+  border-radius: 0.6em;
+  height: 250px;
+  padding: 0.6em;
+}
+
+#topDestinations > div > h3 {
+  text-align: center;
+}

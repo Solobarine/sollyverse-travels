@@ -1,0 +1,105 @@
+#adminHeader {
+  position: sticky;
+  background-color: var(--primary);
+  z-index: 5;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#adminHeader a > img {
+  width: 3em;
+}
+
+#adminHeader #company a {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+#adminLinks {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#adminHeader a {
+  text-decoration: none;
+  padding: 0.5em;
+  color: var(--text-gray);
+}
+
+#adminHeader a:hover,
+#adminHeader a.active {
+  font-weight: 600;
+}
+
+.menu_toggles {
+  display: none;
+}
+
+#adminHeader ion-icon[name='close'],
+#adminHeader ion-icon[name='grid-outline'] {
+  color: var(--text-gray);
+  font-size: 2em;
+  right: 0.5em;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .menu_toggles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7em;
+  }
+
+  .menu_toggles.open ion-icon[name='close'] {
+    display: block;
+    z-index: 1;
+    scale: 1;
+    position: static;
+  }
+
+  .menu_toggles.open ion-icon[name='grid-outline'] {
+    display: block;
+    z-index: -1;
+    scale: 0;
+    position: absolute;
+  }
+
+  .menu_toggles ion-icon[name='close'] {
+    z-index: -1;
+    scale: 0;
+    position: absolute;
+  }
+
+  .menu_toggles ion-icon[name='grid-outline'] {
+    z-index: 1;
+    scale: 1;
+    position: static;
+  }
+
+  #adminLinks {
+    width: 200px;
+    position: fixed;
+    flex-direction: column;
+    align-items: start;
+    justify-content: left;
+    top: 64px;
+    right: -250px;
+    background-color: var(--primary);
+    padding: 1em;
+    height: 100dvh;
+  }
+
+  #adminLinks.collapsed {
+    right: 0;
+  }
+
+  #adminLinks a {
+    display: block;
+  }
+}

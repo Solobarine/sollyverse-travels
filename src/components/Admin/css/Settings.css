@@ -1,0 +1,43 @@
+#adminSetting {
+  display: flex;
+  padding: 1em;
+  gap: 2em;
+  margin-left: -1.5em;
+}
+
+#adminSettingsMenu {
+  width: 160px;
+}
+
+#adminSettingsMenu > a {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  text-decoration: none;
+  color: var(--text-gray);
+  padding: 0.6em;
+}
+
+#adminSettingsMenu > a:hover,
+#adminSettingsMenu > a.active {
+  color: var(--white);
+  background-color: var(--secondary);
+  border-radius: 0.5em;
+}
+
+#adminsSettingOutlet {
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 500px) {
+  #adminSetting {
+    flex-direction: column;
+    gap: 0.5em;
+    padding: 0.5em;
+  }
+
+  #adminSettingsMenu {
+    padding-top: 0;
+    padding-left: 1em;
+  }
+}

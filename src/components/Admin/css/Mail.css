@@ -1,0 +1,63 @@
+.adminMail {
+  display: grid;
+  grid-template-columns: .3fr 1fr;
+  padding: 10px;
+  gap: 20px;
+}
+
+.adminMail button {
+  display: block;
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  background-color: #c8e6c8;
+  transition: .3s ease;
+  cursor: pointer;
+}
+
+.adminMail button:hover {
+  background-color: #20b970;
+  color: #fff;
+  box-shadow: 2px 4px 4px 4px #bbb;
+}
+
+#adminMessage form {
+  width: 60%;
+  display: grid;
+  grid-template-columns: .6fr 1fr;
+  gap: 30px;
+  border-radius: 30px;
+  background-color: #ddd;
+  padding: 30px;
+  margin-top: 30px;
+}
+#adminMessage form h2 {
+  grid-column: 1/span 2;
+}
+
+#adminMessage form input,
+#adminMessage form textarea {
+  grid-column: 1/span 2;
+  padding: 15px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
+#adminMessage textarea {
+  height: 200px;
+}
+
+#adminMessage form input[type='submit'] {
+  grid-column: 1/span 1;
+  background-color: #20b970;
+  border: none;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+#adminMessage form input[type='submit']:hover {
+  color: #fff;
+  font-size: 17px;
+  border: 1px solid grey;
+}
