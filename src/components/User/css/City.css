@@ -1,0 +1,235 @@
+.city {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.cityDetails {
+  flex-basis: 300px;
+  flex-grow: 99999;
+}
+
+.cityDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  padding: 1.4em;
+}
+
+.cityImages {
+  height: 350px;
+  max-width: 100%;
+  background-color: var(--tertiary);
+}
+
+.cityImages img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cityBio {
+  display: flex;
+  align-items: center;
+  gap: 0.7em 5em;
+  flex-wrap: wrap;
+}
+
+.cityBio h1 {
+  font-size: 2em;
+}
+
+.cityBio > div {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.cityBio i {
+  color: var(--secondary);
+  font-size: 1.2em;
+}
+
+#cityLikes {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.cityReservation h2,
+.cityReview h2 {
+  text-align: center;
+  padding: 10px;
+}
+
+.otherCities {
+  margin: 10px;
+  margin-bottom: 25px;
+}
+
+.majorCities {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.mainCities {
+  position: relative;
+  display: grid;
+  grid-template-columns: .4fr 1fr;
+  grid-template-rows: repeat(3, 15px);
+  gap: 10px;
+  margin-bottom: 15px;
+  padding: 8px;
+  border: 1px solid var(--tertiary);
+  border-radius: 12px;
+  background-color: var(--primary);
+}
+
+.mainCities div {
+  background-color: var(--tertiary);
+  grid-row: 1/span 3;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.mainCities div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mainCities i {
+  position: absolute;
+  top: 40%;
+  right: 20px;
+  font-size: 24px;
+  color: var(--secondary);
+}
+
+.mainCities p,
+.mainCities a {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.mainCities a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #000;
+}
+
+.otherCities h2 {
+  margin: 20px 0;
+}
+
+.cityDetails > a {
+  text-align: center;
+  padding: 15px;
+  background-color: var(--secondary);
+  text-decoration: none;
+  color: var(--white);
+  opacity: .9;
+}
+
+.cityDetails > a:hover {
+  opacity: 1;
+}
+
+.cityDetails a:active {
+  border: 1px solid #000;
+}
+
+.aboutCity {
+  flex-basis: 350px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1em;
+  padding: 1.2em;
+  background-color: #eee;
+  border-radius: 20px;
+}
+
+.aboutCity > div {
+  width: 100%;
+}
+
+.cityMap {
+  width: 100%;
+  max-width: 500px;
+  min-width: 280px;
+  margin: auto;
+  aspect-ratio: 4 / 3;
+  margin: auto;
+}
+
+.cityMap .leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.cityReviews h2 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.stars {
+  width: 115px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  margin: auto;
+}
+
+.stars i {
+  font-size: 18px;
+  color: var(--secondary);
+}
+
+.city .form_input {
+  display: grid;
+  gap: 0.5em;
+}
+
+.city .form_input input,
+.city .form_input textarea {
+  padding: 0.8em;
+  border-radius: 0.5em;
+  border: 1px solid var(--text-gray);
+}
+
+.cityDetails form,
+.aboutCity form {
+  max-width: 500px;
+  margin: auto;
+  display: grid;
+  gap: 1em;
+}
+
+.city input[type='submit'] {
+  margin-top: 2em;
+  padding: 0.8em 1.5em;
+  border: 1px solid var(--primary);
+  background-color: var(--secondary);
+  color: var(--white);
+  border-radius: 0.5em;
+}
+
+@media screen and (max-width: 570px) {
+  .majorCities {
+    width: 100%;
+    display: grid;
+    gap: 1em;
+    grid-auto-flow: column;
+    grid-auto-columns: 55%;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 1em;
+    scroll-behavior: smooth;
+  }
+
+  .majorCities .mainCities {
+    scroll-snap-align: start;
+  }
+}

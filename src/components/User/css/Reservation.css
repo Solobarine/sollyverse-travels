@@ -1,0 +1,44 @@
+.reservation {
+  background-color: #ddd;
+  width: 180px;
+  padding: 0.3em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 0.5em;
+  border-radius: 20px;
+  box-shadow: 2px 2px 5px 6px #aaa;
+}
+
+.reservation div {
+  height: 150px;
+  grid-column: 1/span 2;
+  background-color: yellowgreen;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.reservation div img {
+  width: 150%;
+  background-size: cover;
+}
+
+.reservation h4,
+.reservation h5 {
+  grid-column: 1/span 2;
+}
+
+.reservation .dates {
+  font-size: 14px;
+}
+
+.reservation h4,
+.reservation h5,
+.reservation p {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.reservation p > small {
+  font-weight: 600;
+}
