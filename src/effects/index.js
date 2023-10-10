@@ -1,32 +1,7 @@
-export const toggleMenu = (button, container, links) => {
-  button.current.classList.toggle('closeMenu')
-  if (button.current.classList.contains('closeMenu')) {
-    container.forEach(element => element.classList.toggle('shrinkMenu'))
-    links.forEach(link=> {
-      if (link.classList.contains('nav-links')) {
-        link.children[0].children[1].style.scale = 1
-        link.style.width = 'auto'
-      }
-      if (link.classList.contains('menu_link')) {
-        link.children[1].style.scale = 1
-        link.style.width = 'auto'
-      }
-    });
-  } else {
-    container.forEach(element => element.classList.toggle('shrinkMenu'))
-    links.forEach(link => {
-      if (link.classList.contains('nav-links')) {
-        link.children[0].children[1].style.scale = 0
-        link.style.width = '40px'
-      }
-      if (link.classList.contains('menu_link')) {
-        link.children[1].style.scale = 0
-        link.style.width = '40px'
-      }
-    })
-  }
+// Collapse or Expand Menu
+export const toggle = (state, setState) => {
+  setState(!state)
 }
-
 
   //Toggle visibility of each section
 export const handleClick = (e, buttonArray, sectionArray) => {
@@ -77,18 +52,20 @@ export const handleChange = (e, stateFunction) => {
 }
 
 
-export const toggleLike = (e) => {
+export const toggleLike = (e, dispatch, updateLike) => {
   if (e.target.classList.contains('fa-regular')) {
     e.target.classList.remove('fa-regular')
     e.target.classList.add('fa-solid')
+    dispatch(updateLike(1))
   } else if (e.target.classList.contains('fa-solid')) {
     e.target.classList.remove('fa-solid')
     e.target.classList.add('fa-regular')
+    dispatch(updateLike(-1))
   }
 }
 
 
-export const clickStar = (e, stars) => {
+export const clickStar = (e, stars, setState) => {
   const starArray = Array.from(stars.current.children)
   const i = starArray.indexOf(e.target)
   starArray.forEach((star, index) => {
@@ -108,4 +85,5 @@ export const clickStar = (e, stars) => {
       }
     }
   })
+  setState(i + 1)
 }
