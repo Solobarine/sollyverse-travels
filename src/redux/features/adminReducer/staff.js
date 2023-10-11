@@ -5,12 +5,12 @@ const initialState = {
   singleStaff: {
     value: [],
     status: 'idle',
-    error: []
+    error: ''
   },
   staff: {
     value: [],
     status: 'idle',
-    error: []
+    error: ''
   }
 }
 
@@ -18,7 +18,12 @@ const staffSlice = createSlice({
   name: 'staff',
   initialState,
   reducers: {
-    create_staff: () => create
+    clearSingleStaffError: (state) => {
+      state.singleStaff.error = ''
+    },
+    clearStaffError: (state) => {
+      state.staff.error = ''
+    }
   },
   extraReducers: {
     [create.pending]: (state) => {
@@ -37,6 +42,6 @@ const staffSlice = createSlice({
   }
 })
 
-export const { create_staff } = staffSlice.actions
+export const { clearSingleStaffError, clearStaffError } = staffSlice.actions
 
 export default staffSlice.reducer
