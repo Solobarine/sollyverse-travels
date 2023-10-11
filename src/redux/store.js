@@ -19,7 +19,7 @@ const store = configureStore({
       user: userReducer,
       country: countryReducer,
       city: cityReducer,
-      message: messageReducer,
+      messages: messageReducer,
       reservation: reservationReducer,
       review: reviewReducer,
       admin: admin,
