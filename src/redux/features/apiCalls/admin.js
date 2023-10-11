@@ -1,16 +1,23 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { domain, apiCall } from "./country"
+import apiCall from "../../../utils/apiCall"
+import { domain } from "../../../config/api"
 
 const adminApiCall = {
-  signUp: (auth, payload) => {
-    const url = `${domain}/admin/signUp`
+  signUp: (payload) => {
+    const url = `${domain}/admin/register`
     const method = 'POST'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, null, url, payload)
   },
-  login: (auth, payload) => {
+  login: (payload) => {
     const url = `${domain}/admin/login`
     const method = 'POST'
-    return apiCall(method, auth, url, payload)
+    return apiCall(method, null, url, payload)
+  },
+  verifyToken: () => {
+    const url = `${domain}/admin/token/login`
+    const method = 'POST'
+    const auth = localStorage.getItem('authentication_token')
+    return apiCall(method, auth, url, {})
   }
 }
 
@@ -22,7 +29,11 @@ const adminAsyncThunk = {
   login: createAsyncThunk(
     'ADMIN_LOGIN',
     adminApiCall.login
+  ),
+  verifyToken: createAsyncThunk(
+    'VERIFY_ADMIN_TOKEN',
+    adminApiCall.verifyToken
   )
 }
 
-export const { login, signUp } = adminAsyncThunk
+export const { login, signUp, verifyToken } = adminAsyncThunk
