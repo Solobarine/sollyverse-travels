@@ -7,29 +7,31 @@ const initialState = {
   totalNumber: [],
   recentReservations: [],
   status: 'idle',
-  error: []
+  error: ''
 }
 
 const reservationSlice = createSlice({
   name: 'reservation',
   initialState,
   reducers: {
-    reservationsInfo: () => reservationsData
+    clearReservationError: (state) => {
+      state.error = ''
+    }
   },
   extraReducers: {
     [reservationsData.fulfilled]: (state, actions) => {
       state.totalNumber = actions.payload.number
       state.recentReservations = actions.payload.recents
-      state.status = 'Success'
-      state.error = []
+      state.status = 'idle'
+      state.error = ''
     },
     [reservationsData.rejected]: (state, actions) => {
-      state.error = actions.payload.error
-      state.status = 'Failed'
+      state.error = actions.error.message
+      state.status = 'failed'
     }
   }
 })
 
-export const {reservationsInfo } = reservationSlice.actions
+export const {clearReservationError } = reservationSlice.actions
 
 export default reservationSlice.reducer
