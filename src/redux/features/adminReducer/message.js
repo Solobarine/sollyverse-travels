@@ -7,12 +7,14 @@ const initialState = {
   message: {
     value: [],
     status: 'idle',
-    error: []
+    error: '',
+    notice: ''
   },
   messages: {
     value: [],
     status: 'idle',
-    error: []
+    error: '',
+    notice: ''
   }
 }
 
@@ -20,47 +22,55 @@ const messageSlice = createSlice({
   name: 'message',
   initialState,
   reducers: {
-    create_message: () => create
+    clearMessageError: (state) => {
+      console.log(state);
+      state.message.error = ''
+    },
+    clearMessageNotice: (state) => {
+      state.message.notice = ''
+    },
+    clearMessagesError: (state) => state.messages.error = '',
+    clearMessagesNotice: (state) => state.messages.notice = ''
   },
   extraReducers: {
     [create.fulfilled]: (state, actions) => {
-      state.message.value = actions.payload.message
-      state.message.status = 'Success'
+      state.message.value = actions.payload.data.message
+      state.message.status = 'idle'
       state.message.error = []
     },
     [create.rejected]: (state, actions) => {
-      state.message.error = actions.payload.error
-      state.message.status = 'Failed'
+      state.message.error = actions.error.message
+      state.message.status = 'failed'
     },
     [adminShowOne.pending]: (state) => {
-      state.message.status = 'Pending'
+      state.message.status = 'pending'
       state.message.error = []
     },
     [adminShowOne.fulfilled]: (state, actions) => {
-      state.message.value = actions.payload.message
-      state.message.value = 'Success'
+      state.message.value = actions.payload.data.message
+      state.message.value = 'idle'
       state.message.error = []
     },
     [adminShowOne.rejected]: (state, actions) => {
-      state.message.error = actions.payload.error
-      state.message.status = 'Failed'
+      state.message.error = actions.error.message
+      state.message.status = 'failed'
     },
     [adminShowMessages.pending]: (state) => {
-      state.messages.status = 'Pending'
+      state.messages.status = 'pending'
       state.messages.error = []
     },
     [adminShowMessages.fulfilled]: (state, actions) => {
-      state.messages.value = actions.payload.messages
-      state.messages.status = 'Success'
+      state.messages.value = actions.payload.data.messages
+      state.messages.status = 'idle'
       state.messages.error = []
     },
     [adminShowMessages.rejected]: (state, actions) => {
-      state.messages.error = actions.payload.error
-      state.messages.status = 'Failed'
+      state.messages.error = actions.error.message
+      state.messages.status = 'failed'
     }
   }
 })
 
-export const { create_message } = messageSlice.actions
+export const { clearMessageError, clearMessageNotice, clearMessagesError, clearMessagesNotice } = messageSlice.actions
 
 export default messageSlice.reducer
