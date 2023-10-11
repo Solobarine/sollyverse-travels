@@ -1,55 +1,62 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { domain, apiCall } from "./country";
+import apiCall from "../../../utils/apiCall";
+import { domain } from "../../../config/api";
 
+const auth = localStorage.getItem('authentication_token')
 const cityApiCall = {
-  create: (auth, payload) => {
-    const url = `${domain}/admin/city`
-    const method = 'POST'
-    return apiCall(method, auth, url, payload)
-  },
-  update: (auth, payload) => {
-    const url = `${domain}/admin/city/${payload._id}`
-    const method = 'PUT'
-    return apiCall(method, auth, url, payload)
-  },
-  deleteCity: (auth, payload) => {
-    const url = `${domain}/admin/city/${payload._id}`
-    const method = 'DELETE'
-    return apiCall(method, auth, url, payload)
-  },
-  adminShowOne: (auth, payload) => {
-    const url = `${domain}/admin/city/${payload._id}`
-    const method = 'GET'
-    return apiCall(method, auth, url, payload)
-  },
-  adminShowAll: (auth, payload) => {
-    const url = `${domain}/admin/city`
-    const method = 'GET'
-    return apiCall(method, auth, url, payload)
-  },
-  showOne: (auth, payload) => {
-    const url = `${domain}/city/${payload._id}`
-    const method = 'POST'
-    return apiCall(method, auth, url, payload)
-  },
-  showAll: (auth, payload) => {
+  create: (payload) => {
     const url = `${domain}/city`
     const method = 'POST'
     return apiCall(method, auth, url, payload)
   },
-  showFavourite: (auth, payload) => {
+  update: (payload) => {
     const url = `${domain}/city/${payload._id}`
-    const method = 'POST'
+    const method = 'PUT'
     return apiCall(method, auth, url, payload)
   },
-  showTopFour: (auth, payload) => {
-    const url = `${domain}/city/top`
+  deleteCity: (payload) => {
+    const url = `${domain}/admin/city/${payload._id}`
+    const method = 'DELETE'
+    return apiCall(method, auth, url, payload)
+  },
+  adminShowOne: (payload) => {
+    const url = `${domain}/admin/city/${payload._id}`
     const method = 'GET'
     return apiCall(method, auth, url, payload)
   },
-  showTopCities: (auth, payload) => {
-    const url = `${domain}/admin/citirs/top`
-    const method = 'GeT'
+  adminShowAll: (payload) => {
+    const url = `${domain}/admin/city`
+    const method = 'GET'
+    return apiCall(method, auth, url, payload)
+  },
+  showOne: (payload) => {
+    const url = `${domain}/city/${payload}`
+    const method = 'GET'
+    return apiCall(method, auth, url, payload)
+  },
+  showAll: (payload) => {
+    const url = `${domain}/city`
+    const method = 'POST'
+    return apiCall(method, auth, url, payload)
+  },
+  showFavourite: () => {
+    const url = `${domain}/likes/favourites`
+    const method = 'GET'
+    return apiCall(method, auth, url, {})
+  },
+  showTopFour: () => {
+    const url = `${domain}/city/top`
+    const method = 'GET'
+    return apiCall(method, auth, url, {})
+  },
+  showRandomFive: () => {
+    const url = `${domain}/city/random`
+    const method = 'GET'
+    return apiCall(method, auth, url, {})
+  },
+  showTopCities: (payload) => {
+    const url = `${domain}/admin/cities/top`
+    const method = 'GET'
     return apiCall(method, auth, url, payload)
   }
 }
@@ -90,6 +97,10 @@ const cityAsyncThunk = {
   showTopFour: createAsyncThunk(
     'SHOW_TOP_FOUR',
     cityApiCall.showTopFour
+  ),
+  showRandomFive: createAsyncThunk(
+    'SHOW_RANDOM_FIVE',
+    cityApiCall.showRandomFive
   ),
   showTopCities: createAsyncThunk(
     'SHOW_TOP_CITIES',
