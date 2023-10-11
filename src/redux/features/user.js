@@ -1,8 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, login } from "./apiCalls/user";
+import { register, login, verifyToken } from "./apiCalls/user";
 
-// const {register, login} = apiCall
-const initialState = {user: [], status: 'idle', login: false, error: []}
+const initialState = {
+  user: [],
+  status: 'idle',
+  isLoggedIn: false,
+  error: [],
+  likes: []
+}
+
 const userSlice = createSlice({
   name: 'user',
   initialState: initialState,
@@ -10,7 +16,11 @@ const userSlice = createSlice({
     logout: (state) => {
       let result = state
       result = initialState
+      localStorage.removeItem('authentication_token')
       return result
+    },
+    addUserLikes: (state, data) => {
+      state.likes = [...state.likes, data.payload]
     }
   },
   extraReducers: {
@@ -18,10 +28,18 @@ const userSlice = createSlice({
       state.status = 'loading'
     },
     [register.fulfilled]: (state, actions) => {
-      state.status = 'successful'
-      state.error = []
-      state.login = true
-      state.user = actions.payload
+      if (actions.payload.status !== 200) {
+        state.status = 'failed'
+        state.error = actions.payload
+        state.isLoggedIn = false
+        state.user = []
+      } else {
+        state.status = 'idle'
+        state.error = []
+        localStorage.setItem('authentication_token', actions.payload.data.token)
+        state.isLoggedIn = true
+        state.user = actions.payload.data.user
+      }
     },
     [register.failed]: (state) => {
       state.status = 'failed'
@@ -31,24 +49,50 @@ const userSlice = createSlice({
       state.status = 'loading'
     },
     [login.fulfilled]: (state, actions) => {
-      if (actions.payload.error) {
+      console.log(actions.payload);
+      if (actions.payload.status !== 200 && !actions.payload.data.user) {
         state.status = 'failed'
-        state.error = actions.peyload
-        state.login = false
+        state.error = actions.payload
+        state.isLoggedIn = false
         state.user = []
       } else {
-        state.status = 'successful'
+        state.status = 'idle'
         state.error = []
-        state.login = true
-        state.user = actions.payload
+        localStorage.setItem('authentication_token', actions.payload.data.token)
+        state.isLoggedIn = true
+        state.user = actions.payload.data.user
+        state.likes = actions.payload.data.userLikes
       }
     },
     [login.failed]: (state) => {
       state.status = 'failed'
+    },
+    [verifyToken.pending]: (state) => {
+      state.status = 'pending'
+      state.error = []
+    },
+    [verifyToken.fulfilled]: (state, actions) => {
+      if (actions.payload.status === 200 && actions.payload.data.user) {
+        state.status = 'idle'
+        state.isLoggedIn = true
+        state.user = actions.payload.data.user
+        state.likes = actions.payload.data.userLikes
+        state.error = []
+      } else {
+        state.status = 'failed'
+        state.isLoggedIn = false
+        state.user = []
+      }
+    },
+    [verifyToken.rejected]: (state, actions) => {
+      state.status = 'failed'
+      state.isLoggedIn = false
+      state.user = []
+      state.error = actions.error.message
     }
   }
 })
 
-export const { logout } = userSlice.actions
+export const { logout, addUserLikes } = userSlice.actions
 
 export default userSlice.reducer
