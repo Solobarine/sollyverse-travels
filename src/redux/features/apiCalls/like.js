@@ -1,13 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { domain, apiCall } from "./country"
+import apiCall from "../../../utils/apiCall"
+import { domain } from "../../../config/api"
+
+const auth = localStorage.getItem('authentication_token')
 
 const likeApiCall = {
-  create: (auth, payload) => {
+  create: (payload) => {
     const url = `${domain}/likes`
     const method = 'POST'
     return apiCall(method, auth, url, payload)
   },
-  cancel: (auth, payload) => {
+  cancel: (payload) => {
     const url = `${domain}/delete/${payload._id}`
     const method = 'DELETE'
     return apiCall(method, auth, url, payload)
