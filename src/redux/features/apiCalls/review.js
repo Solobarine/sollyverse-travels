@@ -1,23 +1,26 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
-import { domain, apiCall } from "./country"
+import apiCall from "../../../utils/apiCall"
+import { domain } from "../../../config/api"
+
+const auth = localStorage.getItem('authentication_token')
 
 const reviewApiCall = {
-  create: (auth, payload) => {
+  create: (payload) => {
     const url = `${domain}/review`
     const method = 'POST'
     return apiCall(method, auth, url, payload)
   },
-  showAll: (auth, payload) => {
+  showAll: (payload) => {
     const url = `${domain}/review/${payload._id}`
-    const method = 'POST'
+    const method = 'GET'
     return apiCall(method, auth, url, payload)
   },
-  showFive: (auth, payload) => {
-    const url = `${domain}/review/${payload._id}`
-    const method = 'POST'
-    return apiCall(method, auth, url, payload)
+  showFive: (payload) => {
+    const url = `${domain}/review/${payload}`
+    const method = 'GET'
+    return apiCall(method, auth, url, {})
   },
-  update: (auth, payload) => {
+  update: (payload) => {
     const url = `${domain}/review/${payload._id}`
     const method = 'PUT'
     return apiCall(method, auth, url, payload)
