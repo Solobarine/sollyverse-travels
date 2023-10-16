@@ -1,0 +1,108 @@
+#contactSection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  padding: 15px;
+}
+
+#contactSection > section {
+  flex-grow: 1;
+}
+
+.contactOptions h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.reach {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 500px;
+  min-width: 350px;
+  margin: auto;
+  gap: 1em ;
+  margin-bottom: 2em;
+}
+
+.options {
+  flex: 1 1 12em;
+  display: grid;
+  gap: 0.5em;
+  padding: 10px;
+  margin: auto;
+  box-shadow: 5px 10px 10px #c8e9c9;
+}
+
+.options i {
+  font-size: 18px;
+  color: var(--white);
+  background-color: var(--secondary);
+  padding: 0.4em;
+  border-radius: .4em;
+}
+
+.options h3 {
+  text-align: start;
+}
+
+#mapContainer {
+  width: 75%;
+  height: 250px;
+  min-width: 300px;
+  margin: auto;
+  margin-bottom: 3em;
+}
+
+.contactOptions .leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.contactForm {
+  padding: 1em 0;
+}
+
+.contactForm form {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  display: grid;
+  padding-top: 1.5em;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 0.3fr) 1fr 0.3fr;
+}
+
+.contactForm h5,
+.contactForm h2 {
+  text-align: center;
+}
+
+.contactForm form > input {
+  padding-left: 15px;
+  border: 1px solid var(--text-gray);
+  font-size: 0.8em;
+  height: 40px;
+  min-width: 0;
+}
+
+.contactForm form textarea {
+  font-size: 0.8em;
+  border: 1px solid var(--text-gray);
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
+#message {
+  grid-area: 3/1/ span 1/span 2;
+}
+
+#submit {
+  grid-area: 4/1/span 1/span 2;
+  color: var(--white);
+  background-color: var(--secondary);
+  border: none;
+}

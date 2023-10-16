@@ -1,0 +1,134 @@
+.menu {
+  position: fixed;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--primary);
+  width: 14em;
+  height: 90vh;
+  transition: .4s ease-in;
+  z-index: 3;
+}
+
+.menu.collapsed {
+  width: 3em;
+}
+
+.menu.collapsed .menuToggle {
+  rotate: 0deg;
+}
+
+.menuToggle {
+  color: var(--secondary);
+  position: absolute;
+  font-size: 2em;
+  top: .5em;
+  right: -.5em;
+  cursor: pointer;
+  transition: 2s ease;
+  rotate: 180deg;
+}
+
+.nav-links {
+  margin-top: 4em;
+}
+
+.nav-links > :where(a, div) {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  margin-bottom: 1em;
+  text-decoration: none;
+  color: var(--text-gray);
+  padding: .5em;
+}
+
+.nav-links >:where(a, div) > i {
+  font-size: 20px;
+}
+
+.nav-links > a.active,
+.nav-links > :where(a, div):hover {
+  background-color: var(--secondary);
+  border-radius: .5em;
+  color: var(--white);
+}
+
+.nav-links > :where(a, div).collapsed {
+  padding: .65em;
+}
+
+.nav-links > :where(a, div).collapsed > p {
+  display: none;
+}
+
+.theme {
+  display: flex;
+  padding: 0.5em;
+  align-items: center;
+  gap: .5em;
+  margin-bottom: 2em;
+}
+
+.theme > i {
+  color: var(--text-gray);
+  font-size: 1.5em;
+
+}
+
+.theme_toggle {
+  display: flex;
+  width: 3em;
+  background-color: white;
+  height: 1em;
+  border: 1px solid var(--secondary);
+  border-radius: .7em;
+  transition: .4s ease;
+  cursor: pointer;
+}
+
+.theme_toggle::before {
+  content: '';
+  display: block;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background-color: var(--secondary);
+  transition: .4s ease;
+}
+
+.theme_toggle.dark {
+  transition: .4s ease;
+  justify-content: end;
+}
+
+.theme_toggle.lumen::before {
+  transition: .4s ease;
+  justify-content: start;
+}
+
+.theme.collapsed > i {
+  display: none;
+}
+
+@media screen and (max-width: 500px) {
+  .menu {
+    height: 90dvh;
+    transition: 0.4s ease;
+  }
+
+  .menu.collapsed {
+    width: 14em;
+    left: -14em;
+  }
+
+  .menuToggle {
+    top: 0;
+    right: -1em;
+  }
+
+  .nav-links > :where(a, div).collapsed > p {
+    display: block;
+  }
+}

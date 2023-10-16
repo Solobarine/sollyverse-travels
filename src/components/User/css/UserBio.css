@@ -1,0 +1,53 @@
+.userbio {
+    align-self: start;
+    flex-grow: 1;
+    padding: 1.5em;
+    padding-left: 0;
+}
+
+.userbio > form {
+    display: grid;
+    gap: 0 2em;
+}
+
+.userbio > form h1 {
+    margin-bottom: 1.5em;
+    grid-column: 1 / span 2;
+}
+
+.userbio > form > div {
+    display: grid;
+    margin-bottom: 1em;
+    gap: 0.5em;
+}
+
+.userbio > form input,
+.userbio > form select {
+    padding: 0.5em;
+    border: 1px solid var(--text-gray);
+}
+
+.userbio button {
+    margin: 1em 0;
+    padding: .7em;
+    background-color: var(--secondary);
+    color: var(--white);
+    border: none;
+    transition: 0.4s ease;
+}
+
+.userbio button:hover {
+    background-color: var(--primary);
+    color: var(--text-gray);
+}
+
+@media screen and (max-width: 600px) {
+    .userbio {
+        width: 100%;
+    }
+
+    .userbio > form {
+        display: flex;
+        flex-direction: column;
+    }
+}

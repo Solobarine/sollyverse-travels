@@ -1,0 +1,152 @@
+#country {
+  padding: 1em;
+  display: grid;
+  width: 90%;
+  min-width: 300px;
+  margin: auto;
+  gap: 20px;
+  position: relative;
+}
+
+.countryImages {
+  max-width: 60em;
+  width: 100%;
+  margin: auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.countryImages > img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.countryDescription {
+  padding: 30px 10px 10px 0;
+}
+
+.countryMap {
+  width: 80%;
+  max-width: 30em;
+  margin: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.countryMap .leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+#countryCities {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#countryCities h2 {
+  margin: 20px 0;
+}
+
+.countryCities {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 180px));
+  padding: 0px;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.countryCity {
+  background-color: gray;
+  position: relative;
+  height: 250px;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+.countryCity img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.countryCity #city_details {
+  position: absolute;
+  width: 80%;
+  background-color: rgba(255, 255, 255, .7);
+  margin: auto;
+  padding: 5px;
+  bottom: 10px;
+  left: 8%;
+  border-radius: 8px;
+}
+
+#like_and_more {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.countryCity div h4 {
+  margin-bottom: 10px;
+}
+
+.countryCity div a {
+  margin: 0;
+  padding: 0;
+}
+
+.countryCity div a {
+  padding: 0.3em 0.6em;
+  text-decoration: none;
+  color: var(--white);
+  opacity: .8;
+  cursor: pointer;
+  border-radius: 0.3em;
+  border: none;
+  background-color: #20b555;
+  font-size: 0.9em;
+}
+
+.countryCity div a input:hover {
+  opacity: 1;
+}
+
+.countryCity div i {
+  color: #20b970;
+  font-size: 25px;
+  text-align: end;
+  cursor: pointer;
+}
+
+#countryInfo {
+  background-color: var(--primary);
+  width: 90%;
+  max-width: 700px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 15px;
+  top: 300px;
+  box-shadow: 5px 10px 20px gray;
+  z-index: 3;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info * {
+  margin: 3px 0;
+}
+
+.info i {
+  font-size: 25px;
+  color: #20b870;
+}

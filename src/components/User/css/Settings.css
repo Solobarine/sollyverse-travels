@@ -1,0 +1,12 @@
+#settings {
+  display: flex;
+  gap: 2em;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  #settings {
+    flex-direction: column;
+    padding: 1em;
+  }
+}

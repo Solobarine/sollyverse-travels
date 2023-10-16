@@ -5,7 +5,7 @@
 }
 
 :root {
-  --primary: #e8f6e8;
+  --primary: #c8e6c8;
   --secondary: #20b970;
   --tertiary: #808080;
   --white: #eee;
@@ -16,10 +16,87 @@
 .App {
   display: grid;
   grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
 
-.page {
+#route_switch,
+#admin_route_switch {
+  display: flex;
+  min-height: 80vh;
+  gap: 2em;
+}
+
+#admin_route_switch {
+  gap: 0em;
+}
+
+#route_content {
+  flex-grow: 1;
+  padding-left: 3em;
+}
+
+#admin_route_content {
+  flex-grow: 1;
+}
+
+.admin#route_content {
+  padding-left: 0;
+}
+
+.leaflet-container {
+  height: 100%;
+}
+
+.singleReview {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  background-color: var(--white);
+  width: 90%;
+  margin: auto;
+  max-width: 350px;
+  min-height: 150px;
+  padding: 0.5em;
+  padding-bottom: 0;
+  border-radius: 0.6em;
+  color: var(--text-gray);
+  border: 1px solid var(--secondary);
+}
+
+.singleReview  > div {
+  display: flex;
+}
+
+.userProfile {
+  align-items: center;
+  gap: 1em;
+
+}
+
+.userProfile .user {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.userProfile img {
+  width: 2.5em;
+  height: 2.5em;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.singleReview i {
+  color: var(--secondary);
+  font-size: 1.4em;
+}
+
+.singleReview.noReview {
   display: grid;
-  grid-template-columns: .3fr 1fr;
-  transition: .4s ease;
+  place-items: center;
+}
+
+@media screen and (max-width: 500px) {
+  #route_content {
+    padding-left: 0;
+  }
 }

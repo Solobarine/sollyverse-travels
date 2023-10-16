@@ -1,0 +1,18 @@
+.reservations h1 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.reservations .reserves {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1em 0.3em;
+  gap: 2em;
+}
+
+@media screen and (max-width: 600px) {
+  .reservations .reserves > .reservation {
+    margin: auto;
+  }
+}

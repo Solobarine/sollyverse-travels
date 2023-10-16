@@ -6,11 +6,11 @@ const { view, markAsRead } = messageAsyncThunk
 const initialState = {
   messages: [],
   status: 'idle',
-  error: []
+  error: ''
 }
 
 const messageSlice = createSlice({
-  name: 'massage',
+  name: 'message',
   initialState,
   reducers: {
     show: () => view,
@@ -18,15 +18,16 @@ const messageSlice = createSlice({
   },
   extraReducers: {
     [view.pending]: (state) => {
-      state.status = 'Pending'
+      state.status = 'pending'
     },
     [view.fulfilled]: (state, actions) => {
-      state.messages = actions.payload.messages
-      state.status = 'Success'
-      state.error = []
+      state.messages = actions.payload.data.messages
+      state.status = 'idle'
+      state.error = ''
     },
-    [view.rejected]: (state) => {
-      state.status = 'Failed'
+    [view.rejected]: (state, actions) => {
+      state.error = actions.error.message
+      state.status = 'failed'
     },
     [markAsRead.pending]: (state) => {
       state.status = 'Pending'
@@ -39,7 +40,7 @@ const messageSlice = createSlice({
       })
     },
     [markAsRead.rejected]: (state) => {
-      state.status = 'Failed'
+      state.status = 'failed'
     }
   }
 })

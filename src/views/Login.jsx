@@ -1,38 +1,78 @@
-import {useState} from 'react';
-import { Navigate, Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, register } from '../redux/features/apiCalls/user'
-import './Login.css';
+import { Formik, Form, Field } from 'formik';
+import { login } from '../redux/features/apiCalls/user'
+import './css/Login.css';
+import loginSchema from '../utils/loginSchema';
 
 const Login = () => {
-  const change = (arg, e) => {
-    arg(e.target.value)
-  }
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const user = useSelector(state => state.user)
 
-  const payload = {email, password}
+
+  useEffect(() => {
+    if (user.isLoggedIn) navigate('/dashboard')
+  }, [user, navigate])
+
 
   return (
     <section className="loginPage">
-<div id="loginImage">
-        <img src="/landing/login.png" alt="Login"/>
+      <div id="loginImage">
+        <img src="/landing/login.png" alt="Login" />
       </div>
       <div id="loginForm">
-        <form>
-          <h1>Login here</h1>
-          <p>Welcome back. Login to your Account</p>
-          <input onChange={(e) => change(setEmail, e)} type="email" name="" id="loginMail" placeholder='Enter your Email'/>
-          <input onChange={(e) => change(setPassword, e)} type="password" name="" id="loginPassword" placeholder='Enter your Password'/>
-          <Link onClick={() => dispatch(login(auth, payload))} id="loginSubmit">Login</Link>
-<span className="remember"><input type="checkbox" name="remember" id=""/><p id="remain">Remember Me</p>
-  <Link to="/forgot_password" id="forgot">Forgot Password?</Link></span>
-<p>Don't have an Account? <Link to="/register" id="loginCreate">Create One</Link></p>
-<p>Login as&nbsp;<Link to="/admin/login" id='loginCreate'>Admin</Link></p>
-    </form>
+        <Formik
+        initialValues={{
+          email: '',
+          password: ''
+        }}
+        validationSchema={loginSchema}
+        onSubmit={(values) => dispatch(login(values))}
+        >
+            {
+              ({errors, touched}) => (
+                <Form>
+                  <h3>Login here</h3>
+                  <p>Welcome back. Login to your Account</p>
+                  <>
+                      <Field
+                      name='email'
+                      type='email'
+                      id="loginMail"
+                      placeholder='Enter your Email'
+                      />
+                      {
+                        errors.email && touched.email
+                        ? <small>{ errors.email }</small>
+                        : null
+                      }
+                  </>
+                  <>
+                      <Field
+                      name='password' type='password'
+                      id="loginPassword"
+                      placeholder='Enter your Password'
+                       />
+                      {
+                        errors.password && touched.password
+                        ? <small>{ errors.password }</small>
+                        : null
+                      }
+                  </>
+                  <button
+                  id="loginSubmit" type="submit"
+                  onSubmit={(values) => dispatch(login(values))}
+                  // onSubmit={(values) => console.log(values)}
+                  >Login</button>
+                  <p>Don't have an Account? <Link to="/register" id="loginCreate">Create One</Link></p>
+                  <p>Login as&nbsp;<Link to="/admin/login" id='loginCreate'>Admin</Link></p>
+                </Form>
+              )
+            }
+
+        </Formik>
       </div>
     </section>
   )

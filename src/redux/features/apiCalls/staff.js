@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { domain, apiCall } from "./country"
+import apiCall from "../../../utils/apiCall"
+import { domain } from "../../../config/api"
 
 const staffApiCall = {
   create: (auth, payload) => {

@@ -1,0 +1,39 @@
+#adminSignUp {
+  padding: 2em;
+  max-width: 650px;
+  margin: auto;
+}
+
+.adminSignUp form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1em;
+}
+
+.adminSignUp form h2 {
+  grid-column: 1 / -1;
+}
+
+.adminSignUp form .form_input {
+  display: grid;
+  gap: 0.5em;
+}
+
+.adminSignUp .form_input input,
+.adminSignUp .form_input select {
+  outline: none;
+  border: 1px solid var(--text-gray);
+  padding: 1em;
+}
+
+.adminSignUp input[type='submit'] {
+  padding: 1em;
+  border: none;
+  border-radius: 0.6em;
+  background-color: var(--secondary);
+}
+
+#link_to_login {
+  margin-top: 2em;
+  text-align: center;
+}

@@ -5,15 +5,15 @@ const { showOne, showAll } = countryAsyncThunk
 
 const initialState = {
   countries: {
-    item: [],
-    error: []
+    value: [],
+    status: 'idle',
+    error: ''
   },
   country: {
-    item: [],
-    error: []
-  },
-  status: 'idle',
-  error: []
+    value: [],
+    status: 'idle',
+    error: ''
+  }
 }
 
 const countrySlice = createSlice({
@@ -24,21 +24,41 @@ const countrySlice = createSlice({
     show_all: () => showAll
   },
   extraReducers: {
-    [showAll.pending]: (state) => state.status = 'Pending',
+    [showAll.pending]: (state) => {
+      state.countries.error = ''
+      state.countries.status = 'pending'
+    },
     [showAll.fulfilled]: (state, actions) => {
-      state.countries = actions.payload.countries
-      state.status = 'Successful'
-      state.error = []
+      if (actions.payload.status === 200) {
+        state.countries.value = actions.payload.data.countries
+        state.status = 'idle'
+        state.error = ''
+      } else {
+        state.countries.status = 'failed'
+        state.countries.error = actions.error.message
+      }
     },
-    [showAll.failed]: (state) => state.status = 'Failed',
-
-    [showOne.pending]: (state) => state.status = 'Pending',
+    [showAll.failed]: (state, actions) => {
+      state.countries.error = actions.error.message
+      state.countries.status = 'failed'
+    },
+    [showOne.pending]: (state) => {
+      state.country.status = 'pending'
+      state.country.error = ''
+    },
     [showOne.fulfilled]: (state, actions) => {
-      state.country = actions.payload.country
-      state.status = 'Success'
-      state.error = []
+      if (actions.payload.status === 200) {
+        state.country.value = actions.payload.data
+        state.country.status = 'idle'
+        state.country.error = ''
+      } else {
+        state.country.status = 'failed'
+      }
     },
-    [showOne.failed]: (state) => state.status = 'Failed'
+    [showOne.failed]: (state, actions) => {
+      state.country.status = 'failed'
+      state.country.error = actions.error.message
+    }
   }
 })
 

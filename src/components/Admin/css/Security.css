@@ -1,0 +1,33 @@
+#adminSecurity {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    gap: 0.6em;
+}
+
+#adminSecurity form {
+    display: grid;
+    gap: 0.6em;
+}
+
+#adminSecurity .form_input {
+    display: grid;
+    gap: 0.5em;
+}
+
+#adminSecurity .form_input input {
+    padding: 1em;
+    border: 1px solid var(--text-gray);
+    border-radius: 0.5em;
+}
+
+#adminSecurity input[type='submit'] {
+    margin-top: 1.5em;
+    padding: 0.8em 1.3em;
+    max-width: 400px;
+    background-color: var(--secondary);
+    color: var(--white);
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+}

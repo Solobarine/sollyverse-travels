@@ -1,0 +1,192 @@
+#main {
+  position: relative;
+  height: 500px;
+  background-color: #ddd;
+}
+
+#main img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50%;
+  transition: .4s ease-in;
+}
+
+.more {
+  margin-right: 60%;
+  padding: 8px;
+  font-size: 12px;
+  border-radius: 12px;
+}
+
+#sub-bar {
+  display: flex;
+  min-width: 330px;
+  margin: auto;
+  flex-wrap: wrap;
+  background-color: rgba(200, 230, 200, .8);
+  z-index: 6;
+  width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+  justify-content: space-between;
+  box-shadow: 5px 10px 10px gray;
+}
+
+#facilities {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 0.6fr 0.8fr;
+  grid-template-areas: 
+  "fac space see"
+  "perks perks perks";
+}
+
+#facilities > h4 {
+  margin-bottom: 1em;
+}
+
+#facilities small {
+  grid-area: see;
+}
+
+#facilities div {
+  grid-area: perks;
+  display: flex;
+  justify-content: space-between;
+}
+
+#stream,
+#wifi,
+#eat,
+#bedroom {
+  display: flex;
+  gap: 0.5em;
+  flex-direction: column;
+  padding: 6px;
+  align-items: center;
+}
+
+#facilities > div > div i {
+  background-color: var(--secondary);
+  color: var(--white);
+  padding: 0.4em;
+  border-radius: 0.4em;
+}
+
+#journey img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-size: cover;
+  padding: 10px;
+}
+
+#journey h2 {
+  font-size: 16px;
+  text-align: start;
+  margin-bottom: 14px;
+}
+
+#popular {
+  padding-top: 2em;
+}
+
+#popular * {
+  margin-bottom: 7px;
+}
+
+#popular h2,
+#popular p {
+  width: 70%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+#popular p {
+  margin-bottom: 20px;
+}
+
+.popularStat {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.popularStat div {
+  display: flex;
+  width: 30%;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popularStat * {
+  margin-bottom: 5px;
+}
+
+.popularStat div h3 {
+  font-size: 20px;
+  justify-content: center;
+}
+
+.popularStat div div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: auto;
+  background-color: #c8e6c9;
+}
+
+.popularImage i {
+  padding-top: 8px;
+  color: #20b970;
+  font-size: 20px;
+}
+
+#aboutUs h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+
+.swiper {
+  width: 800px;
+  height: 300px;
+}
+
+#aboutUs p {
+  width: 70%;
+  font-size: 18px;
+  margin: auto;
+}
+
+
+#hotDestinations h3,
+#aboutUs h2 {
+  text-align: center;
+}
+
+.partners {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+  height: 230px;
+  padding-bottom: 20px;
+}
+
+.partners img {
+  height: 60px;
+  width: 100px;
+}
+
+@media screen and (max-width: 650px) {
+  #sub-bar {
+    bottom: 6em;
+  }
+}

@@ -4,62 +4,100 @@ import reservationAsyncThunk from "./apiCalls/reservation"
 const {create, show, cancel } = reservationAsyncThunk
 
 const initialState = {
+  reserve: {
+    value: [],
+    error: '',
+    message: '',
+    status: 'idle'
+  },
   reservations: {
-    item: [],
-    error: [],
+    value: [],
+    error: '',
     status: 'idle',
-    cancelStatus: 'idle'
+  },
+  cancel: {
+    status: 'idle',
+    error: '',
+    message: ''
   }
 }
 
 const reservationSlice = createSlice({
-  name: 'reservation',
+  name: 'reservations',
   initialState,
-  reducer: {
-    reserve: () => create,
-    show_reservations: () => show,
-    cancel_reservation: () => cancel
+  reducers: {
+    clearReserveMessage: (state) => {
+      state.reserve.message = ''
+    },
+    clearReserveError: (state) => {
+      state.reserve.error = ''
+    },
+    clearCancelMessage: (state) => {
+      state.cancel.message = ''
+    },
+    clearCancelError: (state) => {
+      state.cancel.error = ''
+    }
   },
   extraReducers: {
     [create.pending]: (state) => {
-      state.reservations.status = 'Pending'
-      state.reservations.error = []
+      state.reserve.status = 'pending'
+      state.reserve.error = ''
     },
     [create.fulfilled]: (state, actions) => {
-      state.reservations.value = actions.payload.reservations
-      state.reservations.status = 'Success'
-      state.reservations.error = []
+      if (actions.payload.status === 201) {
+        state.reserve.value = actions.payload.data.reservation
+        state.reserve.message = actions.payload.data.message
+        state.reserve.status = 'idle'
+        state.reserve.error = ''
+      } else {
+        state.reserve.value = []
+        state.reserve.error = actions.payload.error
+        state.reserve.status = 'failed'
+      }
+    },
+    [create.rejected]: (state, actions) => {
+      state.reserve.value = []
+      state.reserve.error = actions.error.message
+      state.reserve.status = 'failed'
     },
     [show.rejected]: (state, actions) => {
       state.reservations.error = actions.payload.error
-      state.reservations.status = 'Failed'
+      state.reservations.status = 'failed'
     },
     [show.pending]: (state) => {
-      state.reservations.status = 'Pending'
+      state.reservations.status = 'pending'
+      state.reservations.error = ''
     },
     [show.fulfilled]: (state, actions) => {
-      state.reservations.item = actions.payload.reservations
-      state.reservations.status = 'Success'
-      state.reservations.error = []
+      state.reservations.value = actions.payload.data.reservations
+      state.reservations.status = 'idle'
+      state.reservations.error = ''
     },
     [show.rejected]: (state) => {
-      state.reservations.status = 'Failed'
+      state.reservations.status = 'failed'
     },
     [cancel.pending]: (state) => {
-      state.reservations.cancelStatus = 'Pending'
-      state.reservations.error = []
+      state.cancel.status = 'pending'
+      state.cancel.error = ''
     },
-    [cancel.fulfilled]: (state) => {
-      state.reservations.cancelStatus = 'Success'
-      state.reservations.error = []
+    [cancel.fulfilled]: (state, actions) => {
+      if (actions.payload.status === 200) {
+        state.cancel.status = 'idle'
+        state.cancel.error = ''
+        state.cancel.message = 'Reservation canceled successfully'
+      } else {
+        state.cancel.error = actions.payload.error
+        state.cancel.status = 'failed'
+      }
     },
     [cancel.rejected]: (state, actions) => {
-      state.reservations.error = actions.payload.error
-      state.reservations.cancelStatus = 'Failed'
+      state.cancel.error = actions.error.message
+      state.cancel.status = 'failed'
     }
   }
 })
 
-export const { reserve, show_reservations, cancel_reservation } = reservationSlice.actions
+export const { clearReserveMessage, clearReserveError, clearCancelError, clearCancelMessage } = reservationSlice.actions
 
 export default reservationSlice.reducer

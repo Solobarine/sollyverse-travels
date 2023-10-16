@@ -1,0 +1,18 @@
+.favourites {
+  padding: 20px;
+}
+
+.favourites h1 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.favourites > div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.favourites div .destination {
+  width: 180px;
+  margin-left: 30px;
+}

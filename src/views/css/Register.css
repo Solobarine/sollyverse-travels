@@ -1,0 +1,111 @@
+#register {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.6fr 1.2fr;
+}
+
+#registerImage {
+  background-image: url('../../../public/landing/summerTravel.jpg');
+  background-size: cover;
+  background-position: 55%;
+}
+
+#registerForm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.formDiv {
+  flex-grow: 1;
+}
+
+.formDiv p {
+  margin: 10px 0;
+}
+
+.formDiv h3 {
+  margin: 15px 0;
+  grid-column: 1 / -1;
+}
+
+.basicKyc,
+.addressAndMore {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.basicKyc div,
+.addressAndMore div {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.basicKyc div select,
+.addressAndMore div select {
+  min-width: 0;
+  padding: 10px;
+}
+
+.basicKyc div input,
+.addressAndMore div input {
+  padding: 10px;
+  border: 1px solid #888;
+  border-radius: 5px;
+}
+
+#user_signin {
+  grid-column: 1/span 1;
+}
+
+#registerSubmit {
+  width: 150px;
+  border: none;
+  background-color: var(--secondary);
+  color: #fff;
+  text-decoration: none;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#rSignIn {
+  cursor: pointer;
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+/* .city_div {
+  grid-area: 3 / 2 / span 1 / span 1;
+} */
+
+#register input[type='submit'] {
+  grid-column: 1 / 1;
+  padding: 1em;
+  color: var(--white);
+  background-color: var(--secondary);
+  border: none;
+}
+
+
+@media screen and (max-width: 600px) {
+  #register {
+    display: block;
+  }
+
+  #registerImage {
+    position: absolute;
+    inset: 0 0 0 0;
+    z-index: -1;
+  }
+
+  #registerForm {
+    display: block;
+    background-color: rgba(200, 230, 200, 0.7);
+    padding: 30px;
+  }
+}

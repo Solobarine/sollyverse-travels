@@ -1,0 +1,34 @@
+.admin_details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.admin_profile h2 {
+  text-align: center;
+  padding: 15px;
+}
+
+.admin_details > div {
+  border: 1px solid #888;
+  display: grid;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px #ddd;
+}
+
+.admin_details > div div label {
+  color: var(--text-gray);
+  font-weight: 600;
+}
+
+.admin_details > div div p {
+  color: var(--text-gray);
+}
+
+.admin_details > div div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

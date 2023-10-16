@@ -1,0 +1,72 @@
+.adminMenu {
+  position: sticky;
+  top: 64px;
+  width: 13em;
+  padding: 1em;
+  background-color: var(--primary);
+  transition: 0.4s ease;
+}
+
+.adminMenu.collapsed {
+  width: 2.5em;
+  padding: 1em 0.4em;
+}
+
+.adminMenu ion-icon {
+  position: absolute;
+  rotate: 180deg;
+  top: 0.2em;
+  right: -0.5em;
+  font-size: 2em;
+  color: var(--secondary);
+  transition: 0.4s ease;
+  z-index: 10;
+}
+
+.adminMenu.collapsed ion-icon {
+  rotate: 0deg;
+}
+
+.adminMenu > a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--text-gray);
+  padding: 0.8em 0.5em;
+  margin-bottom: 0.5em;
+  transition: 0.4s ease;
+}
+
+.adminMenu > a > i {
+  font-size: 1.2em;
+}
+
+.adminMenu > a:hover,
+.adminMenu > a.active {
+  color: var(--white);
+  background-color: var(--secondary);
+  border-radius: 0.5em;
+}
+
+.adminMenu.adminMenu.collapsed > a > p {
+  scale: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .adminMenu {
+    position: fixed;
+    top: 64px;
+    height: 100dvh;
+    transition: 0.5s ease;
+  }
+
+  .adminMenu.collapsed {
+    width: 13em;
+    left: -14em;
+  }
+
+  .adminMenu.collapsed ion-icon {
+    right: -1em;
+  }
+}

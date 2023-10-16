@@ -1,0 +1,31 @@
+#profile {
+  padding: 1.5em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
+  column-gap: 1em;
+  max-width: 800px;
+}
+
+.profile.image {
+  margin: 2em 0;
+  grid-column: 1 / -1;
+}
+
+#profile .image > img {
+  width: 200px;
+}
+
+.profile.bio > div,
+.profile.journey > div {
+  display: flex;
+  border-radius: .6em;
+  padding: 0.8em;
+  border: 1px solid var(--primary);
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+.profile.bio p,
+.profile.journey p {
+  font-weight: 600;
+}

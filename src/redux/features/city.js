@@ -2,31 +2,40 @@ import { createSlice } from "@reduxjs/toolkit";
 import cityAsyncThunk from "./apiCalls/city";
 import likeAsyncThunk from "./apiCalls/like"
 
-const { showOne, showAll, showFavourite, showTopFour } = cityAsyncThunk
+const { showOne,
+  showAll,
+  showFavourite,
+  showTopFour,
+  showRandomFive
+} = cityAsyncThunk
 const { create, cancel } = likeAsyncThunk
 
 const initialState = {
   city: {
-    item: [],
-    error: [],
+    value: [],
+    error: '',
     status: 'idle'
   },
   cities: {
-    item: [],
-    error: [],
+    value: [],
+    error: '',
     status: 'idle'
   },
   favourites: {
-    item: [],
-    error: [],
+    value: [],
+    error: '',
     status: 'idle'
   },
   top: {
-    item: [],
-    error: [],
+    value: [],
+    error: '',
     status: 'idle'
   },
-  errors: [],
+  random: {
+    value: [],
+    error: '',
+    status: 'idle'
+  }
 }
 
 const citySlice = createSlice({
@@ -37,70 +46,87 @@ const citySlice = createSlice({
     show_favourite: () => showFavourite,
     show_top_four: () => showTopFour,
     like: () => create,
-    unlike: () => cancel
+    unlike: () => cancel,
+    updateLike: (state, action) => {
+      console.log(action)
+      state.city.value.likes += action.payload
+    }
   },
   extraReducers: {
     [showOne.pending]: (state) => {
-      state.city.status = 'Pending'
+      state.city.status = 'pending'
+      state.city.error = ''
     },
     [showOne.fulfilled]: (state, actions) => {
-      state.city.item = actions.payload.city
-      state.city.status = 'Success'
-      state.city.error = []
+      if (actions.payload.status === 200) {
+        state.city.value = actions.payload.data.city
+        state.city.status = 'idle'
+        state.city.error = ''
+      } else {
+        state.city.status = 'failed'
+      }
     },
-    [showOne.rejected]: (state) => {
-      state.city.status = 'Failed'
+    [showOne.rejected]: (state, actions) => {
+      state.city.status = 'failed'
+      state.city.error = actions.error.message
     },
     [showAll.pending]: (state) => {
-      state.cities.status = 'Pending'
+      state.cities.status = 'pending'
     },
     [showAll.fulfilled]: (state, actions) => {
       state.cities.items = actions.payload.cities
-      state.cities.status = 'Success'
+      state.cities.status = 'idle'
       state.cities.error = []
     },
     [showAll.rejected]: (state) => {
-      state.cities.status = 'Failed'
+      state.cities.status = 'failed'
     },
     [showFavourite.pending]: (state) => {
-      state.favourites.status = 'Pending'
+      state.favourites.status = 'pending'
+      state.favourites.error = ''
     },
     [showFavourite.fulfilled]: (state, actions) => {
-      state.favourites.item = actions.payload.cities
-      state.favourites.status = 'Success'
-      state.favourites.error = []
+      state.favourites.value = actions.payload.data.favourites
+      state.favourites.status = 'success'
+      state.favourites.error = ''
     },
-    [showFavourite.rejected]: (state) => {
-      state.favourites.status = 'Failed'
+    [showFavourite.rejected]: (state, actions) => {
+      state.favourites.status = 'failed'
+      state.favourites.error = actions.error.message
     },
     [showTopFour.pending]: (state) => {
-      state.top.status = 'Pending'
+      state.top.status = 'pending'
+      state.top.error = ''
     },
     [showTopFour.fulfilled]: (state, actions) => {
-      state.top.item = actions.payload.cities
-      state.top.status = 'Success'
+      state.top.value = actions.payload.data
+      state.top.status = 'idle'
       state.top.error = []
     },
-    [showTopFour.rejected]: (state) => {
-      state.top.status = 'Failed'
+    [showTopFour.rejected]: (state, actions) => {
+      state.top.status = 'failed'
+      state.top.error = actions.error.message
     },
-    [create.fulfilled]: (state, actions) => {
-      state.cities.item.map((city) => { // eslint-disable-line
-        if (city._id === actions.payload._id) {
-          return city.likes +=1
-        }
-      })
+    [showRandomFive.pending]: (state) => {
+      state.random.status = 'pending'
+      state.random.error = ''
     },
-    [cancel.fulfilled]: (state, actions) => {
-      state.cities.item.map((city) => { // eslint-disable-line
-        if (city._id === actions.payload._id) {
-          return city._id -= 1
-        }
-      })
+    [showRandomFive.fulfilled]: (state, actions) => {
+      if (actions.payload.status === 200) {
+        state.random.value = actions.payload.data.cities
+        state.random.status = 'idle'
+        state.random.error = ''
+      } else {
+        state.random.status = 'failed'
+      }
+    },
+    [showRandomFive.rejected]: (state, actions) => {
+      state.random.status = 'failed'
+      state.random.error = actions.error.message
     }
   }
 })
 
-export const { show_one, show_favourite, show_top_four, like, unlike } = citySlice.actions
+export const { show_one, show_favourite, show_top_four, like, unlike, updateLike } = citySlice.actions
 
 export default citySlice.reducer

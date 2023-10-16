@@ -1,28 +1,31 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
-import { domain, apiCall } from "./country"
+import apiCall from "../../../utils/apiCall"
+import { domain } from "../../../config/api"
+
+const auth = localStorage.getItem('authentication_token')
 
 const messageApiCall = {
-  create: (auth, payload) => {
+  create: (payload) => {
     const url = `${domain}/admin/messages`
     const method = 'POST'
     return apiCall(method, auth, url, payload)
   },
-  adminShowMessages: (auth, payload) => {
+  adminShowMessages: (payload) => {
     const url = `${domain}/admin/messages/${payload._id}`
     const method = 'GET'
     return apiCall(method, auth, url, payload)
   },
-  adminShowOne: (auth, payload) => {
+  adminShowOne: (payload) => {
     const url = `${domain}/admin/messages/${payload._id}`
     const method = 'POST'
     return apiCall(method, auth, url, payload)
   },
-  view: (auth, payload) => {
-    const url = `${domain}/messages/${payload._id}`
-    const method = 'POST'
-    return apiCall(method, auth, url, payload)
+  view: () => {
+    const url = `${domain}/messages`
+    const method = 'GET'
+    return apiCall(method, auth, url, {})
   },
-  markAsRead: (auth, payload) => {
+  markAsRead: (payload) => {
     const url = `${domain}/messages/${payload._id}`
     const method = 'POST'
     return apiCall(method, auth, url, payload)
